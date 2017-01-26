@@ -1,0 +1,50 @@
+#column1,#column2, #column3, #column4{
+    padding:12px 6px;
+    vertical-align:top;
+    border:solid 1px gray;
+}
+
+.column-ten{
+    width:10%;
+}
+
+.column-twenty{
+    width:20%;
+}
+
+.column-thirty{
+    width:30%;
+}
+
+.column-fourty{
+    width:40%;
+}
+.column-fifty{
+    width:50%;
+}
+
+.column-sixty{
+    width:60%;
+}
+
+.column-seventy{
+    width:70%;
+}
+
+.column-seventy-five{
+    width:75%;
+}
+
+.column-eighty{    
+    width:80%;
+}
+
+.column-ninety{
+    width:90%;
+}
+
+.column-hundred{
+    width:100%;
+}
+
+

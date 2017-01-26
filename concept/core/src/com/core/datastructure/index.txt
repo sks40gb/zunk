@@ -1,0 +1,14 @@
+1. If you want to implement any data structure which follow FIFO use LinkedList since no re-arrangement needs to be done.
+2. If you want to implement any data structure which follow LIFO use Array since no re-arrangement is required.
+
+Ex : Stack Implementation can use Array  with method
+        Push
+        Pop
+        Peek
+
+Ex2: Queue can use LinkedList since it uses FIFO. it should have method - 
+        enqueue(E item)
+        dequeue() 
+        hasItems()
+        size()
+    

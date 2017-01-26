@@ -1,0 +1,39 @@
+/* 
+    Document   : custom.css
+    Created on : 6 May, 2009, 3:56:00 PM
+    Author     : sunil
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+
+body{
+    background-image:url("../../images/theme/purple/bg.gif");
+    background-color:indigo;
+}
+
+.container{
+    background-image:url("../../images/theme/purple/container-bg.jpeg");
+
+}
+
+table,#content{
+    background-color:#fef3ff;
+}
+
+
+/** side menu **/
+#side-menu li{background-color:#570061;}
+#side-menu li:hover{background-color:#e47af1;}
+#side-menu a{color:white;}
+
+/** header menu */
+#navbar li a {background-color: #570061;color:white; }
+#navbar li ul {background-color: #570061;}
+#navbar li:hover li a, #navbar li.hover li a {background-color: #570061; border-bottom: 1px solid #fff; color: white; }
+#navbar li li a:hover { background-color: #e47af1; }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+"http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+
+<!--
+     This is a blank Tiles definition file with a commented example.
+-->
+
+<tiles-definitions>
+
+    <definition name=".mainLayout" page="/tiles/blackTemplate.jsp">
+        <put name="title" type="string" value="Welcome" />
+        <put name="header" value="/tiles/top.jsp" />
+        <put name="menu" value="/tiles/left.jsp" />
+        <put name="body" value="/tiles/content.jsp" />
+        <put name="bottom" value="/tiles/bottom.jsp" />
+    </definition>
+
+    <definition name="Tiles.Example" extends=".mainLayout">
+        <put name="title"  value="Example for Tiles Layout" />
+    </definition>
+
+    <definition name="Tiles.Registration" extends=".mainLayout">
+        <put name="title"  value="User registratration" />
+        <put name="body"   value="/jsp/userRegistration.jsp" />
+    </definition>
+
+    <definition name="tiles.registration.success" extends=".mainLayout">
+        <put name="title"  value="User registratration successfully" />
+        <put name="body"   value="/jsp/regSuccess.jsp" />
+    </definition>
+    
+    <definition name="${YOUR_DEFINITION_HERE}">
+    </definition>
+
+</tiles-definitions>

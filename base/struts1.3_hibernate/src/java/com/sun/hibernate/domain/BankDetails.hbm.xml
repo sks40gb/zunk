@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-mapping>
+  <class name="com.sun.hibernate.domain.BankDetails" table="bank_details">
+    <id name="bankDetailsId" type="java.lang.Integer">
+      <column name="bank_details_id"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.sun.hibernate.domain.User" column="user_id" name="user"/>
+    <property name="bankAcctNo" type="string">
+      <column name="bank_acct_no"/>
+    </property>
+    <property name="bankAcctName" type="string">
+      <column name="bank_acct_name"/>
+    </property>
+    <property name="bankName" type="string">
+      <column name="bank_name"/>
+    </property>
+    <property name="bankAddress" type="string">
+      <column name="Bank_Address"/>
+    </property>
+    <property name="loginName" type="string">
+      <column name="login_name"/>
+    </property>
+    <property name="startingSerialNo" type="java.lang.Integer">
+      <column name="starting_serial_no"/>
+    </property>
+    <property name="aba" type="string">
+      <column name="ABA"/>
+    </property>
+    <property name="swiftCode" type="string">
+      <column name="swift_code"/>
+    </property>
+    <property name="wireTransferFlag" type="string">
+      <column name="wire_transfer_flag"/>
+    </property>
+    <property name="bankRoutingNumber" type="string">
+      <column name="bank_routing_number"/>
+    </property>
+    <property name="createdDate" type="timestamp">
+      <column name="created_date"/>
+    </property>
+    <property name="createdBy" type="string">
+      <column name="created_by"/>
+    </property>
+    <property name="updatedDate" type="timestamp">
+      <column name="updated_date"/>
+    </property>
+    <property name="updatedBy" type="string">
+      <column name="updated_by"/>
+    </property>
+  </class>
+</hibernate-mapping>

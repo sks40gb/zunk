@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-mapping>
+  <class name="com.sun.hibernate.domain.Role" table="ROLE">
+    <id name="id" type="java.lang.Integer">
+      <column name="role_id"/>
+      <generator class="identity"/>
+    </id>
+    <property name="name" type="string">
+      <column length="20" name="role_name"/>
+    </property>
+    <property name="description" type="string">
+      <column length="20" name="role_description"/>
+    </property>
+  </class>
+</hibernate-mapping>

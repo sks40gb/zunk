@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-mapping>
+  <class name="com.sun.hibernate.domain.User" table="USER">
+    <id name="userId" type="java.lang.Integer">
+      <column name="user_id"/>
+      <generator class="identity"/>
+    </id>
+    <set cascade="all" name="roles" table="USER_ROLE">
+      <key column="user_id"/>
+      <many-to-many class="com.sun.hibernate.domain.Role" column="role_id"/>
+    </set>
+    <set cascade="all-delete-orphan" lazy="false" name="transaction">
+      <key column="user_id"/>
+      <one-to-many class="com.sun.hibernate.domain.Transaction"/>
+    </set>   
+    <property name="title" type="string">
+      <column name="title"/>
+    </property>   
+  </class>
+</hibernate-mapping>

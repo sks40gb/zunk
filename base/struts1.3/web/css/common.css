@@ -1,0 +1,10 @@
+.form_container{
+    padding: 20px;    
+}
+
+.form_container table{
+    width: 80%;
+    margin: 0 auto;
+    border: solid;
+    background-color: appworkspace;
+}

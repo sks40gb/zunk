@@ -1,0 +1,23 @@
+A - Abstract Factory
+A - Adaptor
+B - Builder
+B - Bridge v/s Template
+C - chain of responsibility 
+C - command
+C - composite
+D - Decorator
+F - Facade
+F - Flyweight
+I - Interpreter
+I - Iterator
+M - Mediator
+M - Momento
+O - Observer
+P - Prototype
+P - Proxy
+S - State
+S - Singleton
+S - Strategy
+T - Template
+V - Visitor
+F - Factory

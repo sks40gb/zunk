@@ -1,0 +1,49 @@
+    private String message = null;
+    private char[] charArray;
+    private String token=null;
+    private String signleValue=null;
+    private String [] tokenArray ;
+  
+	public String execute(String methodName, String input, String errorMessage,String value) {
+        
+        String Tok = input;
+        if(Tok.contains(",")){
+            
+            tokenArray =Tok.split(",");
+            System.out.println("tokenArray length--------->" + tokenArray.length);
+            for(int i=0;i<tokenArray.length;i++){
+                System.out.println("tokenArray --------->" + tokenArray[i]);
+            }
+        }else if(Tok.contains("/")){
+            int i=0;
+            token = Tok;
+            System.out.println("token-------->" +token);
+        } else{
+            int i=0;
+            System.out.println("Tok2-------->" + Tok);
+            signleValue= Tok;
+        }
+        
+        String changeMethodCase = Character.toString(methodName.charAt(0));
+        String callMethod = methodName.replaceFirst(changeMethodCase,changeMethodCase.toLowerCase());
+
+   	  message = this.invokeMethod( callMethod, new Object [] {errorMessage,value} ); 
+        return message;
+    }
+
+
+
+public String lengthTest(String errorMessage , String value)
+{	
+String message = null;
+/* use signleValue for single input.*/
+/* use tokenArray[] for more than one input.*/
+/*-------------------------------------------------------*/
+
+if(signleValue.length() <=  6 )
+{
+   message  = errorMessage ;
+}
+
+return message;
+}

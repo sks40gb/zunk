@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation ="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd" xmlns:context="http://www.springframework.org/schema/context">
+
+    <bean name ="college" class ="com.sun.spring.b.beanwiring.College" init-method="initMethod">
+        <constructor-arg value = "IIT"/>
+        <property name="establishedYear" value ="1945"/>
+		
+        <property name ="students">
+            <list>
+                <ref bean="Richard"/>
+                <ref bean ="Steve"/>
+            </list>
+        </property>
+	
+        <property name ="books">
+            <set>
+                <ref bean ="DBMS"/>
+                <ref bean ="Java"/>
+            </set>
+        </property>
+	
+        <property name="studentContacts">
+            <map>
+                <entry key ="23456" value-ref="Richard"/>
+                <entry key ="67891" value-ref="Steve"/>
+            </map>
+        </property>
+	
+        <property name ="faculties">
+            <props>
+                <prop key="Robert">Computer science</prop>
+                <prop key ="Casper">Mechanical</prop>
+            </props>
+        </property>
+    </bean>
+	
+    <bean name ="Richard" class ="com.sun.spring.b.beanwiring.Student">
+        <property name ="name" value ="Richard"/>
+        <property name = "age" value ="22"/>
+        <property name ="department" value ="Computers"/>
+    </bean>
+	
+    <bean name = "Steve" class ="com.sun.spring.b.beanwiring.Student">
+        <property name ="name" value ="Steve"/>
+        <property name ="age" value ="23"/>
+        <property name ="department" value ="Communications"/>
+    </bean>
+	
+    <bean name ="DBMS" class="com.sun.spring.b.beanwiring.Books">
+        <property name="bookTitle"  value ="Database Management Systems"/>
+        <property name ="author" value ="Peter"/>
+    </bean>
+	
+    <bean name ="Java"  class ="com.sun.spring.b.beanwiring.Books">
+        <property name="bookTitle" value ="SCJP 5"/>
+        <property name ="author" value ="Kathey sierra"/>
+    </bean>
+	
+	
+</beans>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+
+
+  <servlet>
+    <servlet-name>AddAdmin</servlet-name>
+    <servlet-class>com.elearn.ui.admin.AddAdmin</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>AddNewExam</servlet-name>
+    <servlet-class>com.elearn.ui.exam.AddNewExam</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>AddQuestions</servlet-name>
+    <servlet-class>com.elearn.ui.exam.AddQuestions</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>AdminAddProceed</servlet-name>
+    <servlet-class>com.elearn.ui.admin.AdminAddProceed</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>CourseRegistration</servlet-name>
+    <servlet-class>com.elearn.ui.course.CourseRegistration</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>DeleteCourse</servlet-name>
+    <servlet-class>com.elearn.ui.course.DeleteCourse</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>DeleteTopics</servlet-name>
+    <servlet-class>com.elearn.ui.topic.DeleteTopics</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>ProceedToAddCourse</servlet-name>
+    <servlet-class>com.elearn.ui.course.ProceedToAddCourse</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>ProceedToAddTopic</servlet-name>
+    <servlet-class>com.elearn.ui.topic.ProceedToAddTopic</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>Registration</servlet-name>
+    <servlet-class>com.elearn.ui.user.Registration</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>ProceedToDeleteTopics</servlet-name>
+    <servlet-class>com.elearn.ui.topic.ProceedToDeleteTopics</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>ProceedToUpdateCourse</servlet-name>
+    <servlet-class>com.elearn.ui.course.ProceedToUpdateCourse</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>SendComments</servlet-name>
+    <servlet-class>com.elearn.ui.comment.SendComments</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>SessionInavalidate</servlet-name>
+    <servlet-class>com.elearn.security.SessionInavalidate</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>UserValid</servlet-name>
+    <servlet-class>com.elearn.security.UserValid</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AddAdmin</servlet-name>
+    <url-pattern>/AddAdmin/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>AddNewExam</servlet-name>
+    <url-pattern>/AddNewExam/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>AddQuestions</servlet-name>
+    <url-pattern>/AddQuestions/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>AdminAddProceed</servlet-name>
+    <url-pattern>/AdminAddProceed/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>CourseRegistration</servlet-name>
+    <url-pattern>/CourseRegistration/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>DeleteCourse</servlet-name>
+    <url-pattern>/DeleteCourse/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>DeleteTopics</servlet-name>
+    <url-pattern>/DeleteTopics/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>ProceedToAddCourse</servlet-name>
+    <url-pattern>/ProceedToAddCourse/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>ProceedToAddTopic</servlet-name>
+    <url-pattern>/ProceedToAddTopic/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Registration</servlet-name>
+    <url-pattern>/Registration/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>ProceedToDeleteTopics</servlet-name>
+    <url-pattern>/ProceedToDeleteTopics/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>ProceedToUpdateCourse</servlet-name>
+    <url-pattern>/ProceedToUpdateCourse/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>SendComments</servlet-name>
+    <url-pattern>/SendComments/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>SessionInavalidate</servlet-name>
+    <url-pattern>/SessionInavalidate/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>UserValid</servlet-name>
+    <url-pattern>/UserValid/*</url-pattern>
+  </servlet-mapping>
+
+
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+  </welcome-file-list>
+  
+</web-app>

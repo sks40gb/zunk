@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+
+        <!--
+        <property name="hibernate.c3p0.acquire_increment">3</property>
+        <property name="hibernate.c3p0.idle_test_period">3600</property>
+        <property name="hibernate.c3p0.timeout">3600</property>
+        <property name="hibernate.c3p0.max_size">15</property>
+        <property name="hibernate.c3p0.min_size">3</property>
+        <property name="hibernate.c3p0.max_statements">0</property>
+        <property name="hibernate.c3p0.preferredTestQuery">select 1;</property>
+        -->
+
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="current_session_context_class">thread</property>
+        <!-- COMMON -->
+        <mapping class="com.cong.sun.hibernate.domain.User"/>
+        <mapping class="com.cong.sun.hibernate.domain.Role"/>
+        <mapping class="com.cong.sun.hibernate.domain.Vehicle"/>
+        <mapping class="com.cong.sun.hibernate.domain.TwoWheeler"/>
+        <mapping class="com.cong.sun.hibernate.domain.FourWheeler"/>
+        <mapping class="com.cong.sun.hibernate.domain.Animal"/>
+        <mapping class="com.cong.sun.hibernate.domain.Dog"/>
+        <mapping class="com.cong.sun.hibernate.domain.Cat"/>
+    </session-factory>
+</hibernate-configuration>

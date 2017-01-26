@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation=
+        "http://java.sun.com/xml/ns/j2ee web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+
+    <tlib-version>1.0</tlib-version>
+    <short-name>el</short-name>
+    <uri>http://otn.oracle.com/jsp/taglib/el.tld</uri>
+
+    <function>
+        <name>evaluate</name>
+        <function-class>jsputils.el.ELUtils</function-class>
+        <function-signature>
+            java.lang.Object evaluate(
+                java.lang.String, java.lang.Object,
+                javax.servlet.jsp.JspContext)
+        </function-signature>
+    </function>
+
+    <function>
+        <name>evaluate2</name>
+        <function-class>jsputils.el.ELUtils</function-class>
+        <function-signature>
+            java.lang.Object evaluate(
+                java.lang.String, java.lang.Object,
+                javax.servlet.jsp.JspContext,
+                javax.servlet.jsp.el.FunctionMapper)
+        </function-signature>
+    </function>
+
+    <function>
+        <name>getFNMapper</name>
+        <function-class>jsputils.el.FNMapper</function-class>
+        <function-signature>
+            jsputils.el.FNMapper getInstance(java.lang.String)
+        </function-signature>
+    </function>
+
+    <function>
+        <name>getPEWrapper</name>
+        <function-class>jsputils.el.PEWrapper</function-class>
+        <function-signature>
+            jsputils.el.PEWrapper getInstance(
+                java.lang.String, java.lang.Object,
+                javax.servlet.jsp.JspContext,
+                javax.servlet.jsp.el.FunctionMapper)
+        </function-signature>
+    </function>
+
+    <function>
+        <name>evaluate3</name>
+        <function-class>jsputils.el.PEWrapper</function-class>
+        <function-signature>
+            java.lang.Object evaluate(jsputils.el.PEWrapper)
+        </function-signature>
+    </function>
+
+</taglib>

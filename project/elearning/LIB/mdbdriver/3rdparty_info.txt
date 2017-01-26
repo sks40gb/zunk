@@ -1,0 +1,10 @@
+Third-party libraries information:
+
+---------------------------------------------------------------------------------------------------------------------------------
+Library				Version		File						Copyright						  	License	
+-------------------|-----------|---------------------------|-----------------------------------|---------------------------------
+Jackcess			1.1.14		included to mdbdriver.jar	(C) Health Market Science		  	GNU Lesser General Public License 
+Commons logging		1.1.1		commons_logging.jar			(C) The Apache Software Foundation	Apache License
+Commons lang		2.3			commons_lang.jar			(C) The Apache Software Foundation	Apache License
+Log4j				1.2.15		log4j.jar					(C) The Apache Software Foundation	Apache License
+---------------------------------------------------------------------------------------------------------------------------------

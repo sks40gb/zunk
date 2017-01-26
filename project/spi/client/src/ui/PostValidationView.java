@@ -1,0 +1,336 @@
+/*
+ * PostValidationView.java
+ *
+ * Created on June 13, 2008, 5:48 PM
+ */
+
+package ui;
+
+import client.TaskSendPostValidations;
+import valueobjects.PostValidationSelectedData;
+import valueobjects.ProjectsData;
+import valueobjects.FieldsData;
+import valueobjects.FunctionsData;
+import client.ClientTask;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+/**
+ * Component to Display the list of selected validation functions for output validation
+ *
+ * @author  sunil
+ */
+public class PostValidationView extends javax.swing.JFrame {
+
+    /* Creates new form PostValidationView */
+    PostValidationPage parent;
+    ProjectsData projectData;
+    Object selectedObject[][];
+    java.sql.ResultSet results = null;
+    public PostValidationView() {
+        initComponents();
+    }
+    
+    /**
+     * Display the post validation details
+     * @param parent - parent frame
+     * @param projectData - Project Data cantains all requied information.
+     */
+    public PostValidationView(PostValidationPage parent, ProjectsData projectData) {
+        initComponents();
+        this.parent = parent;
+        this.projectData = projectData;        
+        fillRecords();
+        enableRunValidationButton();
+    }
+    
+    /**
+     * Enables the Run Validatoin button when there is list for the validation.
+     * Else the button will be disabled.
+     */
+    public void enableRunValidationButton() {
+        if (selectedObject.length > 0) {
+            runValidationButton.setEnabled(true);
+        } else {
+            runValidationButton.setEnabled(false);
+        }
+    }
+
+    /**
+     * Set the project Name and Volume name.
+     * Fill the selected fields and corresponding validation funtions to the
+     * table. 
+     */
+    private void fillRecords()
+    {
+        String projectName = projectData.getProjectName();
+        String volumeName = projectData.getVolumeName();
+        //setting the name of project and volume to label.
+        projectLabel.setText(projectName);
+        volumeLabel.setText(volumeName);
+        
+        validationViewTable.setModel(new javax.swing.table.DefaultTableModel(
+           //Get the selected record and put in the model.     
+           getSelectedData(),
+            new String [] {
+                "Field", "Validation"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        
+    }
+    
+    /**
+     * Get all selected records to be validated.
+     * @return -- Selected fields and corresponding selected functions.
+     */
+    private Object[][] getSelectedData(){
+        if(projectData == null){
+            return null;
+        }
+        //Get selected list
+        List<PostValidationSelectedData> selectedList = new ArrayList<PostValidationSelectedData>();
+        //get Fields List
+        Collection<FieldsData> dataFieldsList = projectData.getFieldsMap().values();
+        //iterated through the Field List to get the checked or selected items.        
+        for(FieldsData field : dataFieldsList){
+            // get the Field Id
+            int field_id  = field.getId();
+            String field_name = field.getName();
+            
+            Collection<FunctionsData> functionDataList = field.getFunctionsMap().values();
+            for(FunctionsData fun : functionDataList){
+                // get the functions id
+                int fun_id = fun.getId();
+                String fun_name = fun.getName();
+                //If the validation function is selected add to the list.
+                if(fun.isSelected()){
+                    PostValidationSelectedData pvsd = new PostValidationSelectedData();
+                    pvsd.setFieldId(field_id);
+                    pvsd.setFieldName(field_name);
+                    pvsd.setFunctionId(fun_id);
+                    pvsd.setFunctionName(fun_name);
+                    selectedList.add(pvsd);
+                }                
+            }
+            
+        }
+        
+        // Put the items (validaton functions) to the SelectedObject which contains
+        // the Fields name and corresponding functions name. 
+        selectedObject = new Object[selectedList.size()][2];        
+        int size = selectedList.size();
+        for(int i =0; i< size; i++){
+            selectedObject[i][0] = selectedList.get(i).getFieldName();
+            selectedObject[i][1] = selectedList.get(i).getFunctionName();
+        }
+        //Return the Fields and Funcitons through selectedObject.
+        return selectedObject;
+    } 
+    
+    
+    /** This method is called from within the constructor to
+     * initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is
+     * always regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        validationViewPanel = new javax.swing.JPanel();
+        pLabel = new javax.swing.JLabel();
+        vLabel = new javax.swing.JLabel();
+        projectLabel = new javax.swing.JLabel();
+        volumeLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        validationViewTable = new javax.swing.JTable();
+        runValidationButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Post Validation Details");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
+        getContentPane().setLayout(new java.awt.GridBagLayout());
+
+        validationViewPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        pLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
+        pLabel.setText("Project   ");
+
+        vLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
+        vLabel.setText("Volume   ");
+
+        projectLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
+        projectLabel.setForeground(java.awt.Color.red);
+        projectLabel.setText("Project");
+
+        volumeLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
+        volumeLabel.setForeground(java.awt.Color.red);
+        volumeLabel.setText("volume");
+
+        validationViewTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Field", "Validation"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(validationViewTable);
+
+        runValidationButton.setText("Run Validation");
+        runValidationButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                runValidationButtonActionPerformed(evt);
+            }
+        });
+
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout validationViewPanelLayout = new javax.swing.GroupLayout(validationViewPanel);
+        validationViewPanel.setLayout(validationViewPanelLayout);
+        validationViewPanelLayout.setHorizontalGroup(
+            validationViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(validationViewPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(validationViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(validationViewPanelLayout.createSequentialGroup()
+                        .addGroup(validationViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pLabel)
+                            .addComponent(vLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(validationViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(volumeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(projectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, validationViewPanelLayout.createSequentialGroup()
+                .addContainerGap(108, Short.MAX_VALUE)
+                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(runValidationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75))
+        );
+        validationViewPanelLayout.setVerticalGroup(
+            validationViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(validationViewPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(validationViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pLabel)
+                    .addComponent(projectLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(validationViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vLabel)
+                    .addComponent(volumeLabel))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(validationViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(runValidationButton)
+                    .addComponent(backButton))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(validationViewPanel, new java.awt.GridBagConstraints());
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+    parent.setNextButtonEnabled(true);
+    this.dispose();       
+}//GEN-LAST:event_formWindowClosing
+
+private void runValidationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runValidationButtonActionPerformed
+      final ClientTask task;
+      // Send the list of Ids of project, volume, Fields and functions to perform
+      // the post validaton process.
+      task = new TaskSendPostValidations(projectData); 
+      task.setCallback(new Runnable() {
+        public void run() {
+            results = (java.sql.ResultSet) task.getResult();
+        }
+    });
+     boolean ok = task.enqueue(this);
+     exitWindow();
+}//GEN-LAST:event_runValidationButtonActionPerformed
+
+private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+    exitWindow();
+}//GEN-LAST:event_backButtonActionPerformed
+
+/**
+ * Exit the current window.
+ * Set the "next button" enabled.
+ * Start the monitoring the post validation process running in server side. 
+ */
+public void exitWindow(){
+    this.dispose();
+    parent.setNextButtonEnabled(true);
+    //parent.monitorProcess();
+}
+    /**
+    * @param args the command line arguments
+    */
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PostValidationView().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel pLabel;
+    private javax.swing.JLabel projectLabel;
+    private javax.swing.JButton runValidationButton;
+    private javax.swing.JLabel vLabel;
+    private javax.swing.JPanel validationViewPanel;
+    private javax.swing.JTable validationViewTable;
+    private javax.swing.JLabel volumeLabel;
+    // End of variables declaration//GEN-END:variables
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

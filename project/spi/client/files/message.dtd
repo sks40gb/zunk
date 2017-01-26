@@ -1,0 +1,974 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+
+<!ELEMENT message ((hello | goodbye | accept | ok | fail | ping | shutdown | field_description | field_values 
+                   | disconnect | image_request 
+                   | request_page | request_page_by_bates | pageissue | field_names
+                   | request_coding | binder_update
+                   | create_coding_batches | batch_boundary | batch_queue
+                   | image_data | coding_data
+                   | page_values | page_boundary | page_split | request_coding_values
+                   | request_batch | batch_data | validate_batch | close_batch | close_event | task_save_qa_correction_data | task_qa_sampling_report
+                   | teamsvolume | delete_volume | task_qa_Group | task_qa_pr_assign_user | task_qa_pr_sampled_document | task_qa_pr_get_fieldvalues
+                   | comments | update_values | unitprice | customerprice | task_save_listing_report | task_create_listing_batch
+                   | mailsent_data | delete_mailsent | mailreceived_data | request_mail | mail_data | task_request_fieldvalue 
+                   | request_recipient_list | recipient_list | task_request_fieldvalue_details | task_send_fieldvalue_details | task_character_sampling
+                   | request_projectfields | projectfields_data | delete_project | edit_coding_manual | edit_coding_manual_data | edit_project | task_edit_project_data
+                   | request_table_values | tablevalue | tablespec | request_tablevalue_sweep | task_listing_queue | task_tally_queue
+                   | request_directory | directory | filename | task_add_validation_data | task_assign_listing_qc | modify_error
+                   | request_file | file_delta | save_listing_qc | delete_listing_qc | is_assigned_listing_qc | reply_is_assigned_listing_qc
+                   | users_data | teams_data | validation_data | coding_manual | coding_manual_path | task_create_tally_batch | task_save_listing_marking_list | task_save_listing_occurrence_list
+                   | request_project_list  | open_qa_volume | close_qa | sample_qa | close_volume | field_value_count | tally_qc_done | tally_process | server_queue | server_queue_id
+                   | open_batch | batch_opened | request_requeue | check_batch_available | task_edit_advance_validations | task_view_advance_validations
+                   | sql_query | sql_update | result_set | update_count | advance_validation | update | error_message | status | user_input | task_get_sampling_parameters
+                   | daily_total_report | timesheet_report | query_data | check_query_raised | yes_query_raised | t_get_coder_batch_info | task_send_project_parameters
+		   | task_start_other_activity | task_send_event_break_id | task_stop_other_activity | t_display_summary_list | task_error_type_list | task_iso_sampling | task_save_qair_notes	
+                   | delimiter_data | export_data | import_data | populate_data | error | coding_manual_tracking | t_import_file | t_send_file | request_import_progress_status | t_sample_fixed_percentage | task_tally_assign_user
+                   | save_dtyg_mod_data | open_managed_model | terminate_session), 
+                   (update_managed_model | disconnect)* ) >
+
+<!ELEMENT hello (#PCDATA) >
+  <!-- element content is the password -->
+  <!-- attributes are IMPLIED because old alpha versions may have been different -->
+  <!-- session_key is for restart after download, in which case there is no password -->
+<!ATTLIST hello
+  fossaSession_id       CDATA           #IMPLIED
+  name                  CDATA           #IMPLIED
+  version               CDATA           #IMPLIED
+  session_key           CDATA           #IMPLIED
+  new_password          CDATA           #IMPLIED
+  admin                 (NO | YES)      "NO">
+
+<!ELEMENT goodbye EMPTY >
+<!ATTLIST goodbye
+  fossaSession_id        CDATA           #IMPLIED
+  restart               (NO | YES)      "NO">
+
+<!ELEMENT accept  EMPTY>
+<!ATTLIST accept
+  fossaSession_id       CDATA           #IMPLIED
+  min_version           CDATA           #REQUIRED
+  max_version           CDATA           #REQUIRED
+  session_key           CDATA           #REQUIRED
+  time_zone             CDATA           #REQUIRED
+  ok_unitize            (NO | YES)      "NO"
+  ok_uqc                (NO | YES)      "NO"
+  ok_coding             (NO | YES)      "NO"
+  ok_codingqc           (NO | YES)      "NO"
+  ok_qa                 (NO | YES)      "NO" 
+  ok_team_leader        (NO | YES)      "NO" 
+  ok_admin              (NO | YES)      "NO" 
+  ok_admin_users        (NO | YES)      "NO" 
+  ok_admin_project      (NO | YES)      "NO" 
+  ok_admin_batch        (NO | YES)      "NO" 
+  ok_admin_edit         (NO | YES)      "NO" 
+  ok_admin_import       (NO | YES)      "NO" 
+  ok_admin_export       (NO | YES)      "NO"
+  ok_admin_profit       (NO | YES)      "NO" 
+  ok_listing            (NO | YES)      "NO"
+  ok_tally              (NO | YES)      "NO">
+                              
+<!ELEMENT terminate_session  EMPTY >
+<!ATTLIST terminate_session
+  fossaSession_id       CDATA           #IMPLIED
+  id                    CDATA           #REQUIRED>
+
+<!ELEMENT ok      EMPTY >
+<!ATTLIST ok
+  fossaSession_id            CDATA           #IMPLIED
+  page_id                    CDATA           #IMPLIED>
+  
+
+<!ELEMENT ping    EMPTY >
+
+
+<!ELEMENT shutdown EMPTY >
+
+
+<!ELEMENT fail (#PCDATA) >
+  <!-- element content is the error message from the server -->
+  <!-- it's an SQL error message if sqlstate is given -->
+<!ATTLIST fail
+  fossaSession_id            CDATA           #IMPLIED
+  sqlstate                   CDATA           #IMPLIED
+  sqlcode                    CDATA           #IMPLIED>
+  
+<!ELEMENT disconnect (#PCDATA) >
+
+  <!-- element content is the error message from the server -->
+     
+<!ELEMENT image_request   EMPTY >
+  <!-- request to image server for an image -->
+  <!-- TBD We need to change attribute names!!! -->
+<!ATTLIST image_request
+  fossaSession_id            CDATA           #IMPLIED
+  image_path                 CDATA           #REQUIRED
+  offset                     CDATA           #IMPLIED
+  resolution                 CDATA           #IMPLIED>
+   
+<!ELEMENT request_page   EMPTY >
+  <!-- request to server for image data-->
+<!ATTLIST request_page
+  fossaSession_id            CDATA           #IMPLIED
+  volume_id                  CDATA           #IMPLIED
+  batch_id                   CDATA           #IMPLIED
+  page_id                    CDATA           #REQUIRED
+  delta                      CDATA           #REQUIRED
+  boundary                   CDATA           #REQUIRED
+  status                     CDATA           #IMPLIED
+  find_last                  (NO | YES)      "NO" >
+   
+<!ELEMENT pageissue    EMPTY >
+<!ATTLIST pageissue
+  fossaSession_id            CDATA           #IMPLIED
+  volume_id                  CDATA           #IMPLIED
+  batch_id                   CDATA           #IMPLIED
+  page_id                    CDATA           #IMPLIED
+  sequence                   CDATA           #IMPLIED
+  delta                      CDATA           #IMPLIED
+  issue                      CDATA           #IMPLIED>
+  
+<!ELEMENT request_page_by_bates   EMPTY >
+  <!-- request to server for image data-->
+<!ATTLIST request_page_by_bates
+  fossaSession_id            CDATA           #IMPLIED
+  volume_id                  CDATA           #IMPLIED
+  batch_id                   CDATA           #IMPLIED
+  bates_number               CDATA           #REQUIRED
+  status                     CDATA           #IMPLIED>
+  
+<!ELEMENT request_coding     EMPTY >  
+  <!-- request to server for coding data-->
+<!ATTLIST request_coding
+  fossaSession_id            CDATA           #IMPLIED 
+  batch_id                   CDATA           #IMPLIED
+  page_id                    CDATA           #REQUIRED
+  delta                      CDATA           #REQUIRED
+  boundary                   CDATA           #REQUIRED
+  status                     CDATA           #IMPLIED
+  bate                       CDATA           #IMPLIED
+  volume_id                  CDATA           #IMPLIED
+  volume_name                CDATA           #IMPLIED
+  selected_only              (NO | YES)      "NO" >
+       
+<!ELEMENT image_data    (value*) >
+ 
+
+<!ELEMENT coding_data   (value*,value_list?,error_flag_list?)>
+<!ATTLIST coding_data
+  fossaSession_id            CDATA           #IMPLIED>
+
+<!ELEMENT value_list    (value | longvalue | namevalue)* >
+ 
+<!ELEMENT error_flag_list    (value)* >
+
+<!ELEMENT value              (#PCDATA) >
+<!ATTLIST value 
+  name                       CDATA           #REQUIRED>
+
+<!ELEMENT longvalue          (#PCDATA) >
+<!ATTLIST longvalue
+  name                       CDATA           #REQUIRED>
+
+<!ELEMENT namevalue          (#PCDATA) >
+<!ATTLIST namevalue  
+  name                       CDATA           #REQUIRED>
+
+<!ELEMENT page_values (value_list?, error_flag_list?)>
+  <!-- request to server to save coding data (valueMap) uses page_id -->
+  <!-- coding data (valueMap) from server for prior child; does not use attributes -->
+<!ATTLIST page_values  
+  fossaSession_id            CDATA           #IMPLIED
+  volume_id                  CDATA           #IMPLIED
+  batch_id                   CDATA           #IMPLIED
+  page_id                    CDATA           #IMPLIED
+  boundary_flag              CDATA           #IMPLIED
+  status                     CDATA           #IMPLIED>
+  
+<!ELEMENT page_boundary      EMPTY > 
+  <!-- request to server to change boundary, does not count as a save -->
+<!ATTLIST page_boundary  
+  fossaSession_id            CDATA           #IMPLIED
+  volume_id                  CDATA           #IMPLIED
+  batch_id                   CDATA           #IMPLIED
+  page_id                    CDATA           #IMPLIED
+  boundary_flag              CDATA           #IMPLIED>
+
+<!ELEMENT page_split      EMPTY >
+<!ATTLIST page_split  
+  fossaSession_id            CDATA           #IMPLIED
+  volume_id                  CDATA           #IMPLIED
+  batch_id                   CDATA           #IMPLIED
+  page_id                    CDATA           #IMPLIED
+  clone                      (NO | YES)      "NO"
+  unsplit                    (NO | YES)      "NO" >
+
+<!ELEMENT request_coding_values EMPTY > 
+  <!-- request to server for page values-->
+<!ATTLIST request_coding_values
+  fossaSession_id            CDATA           #IMPLIED
+  volume_id                  CDATA           #IMPLIED
+  batch_id                   CDATA           #IMPLIED
+  page_id                    CDATA           #REQUIRED
+  delta                      CDATA           #REQUIRED
+  boundary                   CDATA           #REQUIRED>
+
+<!ELEMENT validate_batch EMPTY >  
+<!-- request to server to perform crossFieldEdits on batch -->
+<!ATTLIST validate_batch
+  fossaSession_id            CDATA           #IMPLIED
+  volume_id                  CDATA           #IMPLIED
+  batch_id                   CDATA           #IMPLIED
+  is_unitize                 CDATA           #REQUIRED
+  group                      CDATA           #REQUIRED>
+
+<!ELEMENT close_batch  EMPTY >
+    <!-- request to server to update batch status on close -->
+<!ATTLIST close_batch
+    fossaSession_id           CDATA           #IMPLIED
+    volume_id                 CDATA           #IMPLIED
+    batch_id                  CDATA           #IMPLIED
+    status                    CDATA           #REQUIRED
+    reject                    (NO | YES)      "NO">
+
+<!ELEMENT create_coding_batches EMPTY >   
+    <!-- request to server to create coding batches from unitize -->
+<!ATTLIST create_coding_batches
+    fossaSession_id           CDATA           #IMPLIED
+    batch_id                  CDATA           #REQUIRED
+    count                     CDATA           #REQUIRED>
+
+<!ELEMENT batch_boundary EMPTY >   
+    <!-- request to server create or remove a batch boundary -->
+<!ATTLIST batch_boundary
+    fossaSession_id           CDATA           #IMPLIED
+    batch_id                  CDATA           #IMPLIED
+    id                        CDATA           #IMPLIED
+    delta                     CDATA           #IMPLIED>
+
+<!ELEMENT batch_queue EMPTY >
+    
+    <!-- request to server create or remove a queue entry -->
+    <!-- one of users_id, teams_id should be zero -->
+    <!-- batch_id = 0 => add volume to team -->
+    <!-- else add batch to user or team -->
+    <!-- delete = "true" ==> remove from all queues first -->
+<!ATTLIST batch_queue
+    fossaSession_id           CDATA           #IMPLIED
+    batch_id                  CDATA           #REQUIRED
+    volume_id                 CDATA           #REQUIRED
+    users_id                  CDATA           #REQUIRED
+    teams_id                  CDATA           #REQUIRED
+    delete                    CDATA           #IMPLIED>
+
+<!ELEMENT teams_data   (value*, (value_list)?) >
+<!ATTLIST teams_data
+    fossaSession_id           CDATA           #IMPLIED
+    id                        CDATA           #IMPLIED
+    users_id                  CDATA           #IMPLIED
+    team_name                 CDATA           #IMPLIED>
+
+<!ELEMENT teamsvolume EMPTY>
+<!ATTLIST teamsvolume
+    fossaSession_id            CDATA           #IMPLIED
+    volume_id                  CDATA           #REQUIRED
+    teams_id                   CDATA           #IMPLIED>
+
+<!ELEMENT close_event EMPTY>
+<!ATTLIST close_event
+    fossaSession_id            CDATA           #IMPLIED
+    status                     CDATA           #IMPLIED
+    volume_id                  CDATA           #IMPLIED>
+
+<!ELEMENT comments (#PCDATA) >
+
+<!ELEMENT delete_mailsent   (value*, (value_list)?) >
+
+
+<!ELEMENT mailreceived_data   (value*, (value_list)?) >
+
+
+<!ELEMENT mailsent_data   (value*, (value_list)?) >
+
+<!ELEMENT mail_data   (value*, (value_list)?) >
+
+
+<!ELEMENT request_recipient_list EMPTY>
+
+<!ELEMENT request_mail EMPTY>
+<!ATTLIST request_mail
+    fossaSession_id		CDATA           #IMPLIED
+    id                         CDATA           #REQUIRED
+    type                       CDATA           #REQUIRED>
+
+<!ELEMENT request_projectfields EMPTY >
+    <!-- request to server for description of project -->
+<!ATTLIST request_projectfields
+  fossaSession_id	     CDATA           #IMPLIED
+  volume_id                  CDATA           #IMPLIED
+  project_id                 CDATA           #IMPLIED
+  batch_id                   CDATA           #IMPLIED>
+
+<!ELEMENT projectfields_data   (value*, (value_list)?,column*,(row)?,(field_names)?,(validations)?) >
+<!ATTLIST projectfields_data
+    fossaSession_id           CDATA           #IMPLIED
+    project_id                CDATA           #IMPLIED>
+
+<!ELEMENT delete_volume       EMPTY >
+<!ATTLIST delete_volume 
+    fossaSession_id           CDATA           #IMPLIED
+    volume_id                 CDATA           #IMPLIED>
+
+<!ELEMENT delete_project      EMPTY >
+<!ATTLIST delete_project 
+    fossaSession_id           CDATA           #IMPLIED
+    project_id                CDATA           #IMPLIED>
+
+<!ELEMENT request_table_values EMPTY >    
+    <!-- request to server for names and values of tables -->
+<!ATTLIST request_table_values
+  fossaSession_id            CDATA           #IMPLIED
+  volume_id                  CDATA           #IMPLIED
+  batch_id                   CDATA           #IMPLIED >
+
+<!ELEMENT tablespec   (value*) >
+
+
+<!ELEMENT tablevalue  (value*) >
+
+
+<!ELEMENT data              (#PCDATA) >
+
+
+<!ELEMENT old_data          (#PCDATA) >
+
+
+<!ELEMENT update_values   (data?, old_data?) >
+<!ATTLIST update_values
+    fossaSession_id         CDATA           #IMPLIED
+    id                      CDATA             #REQUIRED
+    tablespec_id            CDATA             #REQUIRED
+    type                    CDATA             #REQUIRED>
+
+<!ELEMENT unitprice   (value*) >
+
+<!ELEMENT customerprice   (value*) >
+
+<!ELEMENT request_directory  EMPTY >
+
+<!ELEMENT directory      (filename*) >
+
+
+<!ELEMENT filename       EMPTY >
+<!ATTLIST filename
+    fossaSession_id         CDATA           #IMPLIED
+    name                    CDATA           #REQUIRED
+    time                    CDATA           #REQUIRED
+    length                  CDATA           #REQUIRED>
+    
+<!ELEMENT request_file   EMPTY >
+<!ATTLIST request_file
+    fossaSession_id         CDATA           #IMPLIED
+    name                    CDATA           #REQUIRED
+    count                   CDATA           #REQUIRED>
+
+<!ELEMENT file_delta      EMPTY >
+<!ATTLIST file_delta
+    fossaSession_id         CDATA           #IMPLIED
+    name                    CDATA           #REQUIRED
+    time                    CDATA           #REQUIRED
+    length                  CDATA           #REQUIRED>
+    
+<!ELEMENT sql_query      (parameter*) >
+<!ATTLIST sql_query
+  fossaSession_id            CDATA           #IMPLIED
+  volume_id                  CDATA           #IMPLIED
+  batch_id                   CDATA           #IMPLIED
+    name                     CDATA           #REQUIRED
+    request_metadata        (YES)           #IMPLIED >
+    
+<!ELEMENT daily_total_report (parameter*) >
+<!ATTLIST daily_total_report
+  fossaSession_id           CDATA           #IMPLIED
+  by_project                (YES)           #IMPLIED
+  by_team                   (YES)           #IMPLIED >
+    
+<!ELEMENT profit_detail_report (parameter*) >
+
+<!ELEMENT timesheet_report (parameter*) >
+<!ATTLIST timesheet_report
+  fossaSession_id             CDATA           #IMPLIED
+  time_zone                   CDATA           #REQUIRED >
+    
+<!ELEMENT open_managed_model EMPTY >
+<!ATTLIST open_managed_model
+    fossaSession_id         CDATA           #IMPLIED
+    name                    CDATA           #REQUIRED >
+    
+<!ELEMENT sql_update     (parameter*) >
+<!ATTLIST sql_update
+  fossaSession_id            CDATA           #IMPLIED
+  volume_id                  CDATA           #IMPLIED
+  batch_id                   CDATA           #IMPLIED
+    name                    CDATA           #REQUIRED >
+    
+<!ELEMENT parameter      (#PCDATA) >
+
+<!ELEMENT result_set     ( heading?, row* ) >
+<!ATTLIST result_set
+    fossaSession_id         CDATA           #IMPLIED
+    count                   CDATA           #REQUIRED>
+    
+<!ELEMENT update_managed_model ( row* ) >
+<!ATTLIST update_managed_model
+  fossaSession_id         CDATA           #IMPLIED 
+  name                    CDATA           #REQUIRED >
+    
+<!ELEMENT update_count   EMPTY >
+<!ATTLIST update_count
+    fossaSession_id         CDATA           #IMPLIED
+    count                   CDATA           #REQUIRED>
+    
+<!ELEMENT advance_validation    EMPTY >
+<!ATTLIST advance_validation
+  fossaSession_id            CDATA           #IMPLIED
+  project_id                 CDATA           #REQUIRED  
+  field_id                   CDATA           #REQUIRED 
+  user_input                 CDATA           #IMPLIED>
+  
+<!ELEMENT update    ( error_message*, status*,user_input* ) >
+<!ATTLIST update
+ fossaSession_id             CDATA           #IMPLIED
+ project_id                  CDATA           #REQUIRED  
+ field_id                    CDATA           #REQUIRED>
+ 
+<!ELEMENT error_message        ( column+ ) >
+
+
+<!ELEMENT status        ( column+ ) >
+
+ 
+ <!ELEMENT user_input        ( column+ ) >
+  
+  
+<!ELEMENT heading        ( column+ ) >
+
+
+<!ELEMENT row            ( column+ ) >
+<!ATTLIST row
+    fossaSession_id          CDATA           #IMPLIED
+    delete                   (YES)          #IMPLIED >            
+
+<!ELEMENT column         (#PCDATA) >
+<!ATTLIST column
+    fossaSession_id          CDATA           #IMPLIED
+    is_null                 (NO | YES)      "NO" >            
+
+<!ELEMENT update_result  EMPTY >
+<!ATTLIST update_result
+    fossaSession_id         CDATA           #IMPLIED
+    count                   CDATA           #REQUIRED>
+    
+<!ELEMENT users_data   (value*) >
+
+<!ELEMENT validation_data   (value*) >
+
+
+<!ELEMENT request_project_list  EMPTY >
+<!ATTLIST request_project_list
+    fossaSession_id         CDATA           #IMPLIED
+    status                  CDATA           #REQUIRED >
+
+<!ELEMENT open_batch    EMPTY >
+<!ATTLIST open_batch
+    fossaSession_id         CDATA           #IMPLIED
+    batch_id                CDATA           #IMPLIED                  
+    project_id              CDATA           #IMPLIED
+    users_id                CDATA           #IMPLIED
+    fieldName               CDATA           #IMPLIED
+    status                  CDATA           #REQUIRED
+    volume_id               CDATA           #IMPLIED>                 
+
+<!ELEMENT open_qa_volume EMPTY >
+<!ATTLIST open_qa_volume
+    fossaSession_id         CDATA           #IMPLIED
+    volume_id               CDATA           #REQUIRED >                 
+
+<!ELEMENT close_qa (#PCDATA) >
+<!ATTLIST close_qa
+    fossaSession_id         CDATA           #IMPLIED
+    teams_id                CDATA           #IMPLIED
+    users_id                CDATA           #IMPLIED
+    reject                  (NO | YES)      "NO" >
+
+<!ELEMENT sample_qa EMPTY >
+<!ATTLIST sample_qa
+    fossaSession_id         CDATA           #IMPLIED
+    percent                 CDATA           #REQUIRED
+    new_sample              (NO | YES)      "NO"
+    teams_id                CDATA           #IMPLIED
+    users_id                CDATA           #IMPLIED >                 
+
+<!ELEMENT batch_opened  EMPTY >
+    <!-- info about batch to be opened -->
+<!ATTLIST batch_opened
+    fossaSession_id         CDATA           #IMPLIED
+    batch_id                CDATA           #IMPLIED                  
+    project_name            CDATA           #IMPLIED
+    project_id              CDATA           #IMPLIED
+    group                   CDATA           #IMPLIED
+    volume_id               CDATA           #IMPLIED
+    field_id                CDATA           #IMPLIED
+    split_documents         (No | Yes)      "No" >  
+      
+<!ELEMENT request_requeue  EMPTY >
+<!ATTLIST request_requeue
+    fossaSession_id          CDATA           #IMPLIED
+    batch_id                 CDATA           #REQUIRED
+    hours                    CDATA           #REQUIRED>
+    
+<!ELEMENT binder_update  EMPTY >
+<!ATTLIST binder_update
+    fossaSession_id          CDATA           #IMPLIED
+    volume_id                CDATA           #IMPLIED
+    batch_id                 CDATA           #IMPLIED
+    page_id                  CDATA           #REQUIRED                  
+    remove                   (NO | YES)      "NO">
+    
+<!ELEMENT delimiter_data   (value*) >
+
+<!ELEMENT export_data   (value*) >
+
+<!ELEMENT import_data        EMPTY >
+<!ATTLIST import_data
+    fossaSession_id          CDATA           #IMPLIED
+    project_name             CDATA           #REQUIRED
+    volume_name              CDATA           #REQUIRED
+    path                     CDATA           #REQUIRED
+    batch_span               CDATA           #REQUIRED
+    filename                 CDATA           #REQUIRED
+    pathname                 CDATA           #REQUIRED
+    format                   CDATA           #REQUIRED
+    overwrite                CDATA           #REQUIRED
+    split_documents          CDATA           #REQUIRED>
+
+<!ELEMENT populate_data   (value*) >
+
+<!ELEMENT request_tablevalue_sweep   EMPTY >
+<!ATTLIST request_tablevalue_sweep
+   fossaSession_id           CDATA           #IMPLIED
+    name                     CDATA           #REQUIRED
+    id                       CDATA           #REQUIRED>
+
+<!ELEMENT error              EMPTY >
+<!ATTLIST error
+    fossaSession_id         CDATA           #IMPLIED
+    data                    CDATA           #REQUIRED>
+
+<!ELEMENT field_description              EMPTY >
+<!ATTLIST field_description
+    fossaSession_id          CDATA           #IMPLIED    
+    field_name               CDATA           #REQUIRED
+    project_id               CDATA           #REQUIRED>
+
+<!ELEMENT field_values                    (#PCDATA) >
+<!ATTLIST field_values
+    fossaSession_id          CDATA           #IMPLIED
+    field_name               CDATA           #REQUIRED>
+
+<!ELEMENT field_names      (column*,row*)>
+<!ATTLIST field_names
+  fossaSession_id            CDATA           #IMPLIED
+  is_null                    (NO | YES)      "NO"
+  name                       CDATA           #IMPLIED>
+
+<!ELEMENT validations     (column*,(row)?,(field_names*))>
+<!ATTLIST validations
+  fossaSession_id            CDATA           #IMPLIED
+  count                      CDATA           #REQUIRED>
+
+ <!ELEMENT coding_manual     EMPTY>
+<!ATTLIST coding_manual
+  fossaSession_id            CDATA           #IMPLIED
+  project_id                 CDATA           #REQUIRED>
+ 
+ <!ELEMENT coding_manual_path     EMPTY>
+<!ATTLIST coding_manual_path
+  fossaSession_id            CDATA           #IMPLIED
+  path                       CDATA           #REQUIRED>
+
+  <!ELEMENT edit_coding_manual      EMPTY >
+  <!ATTLIST edit_coding_manual 
+    fossaSession_id           CDATA           #IMPLIED
+    project_id                CDATA           #IMPLIED>
+
+ <!ELEMENT edit_project_data      EMPTY>
+ <!ATTLIST edit_project_data 
+    fossaSession_id           CDATA           #IMPLIED>
+ 
+  <!ELEMENT coding_manual_tracking          EMPTY>
+  <!ATTLIST coding_manual_tracking 
+      fossaSession_id         CDATA           #IMPLIED
+      project_id              CDATA           #IMPLIED
+      start_date              CDATA           #IMPLIED
+      end_date                CDATA           #IMPLIED>
+
+<!ELEMENT task_request_fieldvalue             EMPTY>
+<!ATTLIST task_request_fieldvalue 
+      fossaSession_id         CDATA           #IMPLIED
+      fieldName               CDATA           #IMPLIED
+      project_id              CDATA           #IMPLIED
+      volume_id               CDATA           #IMPLIED
+      status                  CDATA           #IMPLIED>
+
+<!ELEMENT task_request_fieldvalue_details     EMPTY>
+<!ATTLIST task_request_fieldvalue_details 
+      fossaSession_id         CDATA           #IMPLIED
+      fieldName               CDATA           #IMPLIED
+      fieldValue              CDATA           #IMPLIED
+      project_id              CDATA           #IMPLIED
+      volume_id               CDATA           #IMPLIED
+      status                  CDATA           #IMPLIED>
+ 
+ <!ELEMENT task_send_fieldvalue_details     EMPTY>
+ <!ATTLIST task_send_fieldvalue_details 
+      fossaSession_id         CDATA           #IMPLIED
+      fieldName               CDATA           #IMPLIED
+      fieldValue              CDATA           #IMPLIED
+      condition               CDATA           #IMPLIED   
+      newfieldValue           CDATA           #IMPLIED
+      bate                    CDATA           #IMPLIED
+      project_id              CDATA           #IMPLIED
+      volume_id               CDATA           #IMPLIED
+      status                  CDATA           #IMPLIED>     
+
+  <!ELEMENT task_save_listing_report     EMPTY>
+  <!ATTLIST task_save_listing_report 
+      fossaSession_id         CDATA           #IMPLIED
+      fieldName               CDATA           #IMPLIED
+      fieldValue              CDATA           #IMPLIED
+      project_id              CDATA           #IMPLIED
+      volume_id               CDATA           #IMPLIED>  
+  
+  <!ELEMENT task_create_listing_batch     EMPTY>
+  <!ATTLIST task_create_listing_batch 
+      fossaSession_id         CDATA           #IMPLIED 
+      users_id                CDATA           #IMPLIED
+      volume_id               CDATA           #IMPLIED>
+
+  <!ELEMENT task_listing_queue           EMPTY>
+  <!ATTLIST task_listing_queue 
+      fossaSession_id         CDATA           #IMPLIED 
+      users_id                CDATA           #IMPLIED
+      volume_id               CDATA           #IMPLIED>
+
+   <!ELEMENT task_add_validation_data   (value*) >
+
+   <!ELEMENT task_assign_listing_qc           EMPTY>
+   <!ATTLIST task_assign_listing_qc 
+      fossaSession_id         CDATA           #IMPLIED>
+
+  <!ELEMENT save_listing_qc     EMPTY>
+  <!ATTLIST save_listing_qc 
+      fossaSession_id         CDATA           #IMPLIED
+      fieldName               CDATA           #IMPLIED
+      users_id                CDATA           #IMPLIED
+      project_id              CDATA           #IMPLIED
+      volume_id               CDATA           #IMPLIED
+      status                  CDATA           #IMPLIED>
+
+ <!ELEMENT delete_listing_qc     EMPTY>
+  <!ATTLIST delete_listing_qc 
+      fossaSession_id         CDATA           #IMPLIED
+      listing_id               CDATA           #IMPLIED>
+
+ <!ELEMENT is_assigned_listing_qc     EMPTY>
+<!ATTLIST is_assigned_listing_qc 
+      fossaSession_id         CDATA           #IMPLIED
+      user_name               CDATA           #IMPLIED
+      status                  CDATA           #IMPLIED>
+
+ <!ELEMENT reply_is_assigned_listing_qc     EMPTY>
+ <!ATTLIST reply_is_assigned_listing_qc 
+      fossaSession_id         CDATA           #IMPLIED
+      listing_id              CDATA           #IMPLIED
+      users_id                CDATA           #IMPLIED>
+     
+ <!ELEMENT task_create_tally_batch     EMPTY>
+  <!ATTLIST task_create_tally_batch 
+      fossaSession_id         CDATA           #IMPLIED 
+      users_id                CDATA           #IMPLIED
+      volume_id               CDATA           #IMPLIED>
+
+ <!ELEMENT task_tally_queue           EMPTY>
+  <!ATTLIST task_tally_queue 
+      fossaSession_id         CDATA           #IMPLIED 
+      users_id                CDATA           #IMPLIED
+      volume_id               CDATA           #IMPLIED>
+
+<!ELEMENT close_volume           EMPTY>
+  <!ATTLIST close_volume 
+      fossaSession_id         CDATA           #IMPLIED 
+      status                  CDATA           #IMPLIED
+      volume_id               CDATA           #IMPLIED>
+
+ <!ELEMENT field_value_count     EMPTY>
+  <!ATTLIST field_value_count 
+      fossaSession_id         CDATA           #IMPLIED     
+      project_id              CDATA           #IMPLIED
+      volume_id               CDATA           #IMPLIED
+      status                  CDATA           #IMPLIED> 
+
+ <!ELEMENT tally_qc_done     EMPTY>
+  <!ATTLIST tally_qc_done 
+      fossaSession_id         CDATA           #IMPLIED     
+      project_id              CDATA           #IMPLIED
+      volume_id               CDATA           #IMPLIED
+      status                  CDATA           #IMPLIED
+      fieldName               CDATA           #IMPLIED> 
+      
+  <!ELEMENT check_batch_available     EMPTY>
+  <!ATTLIST check_batch_available 
+      fossaSession_id         CDATA           #IMPLIED     
+      project_id              CDATA           #IMPLIED
+      volume_id               CDATA           #IMPLIED
+      status                  CDATA           #IMPLIED>
+
+  <!ELEMENT task_edit_advance_validations     EMPTY>
+  <!ATTLIST task_edit_advance_validations 
+      field_id                       CDATA           #IMPLIED 
+      validation_mapping_details_id  CDATA           #IMPLIED
+      validation_functions_master_id CDATA           #IMPLIED
+      edit_or_display                CDATA           #IMPLIED>
+
+<!ELEMENT task_view_advance_validations     EMPTY>
+<!ATTLIST task_view_advance_validations 
+      field_id         CDATA           #IMPLIED> 
+
+
+ <!ELEMENT task_start_other_activity           EMPTY>
+<!ATTLIST task_start_other_activity
+      fossaSession_id         CDATA           #IMPLIED
+      users_id                CDATA           #IMPLIED
+      status                  CDATA           #IMPLIED>
+
+<!ELEMENT task_send_event_break_id           EMPTY>
+<!ATTLIST task_send_event_break_id 
+      fossaSession_id         CDATA           #IMPLIED
+      event_break_id          CDATA           #IMPLIED>
+
+<!ELEMENT task_stop_other_activity           EMPTY>
+<!ATTLIST task_stop_other_activity 
+      fossaSession_id         CDATA           #IMPLIED
+      event_break_id          CDATA           #IMPLIED
+      close_timestamp	      CDATA           #IMPLIED>
+
+<!ELEMENT t_display_summary_list           EMPTY>
+<!ATTLIST t_display_summary_list 
+      fossaSession_id         CDATA           #IMPLIED
+      users_id                CDATA           #IMPLIED>
+
+<!ELEMENT query_data   (value*) >
+
+ <!ELEMENT check_query_raised     EMPTY>
+  <!ATTLIST check_query_raised 
+      fossaSession_id         CDATA           #IMPLIED     
+      project_id              CDATA           #IMPLIED      
+      fieldName               CDATA           #IMPLIED>       
+
+<!ELEMENT yes_query_raised           EMPTY>
+<!ATTLIST yes_query_raised 
+      fossaSession_id         CDATA           #IMPLIED
+      count                   CDATA           #IMPLIED>
+
+<!ELEMENT t_import_file           EMPTY>
+<!ATTLIST t_import_file 
+      fossaSession_id         CDATA           #IMPLIED
+      project_name            CDATA           #IMPLIED
+      volume_name             CDATA           #IMPLIED
+      path                    CDATA           #IMPLIED>
+
+<!ELEMENT t_send_file           EMPTY>
+<!ATTLIST t_send_file 
+      fossaSession_id         CDATA           #IMPLIED
+      file                    CDATA           #IMPLIED>
+
+<!ELEMENT t_get_coder_batch_info           EMPTY>
+<!ATTLIST t_get_coder_batch_info 
+      fossaSession_id         CDATA           #IMPLIED
+      volume_id               CDATA           #IMPLIED>
+
+<!ELEMENT task_error_type_list           EMPTY>
+<!ATTLIST task_error_type_list 
+      fossaSession_id         CDATA           #IMPLIED
+      error_type              CDATA           #IMPLIED>
+
+<!ELEMENT task_send_project_parameters           EMPTY>
+<!ATTLIST task_send_project_parameters 
+      fossaSession_id         CDATA           #IMPLIED
+      volume_id              CDATA           #IMPLIED
+      lotsize              CDATA           #IMPLIED
+      inspectonType              CDATA           #IMPLIED
+      aqlValue              CDATA           #IMPLIED
+      error_count              CDATA           #IMPLIED
+      sample_size              CDATA           #IMPLIED
+      accept_number              CDATA           #IMPLIED
+      reject_number              CDATA           #IMPLIED>
+
+<!ELEMENT task_iso_sampling           EMPTY>
+<!ATTLIST task_iso_sampling 
+      fossaSession_id         CDATA           #IMPLIED
+      project_id              CDATA           #IMPLIED
+      volume_id               CDATA           #IMPLIED
+      sample_size             CDATA           #IMPLIED
+      count		      CDATA           #IMPLIED>
+
+<!ELEMENT task_get_sampling_parameters           EMPTY>
+<!ATTLIST task_get_sampling_parameters 
+      fossaSession_id         CDATA           #IMPLIED
+      project_id              CDATA           #IMPLIED
+      volume_id               CDATA           #IMPLIED
+      sampling_id             CDATA           #IMPLIED
+      project_name            CDATA           #IMPLIED
+      volume_name             CDATA           #IMPLIED
+      sampling_method         CDATA           #IMPLIED
+      sampling_type           CDATA           #IMPLIED
+      inspectionType          CDATA           #IMPLIED
+      aqlValue                CDATA           #IMPLIED
+      reject_number           CDATA           #IMPLIED
+      error_count             CDATA           #IMPLIED
+      total_docs              CDATA           #IMPLIED
+      total_fields            CDATA           #IMPLIED
+      sampling_docs           CDATA           #IMPLIED
+      sampling_fields         CDATA           #IMPLIED
+      sampling_result         CDATA           #IMPLIED
+      qa_level                CDATA           #IMPLIED
+      tags_count              CDATA           #IMPLIED 
+      miscoded		      CDATA           #IMPLIED
+      uncoded                 CDATA           #IMPLIED 
+      added                   CDATA           #IMPLIED
+      is_sampling_done        CDATA           #IMPLIED>  
+
+<!ELEMENT task_save_qair_notes           EMPTY>
+<!ATTLIST task_save_qair_notes 
+      fossaSession_id         CDATA           #IMPLIED
+      sampling_id              CDATA           #IMPLIED
+      proof_read_by               CDATA           #IMPLIED
+      file_compare_by               CDATA           #IMPLIED
+      mdb_check_by               CDATA           #IMPLIED
+      output_check_by               CDATA           #IMPLIED
+      output_check_result               CDATA           #IMPLIED
+      other_non_conformance               CDATA           #IMPLIED
+      recommendations               CDATA           #IMPLIED
+      production_facility               CDATA           #IMPLIED
+      erringSection               CDATA           #IMPLIED
+      preparedByQAStaff               CDATA           #IMPLIED
+      notedByQASupvDate               CDATA           #IMPLIED
+      approvedByQASupvDate               CDATA           #IMPLIED
+      previousSubmissionErrorCorrected               CDATA           #IMPLIED
+      qair_number               CDATA           #IMPLIED>  
+
+
+<!ELEMENT modify_error           EMPTY>
+<!ATTLIST modify_error 
+      fossaSession_id         CDATA           #IMPLIED
+      batch_id              CDATA           #IMPLIED>
+<!ELEMENT save_dtyg_mod_data   EMPTY>
+<!ATTLIST save_dtyg_mod_data 
+      fossaSession_id         CDATA           #IMPLIED
+      path 		      CDATA           #IMPLIED>
+
+<!ATTLIST task_save_qair_notes 
+      fossaSession_id         CDATA           #IMPLIED
+      path 		      CDATA           #IMPLIED>
+
+<!ELEMENT request_import_progress_status           EMPTY>
+<!ATTLIST request_import_progress_status 
+      fossaSession_id         CDATA           #IMPLIED
+      import_progress_status         CDATA           #IMPLIED
+      import_error_message  CDATA           #IMPLIED>    
+      
+<!ELEMENT tally_process      (column*,row*)>
+<!ATTLIST tally_process 
+      fossaSession_id         CDATA         #IMPLIED
+      import_error_message    CDATA         #IMPLIED>
+      
+<!ELEMENT edit_project      EMPTY >
+  <!ATTLIST edit_project 
+    fossaSession_id           CDATA           #IMPLIED
+    project_id                CDATA           #IMPLIED>
+
+<!ELEMENT task_qa_Group      (row*,column*) >
+  <!ATTLIST task_qa_Group 
+    fossaSession_id           CDATA           #IMPLIED
+    error_message             CDATA           #IMPLIED>
+
+<!ELEMENT task_qa_pr_assign_user      EMPTY >
+  <!ATTLIST task_qa_pr_assign_user 
+    fossaSession_id           CDATA           #IMPLIED
+    sampling_type             CDATA           #IMPLIED
+    error_message	      CDATA           #IMPLIED>
+
+
+<!ELEMENT task_qa_pr_sampled_document      (column*,row*)>
+  <!ATTLIST task_qa_pr_sampled_document
+  fossaSession_id            CDATA           #IMPLIED>
+
+<!ELEMENT task_qa_pr_get_fieldvalues      (column*,row*)>
+  <!ATTLIST task_qa_pr_get_fieldvalues
+  fossaSession_id            CDATA           #IMPLIED>
+
+  <!ELEMENT task_save_qa_correction_data     EMPTY >
+  <!ATTLIST task_save_qa_correction_data
+  fossaSession_id            CDATA           #IMPLIED>
+
+
+  <!ELEMENT task_qa_sampling_report     (value*) >
+  <!ATTLIST task_qa_sampling_report
+  fossaSession_id            CDATA           #IMPLIED>
+
+   <!ELEMENT task_save_listing_occurrence_list     (task_listing_occurrence_list*)>
+  <!ATTLIST task_save_listing_occurrence_list 
+    fossaSession_id           CDATA           #IMPLIED
+    fieldName                 CDATA           #IMPLIED
+    project_id                CDATA           #IMPLIED
+    volume_id               CDATA             #IMPLIED>
+
+<!ELEMENT task_save_listing_marking_list      (task_listing_marking_list*)>
+  <!ATTLIST task_save_listing_marking_list 
+    fossaSession_id           CDATA           #IMPLIED
+    fieldName                 CDATA           #IMPLIED
+    project_id                CDATA           #IMPLIED
+    volume_id               CDATA             #IMPLIED>
+
+
+<!ELEMENT t_sample_fixed_percentage    EMPTY>
+  <!ATTLIST t_sample_fixed_percentage 
+    fossaSession_id           CDATA           #IMPLIED
+    project_name                 CDATA           #IMPLIED
+    user_name                CDATA           #IMPLIED
+    fieldName               CDATA             #IMPLIED>
+
+
+<!ELEMENT task_character_sampling     EMPTY >
+  <!ATTLIST task_character_sampling
+  fossaSession_id            CDATA           #IMPLIED
+  field_name                 CDATA           #IMPLIED
+  coders                     CDATA           #IMPLIED>
+    
+
+<!ELEMENT task_tally_assign_user     EMPTY >
+  <!ATTLIST task_tally_assign_user
+  fossaSession_id            CDATA           #IMPLIED
+  error_message		     CDATA	     #IMPLIED
+  tally_assignment_id        CDATA	     #IMPLIED>
+
+<!ELEMENT server_queue     EMPTY >
+ <!ATTLIST server_queue
+  fossaSession_id            CDATA           #IMPLIED>
+
+   <!ELEMENT server_queue_id     EMPTY >
+ <!ATTLIST server_queue_id
+  fossaSession_id            CDATA           #IMPLIED
+  serverqueue_id             CDATA           #IMPLIED>   
+  
+

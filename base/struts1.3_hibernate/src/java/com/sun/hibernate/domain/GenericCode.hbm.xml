@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated Jan 10, 2010 11:27:45 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class name="com.sun.hibernate.domain.GenericCode" table="GENERIC_CODE">
+    <id name="genericCodeId" type="java.lang.Integer">
+      <column name="generic_code_id"/>
+      <generator class="identity"/>
+    </id>
+    <property name="codetypeid" type="java.lang.Integer">
+      <column name="code_type_id" not-null="true"/>
+    </property>
+    <property name="code" type="java.lang.String">
+      <column name="code" not-null="true"/>
+    </property>
+    <property name="codedesc" type="java.lang.String">
+      <column length="100" name="codedesc"/>
+    </property>
+    <property name="field1" type="java.lang.String">
+      <column length="100" name="Field1"/>
+    </property>
+    <property name="field2" type="java.lang.String">
+      <column length="100" name="Field2"/>
+    </property>
+    <property name="field3" type="java.lang.String">
+      <column length="100" name="Field3"/>
+    </property>
+    <property name="field4" type="java.lang.String">
+      <column length="100" name="Field4"/>
+    </property>
+    <property name="field5" type="java.lang.String">
+      <column length="100" name="Field5"/>
+    </property>
+    <property name="field6" type="java.lang.String">
+      <column length="100" name="Field6"/>
+    </property>
+    <property name="field7" type="java.lang.String">
+      <column length="100" name="Field7"/>
+    </property>
+  </class>
+</hibernate-mapping>

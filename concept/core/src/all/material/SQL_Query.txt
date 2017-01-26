@@ -1,0 +1,80 @@
+QUERY
+========================================================================================================================
+http://www.techinterviews.com/31-more-mysql-questions
+
+
+
+SELECT user_name, user_isp FROM users LEFT JOIN isps USING (user_id)
+ - It’s equivalent to saying SELECT user_name, user_isp FROM users LEFT JOIN isps WHERE users.user_id=isps.user_id
+
+------------------------------------------------------------------------------------------------------------------------
+How do you find out which auto increment was assigned on the last insert? -
+SELECT LAST_INSERT_ID()
+will return the last value assigned by the auto_increment function. Note that you don’t have to specify the table name.
+
+------------------------------------------------------------------------------------------------------------------------
+When would you use ORDER BY in DELETE statement? -
+When you’re not deleting by row ID. Such as in DELETE FROM techinterviews_com_questions ORDER BY timestamp LIMIT 1.
+ This will delete the most recently posted question in the table
+
+------------------------------------------------------------------------------------------------------------------------
+SHOW INDEX FROM address                     - show all indexes
+
+SHOW COLUMNS FROM address                   - show all columns from address table
+
+SHOW TABLES;                                - show all tables from the selected schema
+SHOW TABLES LIKE 'FCL%';                    - show all tables which name starts with FCL
+
+DESC address                                - describe table file
+
+SHOW DATABASES LIKE '%in%';                 - display all schema which contains the word in
+
+SELECT CONCAT ('A', '-', 'B', '*', 'C')     - concate string
+
+SELECT SUBSTR(title, 1, 10)                 - SELECT SUBSTR(COLUMN_NAME, OFFSET STARTS FROM 1, LENGTH)
+
+
+-----------------------------------------------------------------------------------------------------------------------
+How do you convert a string to UTF-8?
+SELECT (user_name USING utf8);
+
+
+------------------------------------------------------------------------------------------------------------------------
+What do % and _ mean inside LIKE statement?
+% corresponds to 0 or more characters, _ is exactly one character.
+
+
+------------------------------------------------------------------------------------------------------------------------
+REGEXP
+SELECT size FROM FILE WHERE size REGEXP '[1-9]'
+
+http://dev.mysql.com/doc/refman/5.0/en/regexp.html
+
+B[an]*s - Bananas, Baaaaas, Bs,
+
+------------------------------------------------------------------------------------------------------------------------
+How do you return the a hundred books starting from 25th? - SELECT book_title FROM books LIMIT 25, 100. 
+The first number in LIMIT is the offset, the second is the number.
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

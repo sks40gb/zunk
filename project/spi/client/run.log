@@ -1,0 +1,492 @@
+
+1014.12:38:59 Logging started: 2008-10-14 12:38:59
+1014.12:38:59 DIA client version 1.00.054
+1014.12:38:59 Java 10.0-b19 on Windows XP version 5.1
+1014.12:38:59 args[0]='--admin'
+1014.12:39:00 AdminFrame.stateChanged: currentPage: null
+1014.12:39:02 Server connection admin=true restart=false
+1014.12:39:02 minVersion=1.00.007 maxVersion=1.00.099
+1014.12:39:02 start application
+1014.12:39:02 BatchingPage tabSelected
+1014.12:39:05 AdminFrame.exitForm
+1014.12:39:05 shutdown false
+
+1014.12:39:09 Logging started: 2008-10-14 12:39:09
+1014.12:39:09 DIA client version 1.00.054
+1014.12:39:09 Java 10.0-b19 on Windows XP version 5.1
+1014.12:39:09 args[0]='--admin'
+1014.12:39:09 AdminFrame.stateChanged: currentPage: null
+1014.12:39:27 Server connection admin=true restart=false
+1014.12:39:27 minVersion=1.00.007 maxVersion=1.00.099
+1014.12:39:27 start application
+1014.12:39:27 BatchingPage tabSelected
+1014.12:39:29 AdminFrame.stateChanged: currentPage: ui.BatchingPage
+1014.12:39:29 ExportPage tabSelected
+1014.12:39:33 AdminFrame.stateChanged: currentPage: ui.ExportPage
+1014.12:39:33 Advance Validation tabSelected
+1014.12:42:05 AdminFrame.exitForm
+1014.12:42:05 shutdown false
+
+1014.12:42:11 Logging started: 2008-10-14 12:42:11
+1014.12:42:11 DIA client version 1.00.054
+1014.12:42:11 Java 10.0-b19 on Windows XP version 5.1
+1014.12:42:11 args[0]='--admin'
+1014.12:42:11 AdminFrame.stateChanged: currentPage: null
+1014.12:42:13 Server connection admin=true restart=false
+1014.12:42:13 minVersion=1.00.007 maxVersion=1.00.099
+1014.12:42:13 start application
+1014.12:42:14 BatchingPage tabSelected
+1014.12:42:27 AdminFrame.stateChanged: currentPage: ui.BatchingPage
+1014.12:42:27 ExportPage tabSelected
+1014.12:42:29 AdminFrame.stateChanged: currentPage: ui.ExportPage
+1014.12:42:29 Advance Validation tabSelected
+1014.12:44:48 AdminFrame.stateChanged: currentPage: ui.AdvanceValidationPage
+1014.12:44:48 ExportPage tabSelected
+1014.12:47:00 AdminFrame.stateChanged: currentPage: ui.ExportPage
+1014.12:49:12 AdminFrame.stateChanged: currentPage: ui.AdvanceValidationPage
+1014.12:49:12 ExportPage tabSelected
+1014.12:52:48 AdminFrame.stateChanged: currentPage: ui.ExportPage
+1014.12:53:13 AdminFrame.stateChanged: currentPage: ui.AdvanceValidationPage
+1014.12:53:13 BatchingPage tabSelected
+1014.12:53:35 AdminFrame.stateChanged: currentPage: ui.BatchingPage
+
+1014.12:54:15 Logging started: 2008-10-14 12:54:15
+1014.12:54:15 DIA client version 1.00.054
+1014.12:54:15 Java 10.0-b19 on Windows XP version 5.1
+1014.12:54:18 saveView: SKIPPING null
+1014.12:54:22 Server connection admin=false restart=false
+1014.12:54:22 shutdown false
+1014.12:54:22 FAILED IN SHUTDOWN - IGNORED: java.lang.NullPointerException
+1014.12:54:22 Server connection admin=false restart=false
+1014.12:54:22 shutdown false
+1014.12:54:23 FAILED IN SHUTDOWN - IGNORED: java.lang.NullPointerException
+1014.12:54:25 Server connection admin=false restart=false
+1014.12:54:25 minVersion=1.00.007 maxVersion=1.00.099
+1014.12:54:25 start application
+1014.12:54:28 createDialog: CodingQC
+1014.12:54:30 ProjectSelectionDialog: OK pressed 158
+1014.12:54:30 ready to open b=158 p=L1PROJECT
+1014.12:54:30 SPV.initializeForProject projectName=L1PROJECT whichStatus=CodingQC splitDocuments=No
+1014.12:54:30 (SPV.loadTableValues) projectId 59
+1014.12:54:30 received projectfields_data
+1014.12:54:30 (ProjectMapper).loadProjectDescriptionFromMap map is 5
+1014.12:54:30  back
+1014.12:54:30 (ProjectMapper.addComponent) General Document Type
+1014.12:54:30  back
+1014.12:54:30 (ProjectMapper.addComponent) Business Contact
+1014.12:54:30  back
+1014.12:54:30 (ProjectMapper.addComponent) Folder Information
+1014.12:54:30 (ProjectMapper.addComponent) first name
+1014.12:54:30 (ProjectMapper.addComponent) Last Name
+1014.12:54:30 (SPV).getCoderData pageId/offset 0/1 bdry=2
+1014.12:54:30 (BatchCommentsDialog.getBatchCommentsData) 
+1014.12:54:31  back
+1014.12:54:31 (ProjectMapper.addComponent) General Document Type
+1014.12:54:31  back
+1014.12:54:31 (ProjectMapper.addComponent) Business Contact
+1014.12:54:31  back
+1014.12:54:31 (ProjectMapper.addComponent) Folder Information
+1014.12:54:31 (ProjectMapper.addComponent) first name
+1014.12:54:31 (ProjectMapper.addComponent) Last Name
+1014.12:54:31 (SplitPaneViewer).viewerEntry  /home/anuragg/Desktop/SPiCA/L1PROJECT/L1VOLUME/GPDIC001594//Data/00000327.tif c05
+1014.12:54:31 Image Thread: theImageThread started
+1014.12:54:31 SplitPaneViewer.viewerEntry after set buttons 
+1014.12:54:31 >>>about to read image: /home/anuragg/Desktop/SPiCA/L1PROJECT/L1VOLUME/GPDIC001594//Data/06809702/00000327.tif resolution=0
+1014.12:54:31 (FieldMapper).populateScreen item 0/General Document Type/NHTSA IR
+1014.12:54:31 (FieldMapper).populateScreen item 1/Business Contact/Kremer William
+1014.12:54:31 (FieldMapper).populateScreen item 2/Folder Information/001 GM483 IR
+1014.12:54:31 (FieldMapper).populateScreen item 3/first name/BALA
+1014.12:54:31 (FieldMapper).populateScreen item 4/Last Name/MURALI
+1014.12:54:31 (FieldMapper).populateScreen item 5/General Document Type/NHTSA IR
+1014.12:54:31 (FieldMapper).populateScreen item 6/Business Contact/Kremer William
+1014.12:54:31 (FieldMapper).populateScreen item 7/Folder Information/001 GM483 IR
+1014.12:54:31 (FieldMapper).populateScreen item 8/first name/BALA
+1014.12:54:31 (FieldMapper).populateScreen item 9/Last Name/MURALI
+1014.12:54:31 saveView: SKIPPING null
+1014.12:54:31 saveView: SKIPPING null
+1014.12:54:41 BEEP> ProjectEditor.showErrorDialog
+1014.13:00:02 createDialog: CodingQC
+1014.13:00:04 ProjectSelectionDialog: OK pressed 158
+1014.13:00:04 ready to open b=158 p=L1PROJECT
+1014.13:00:04 SPV.initializeForProject projectName=L1PROJECT whichStatus=CodingQC splitDocuments=No
+1014.13:00:04 (SPV.loadTableValues) projectId 59
+1014.13:00:04 received projectfields_data
+1014.13:00:04 (ProjectMapper).loadProjectDescriptionFromMap map is 5
+1014.13:00:04  back
+1014.13:00:04 (ProjectMapper.addComponent) General Document Type
+1014.13:00:04  back
+1014.13:00:04 (ProjectMapper.addComponent) Business Contact
+1014.13:00:04  back
+1014.13:00:04 (ProjectMapper.addComponent) Folder Information
+1014.13:00:04 (ProjectMapper.addComponent) first name
+1014.13:00:04 (ProjectMapper.addComponent) Last Name
+1014.13:00:04 (SPV).getCoderData pageId/offset 0/1 bdry=2
+1014.13:00:04 (BatchCommentsDialog.getBatchCommentsData) 
+1014.13:00:04  back
+1014.13:00:04 (ProjectMapper.addComponent) General Document Type
+1014.13:00:04  back
+1014.13:00:04 (ProjectMapper.addComponent) Business Contact
+1014.13:00:04  back
+1014.13:00:04 (ProjectMapper.addComponent) Folder Information
+1014.13:00:04 (ProjectMapper.addComponent) first name
+1014.13:00:04 (ProjectMapper.addComponent) Last Name
+1014.13:00:04 (SplitPaneViewer).viewerEntry  /home/anuragg/Desktop/SPiCA/L1PROJECT/L1VOLUME/GPDIC001594//Data/00000327.tif c05
+1014.13:00:04 SplitPaneViewer.viewerEntry after set buttons 
+1014.13:00:04 (FieldMapper).populateScreen item 0/General Document Type/NHTSA IR
+1014.13:00:04 (FieldMapper).populateScreen item 1/Business Contact/Kremer William
+1014.13:00:04 (FieldMapper).populateScreen item 2/Folder Information/001 GM483 IR
+1014.13:00:04 (FieldMapper).populateScreen item 3/first name/BALA
+1014.13:00:04 (FieldMapper).populateScreen item 4/Last Name/MURALI
+1014.13:00:04 (FieldMapper).populateScreen item 5/General Document Type/NHTSA IR
+1014.13:00:04 (FieldMapper).populateScreen item 6/Business Contact/Kremer William
+1014.13:00:04 (FieldMapper).populateScreen item 7/Folder Information/001 GM483 IR
+1014.13:00:04 (FieldMapper).populateScreen item 8/first name/BALA
+1014.13:00:04 (FieldMapper).populateScreen item 9/Last Name/MURALI
+1014.13:00:04 saveView: SKIPPING null
+1014.13:00:04 saveView: SKIPPING null
+1014.13:00:04 >>>about to read image: /home/anuragg/Desktop/SPiCA/L1PROJECT/L1VOLUME/GPDIC001594//Data/06809702/00000327.tif resolution=0
+1014.13:00:17 BEEP> ProjectEditor.showErrorDialog
+1014.13:10:14 AdminFrame.stateChanged: currentPage: ui.AdvanceValidationPage
+1014.13:10:14 BatchingPage tabSelected
+1014.13:13:27 AdminFrame.stateChanged: currentPage: ui.BatchingPage
+
+1014.13:13:39 Logging started: 2008-10-14 13:13:39
+1014.13:13:39 DIA client version 1.00.054
+1014.13:13:39 Java 10.0-b19 on Windows XP version 5.1
+1014.13:13:39 args[0]='--admin'
+1014.13:13:40 AdminFrame.stateChanged: currentPage: null
+1014.13:13:59 Server connection admin=true restart=false
+1014.13:13:59 minVersion=1.00.007 maxVersion=1.00.099
+1014.13:13:59 start application
+1014.13:13:59 BatchingPage tabSelected
+1014.13:17:13 AdminFrame.stateChanged: currentPage: ui.BatchingPage
+1014.13:17:13 Advance Validation tabSelected
+1014.13:17:52 AdminFrame.stateChanged: currentPage: ui.AdvanceValidationPage
+1014.13:17:52 ExportPage tabSelected
+1014.13:20:51 AdminFrame.stateChanged: currentPage: ui.ExportPage
+1014.13:21:36 AdminFrame.stateChanged: currentPage: ui.AdvanceValidationPage
+1014.13:21:36 ExportPage tabSelected
+
+1014.14:46:11 Logging started: 2008-10-14 14:46:11
+1014.14:46:11 DIA client version 1.00.054
+1014.14:46:11 Java 10.0-b19 on Windows XP version 5.1
+1014.14:46:11 saveView: SKIPPING null
+1014.14:46:17 Server connection admin=false restart=false
+1014.14:46:18 shutdown false
+1014.14:46:19 FAILED IN SHUTDOWN - IGNORED: java.net.ConnectException: Connection refused: connect
+1014.14:46:19 Server connection admin=false restart=false
+1014.14:46:20 shutdown false
+1014.14:46:21 FAILED IN SHUTDOWN - IGNORED: java.net.ConnectException: Connection refused: connect
+1014.14:46:35 Server connection admin=false restart=false
+1014.14:46:40 minVersion=1.00.007 maxVersion=1.00.099
+1014.14:46:40 start application
+1014.14:46:42 enqueue: parentWindow is null
+1014.14:46:42 Tally QC Button selected
+1014.14:46:42 enqueue: parent is null
+1014.14:46:42 enqueue: parentWindow is null
+1014.14:46:42 enqueue: parentWindow is null
+1014.14:46:43 enqueue: parent is null
+1014.14:46:43 enqueue: parentWindow is null
+1014.14:46:48 enqueue: parentWindow is null
+1014.14:46:48 enqueue: parentWindow is null
+1014.14:46:48 SPV.initializeForProject projectName= whichStatus=TallyQC splitDocuments=Yes
+1014.14:55:56 enqueue: parentWindow is null
+1014.14:55:56 Tally QC Button selected
+1014.14:55:56 enqueue: parentWindow is null
+1014.14:55:58 enqueue: parentWindow is null
+1014.14:55:58 enqueue: parentWindow is null
+1014.14:55:58 SPV.initializeForProject projectName= whichStatus=TallyQC splitDocuments=Yes
+
+1014.14:59:08 Logging started: 2008-10-14 14:59:08
+1014.14:59:08 DIA client version 1.00.054
+1014.14:59:08 Java 10.0-b19 on Windows XP version 5.1
+1014.14:59:08 saveView: SKIPPING null
+1014.14:59:11 Server connection admin=false restart=false
+1014.14:59:11 minVersion=1.00.007 maxVersion=1.00.099
+1014.14:59:11 start application
+1014.14:59:12 enqueue: parentWindow is null
+1014.14:59:12 Tally QC Button selected
+1014.14:59:12 enqueue: parent is null
+1014.14:59:12 enqueue: parentWindow is null
+1014.14:59:12 enqueue: parentWindow is null
+1014.14:59:12 enqueue: parent is null
+1014.14:59:12 enqueue: parentWindow is null
+1014.14:59:14 enqueue: parentWindow is null
+1014.14:59:14 enqueue: parentWindow is null
+1014.14:59:14 SPV.initializeForProject projectName= whichStatus=TallyQC splitDocuments=Yes
+java.lang.NullPointerException
+	at ui.SplitPaneViewer.initDynamicComponents(SplitPaneViewer.java:1342)
+	at ui.SplitPaneViewer.codingEntry(SplitPaneViewer.java:6164)
+	at ui.SplitPaneViewer$147.run(SplitPaneViewer.java:6105)
+	at java.awt.event.InvocationEvent.dispatch(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+
+1014.15:02:05 Logging started: 2008-10-14 15:02:05
+1014.15:02:05 DIA client version 1.00.054
+1014.15:02:05 Java 10.0-b19 on Windows XP version 5.1
+1014.15:02:05 args[0]='--admin'
+1014.15:02:05 AdminFrame.stateChanged: currentPage: null
+1014.15:02:09 Server connection admin=true restart=false
+1014.15:02:09 minVersion=1.00.007 maxVersion=1.00.099
+1014.15:02:09 start application
+1014.15:02:09 BatchingPage tabSelected
+1014.15:02:10 AdminFrame.stateChanged: currentPage: ui.BatchingPage
+1014.15:02:10 SessionAdminPage tabSelected
+
+1014.15:02:15 Logging started: 2008-10-14 15:02:15
+1014.15:02:15 DIA client version 1.00.054
+1014.15:02:15 Java 10.0-b19 on Windows XP version 5.1
+1014.15:02:15 saveView: SKIPPING null
+1014.15:02:19 Server connection admin=false restart=false
+1014.15:02:19 minVersion=1.00.007 maxVersion=1.00.099
+1014.15:02:19 start application
+1014.15:02:21 enqueue: parentWindow is null
+1014.15:02:21 Tally QC Button selected
+1014.15:02:21 enqueue: parent is null
+1014.15:02:21 enqueue: parentWindow is null
+1014.15:02:21 enqueue: parentWindow is null
+1014.15:02:21 enqueue: parent is null
+1014.15:02:21 enqueue: parentWindow is null
+1014.15:02:22 enqueue: parentWindow is null
+1014.15:02:22 enqueue: parentWindow is null
+1014.15:02:22 SPV.initializeForProject projectName= whichStatus=TallyQC splitDocuments=Yes
+java.lang.NullPointerException
+	at ui.SplitPaneViewer.initDynamicComponents(SplitPaneViewer.java:1342)
+	at ui.SplitPaneViewer.codingEntry(SplitPaneViewer.java:6164)
+	at ui.SplitPaneViewer$147.run(SplitPaneViewer.java:6105)
+	at java.awt.event.InvocationEvent.dispatch(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+1014.15:03:02 AdminFrame.exitForm
+1014.15:03:02 shutdown false
+
+1014.15:03:09 Logging started: 2008-10-14 15:03:09
+1014.15:03:09 DIA client version 1.00.054
+1014.15:03:09 Java 10.0-b19 on Windows XP version 5.1
+1014.15:03:09 saveView: SKIPPING null
+1014.15:03:11 Server connection admin=false restart=false
+1014.15:03:11 minVersion=1.00.007 maxVersion=1.00.099
+1014.15:03:11 start application
+1014.15:03:13 enqueue: parentWindow is null
+1014.15:03:13 Tally QC Button selected
+1014.15:03:13 enqueue: parent is null
+1014.15:03:13 enqueue: parentWindow is null
+1014.15:03:13 enqueue: parentWindow is null
+1014.15:03:13 enqueue: parent is null
+1014.15:03:13 enqueue: parentWindow is null
+1014.15:03:14 enqueue: parentWindow is null
+1014.15:03:14 enqueue: parentWindow is null
+1014.15:03:14 SPV.initializeForProject projectName= whichStatus=TallyQC splitDocuments=Yes
+java.lang.NullPointerException
+	at ui.SplitPaneViewer.initDynamicComponents(SplitPaneViewer.java:1342)
+	at ui.SplitPaneViewer.codingEntry(SplitPaneViewer.java:6164)
+	at ui.SplitPaneViewer$147.run(SplitPaneViewer.java:6105)
+	at java.awt.event.InvocationEvent.dispatch(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+
+1014.15:05:20 Logging started: 2008-10-14 15:05:20
+1014.15:05:20 DIA client version 1.00.054
+1014.15:05:20 Java 10.0-b19 on Windows XP version 5.1
+1014.15:05:20 args[0]='--admin'
+1014.15:05:20 AdminFrame.stateChanged: currentPage: null
+1014.15:05:24 Server connection admin=true restart=false
+1014.15:05:24 minVersion=1.00.007 maxVersion=1.00.099
+1014.15:05:24 start application
+1014.15:05:24 BatchingPage tabSelected
+1014.15:05:27 AdminFrame.stateChanged: currentPage: ui.BatchingPage
+1014.15:05:27 SessionAdminPage tabSelected
+
+1014.15:05:34 Logging started: 2008-10-14 15:05:34
+1014.15:05:34 DIA client version 1.00.054
+1014.15:05:34 Java 10.0-b19 on Windows XP version 5.1
+1014.15:05:35 saveView: SKIPPING null
+1014.15:05:38 Server connection admin=false restart=false
+1014.15:05:38 minVersion=1.00.007 maxVersion=1.00.099
+1014.15:05:38 start application
+1014.15:05:39 enqueue: parentWindow is null
+1014.15:05:40 Tally QC Button selected
+1014.15:05:40 enqueue: parent is null
+1014.15:05:40 enqueue: parentWindow is null
+1014.15:05:40 enqueue: parentWindow is null
+1014.15:05:40 enqueue: parent is null
+1014.15:05:40 enqueue: parentWindow is null
+1014.15:05:41 enqueue: parentWindow is null
+1014.15:05:41 enqueue: parentWindow is null
+1014.15:05:41 SPV.initializeForProject projectName= whichStatus=TallyQC splitDocuments=Yes
+1014.15:05:43 (SplitPaneViewer).viewerEntry  \\Winserver\temp\SPICA\TESTLFP\TESTLFP_VOLUME\TEST///MDX000000243.TIF 400
+1014.15:05:43 Image Thread: theImageThread started
+1014.15:05:43 SplitPaneViewer.viewerEntry after set buttons 
+1014.15:05:43 saveView: SKIPPING null
+1014.15:05:43 saveView: SKIPPING null
+1014.15:05:43 >>>about to read image: \\Winserver\temp\SPICA\TESTLFP\TESTLFP_VOLUME\TEST////MDX000000243.TIF resolution=0
+1014.15:07:56 AdminFrame.stateChanged: currentPage: ui.SessionAdminPage
+1014.15:07:56 ImportPage tabSelected
+1014.15:07:57 AdminFrame.stateChanged: currentPage: ui.ImportPageWithL1
+1014.15:07:57 Advance Validation tabSelected
+1014.15:22:19 AdminFrame.exitForm
+1014.15:22:19 shutdown false
+
+1014.15:22:24 Logging started: 2008-10-14 15:22:24
+1014.15:22:24 DIA client version 1.00.054
+1014.15:22:24 Java 10.0-b19 on Windows XP version 5.1
+1014.15:22:24 args[0]='--admin'
+1014.15:22:24 AdminFrame.stateChanged: currentPage: null
+1014.15:22:28 Server connection admin=true restart=false
+1014.15:22:28 minVersion=1.00.007 maxVersion=1.00.099
+1014.15:22:28 start application
+1014.15:22:28 BatchingPage tabSelected
+1014.15:22:29 AdminFrame.stateChanged: currentPage: ui.BatchingPage
+1014.15:22:29 PopulatePage tabSelected
+1014.15:22:32 AdminFrame.stateChanged: currentPage: ui.PopulatePage
+1014.15:22:32 Advance Validation tabSelected
+1014.15:23:12 AdminFrame.stateChanged: currentPage: ui.AdvanceValidationPage
+1014.15:23:12 BatchingPage tabSelected
+1014.15:23:15 AdminFrame.exitForm
+1014.15:23:15 shutdown false
+
+1023.16:44:47 Logging started: 2008-10-23 16:44:47
+1023.16:44:47 DIA client version 1.00.054
+1023.16:44:47 Java 10.0-b22 on Linux version 2.6.24-19-generic
+1023.16:44:47 args[0]='--admin'
+1023.16:44:48 AdminFrame.stateChanged: currentPage: null
+1023.16:44:48 Server connection admin=true restart=false
+1023.16:44:49 minVersion=1.00.007 maxVersion=1.00.099
+1023.16:44:49 start application
+1023.16:44:49 BatchingPage tabSelected
+1023.17:07:47 AdminFrame.exitForm
+1023.17:07:47 shutdown false
+
+1023.17:23:26 Logging started: 2008-10-23 17:23:26
+1023.17:23:26 DIA client version 1.00.054
+1023.17:23:26 Java 10.0-b22 on Linux version 2.6.24-19-generic
+1023.17:23:26 args[0]='--admin'
+1023.17:23:26 AdminFrame.stateChanged: currentPage: null
+1023.17:23:27 Server connection admin=true restart=false
+1023.17:23:27 minVersion=1.00.007 maxVersion=1.00.099
+1023.17:23:27 start application
+1023.17:23:27 BatchingPage tabSelected
+1023.17:23:28 AdminFrame.stateChanged: currentPage: ui.BatchingPage
+1023.17:23:28 Advance Validation tabSelected
+1023.17:26:34 AdminFrame.exitForm
+1023.17:26:34 shutdown false
+
+1023.17:26:36 Logging started: 2008-10-23 17:26:36
+1023.17:26:36 DIA client version 1.00.054
+1023.17:26:36 Java 10.0-b22 on Linux version 2.6.24-19-generic
+1023.17:26:36 args[0]='--admin'
+1023.17:26:36 AdminFrame.stateChanged: currentPage: null
+1023.17:26:37 Server connection admin=true restart=false
+1023.17:26:37 minVersion=1.00.007 maxVersion=1.00.099
+1023.17:26:37 start application
+1023.17:26:37 BatchingPage tabSelected
+1023.17:26:38 AdminFrame.stateChanged: currentPage: ui.BatchingPage
+1023.17:26:38 Advance Validation tabSelected
+1023.17:37:44 AdminFrame.exitForm
+1023.17:37:44 shutdown false
+
+1023.17:37:46 Logging started: 2008-10-23 17:37:46
+1023.17:37:46 DIA client version 1.00.054
+1023.17:37:46 Java 10.0-b22 on Linux version 2.6.24-19-generic
+1023.17:37:46 args[0]='--admin'
+1023.17:37:47 AdminFrame.stateChanged: currentPage: null
+1023.17:37:47 Server connection admin=true restart=false
+1023.17:37:48 minVersion=1.00.007 maxVersion=1.00.099
+1023.17:37:48 start application
+1023.17:37:48 BatchingPage tabSelected
+1023.17:37:49 AdminFrame.stateChanged: currentPage: ui.BatchingPage
+1023.17:37:49 Advance Validation tabSelected
+
+1023.17:39:20 Logging started: 2008-10-23 17:39:20
+1023.17:39:20 class beans.ScriptEditor : java.util.regex.PatternSyntaxException: Unclosed group near index 4
+;if(
+    ^
+1023.17:39:20 class beans.ScriptEditor : java.util.regex.PatternSyntaxException: Illegal repetition
+{int 
+
+1023.17:39:37 Logging started: 2008-10-23 17:39:37
+1023.17:39:37 class beans.ScriptEditor : java.util.regex.PatternSyntaxException: Unclosed group near index 4
+;if(
+    ^
+1023.17:39:37 class beans.ScriptEditor : java.util.regex.PatternSyntaxException: Illegal repetition
+{int 
+
+1023.17:40:01 Logging started: 2008-10-23 17:40:01
+1023.17:40:01 class beans.ScriptEditor : java.util.regex.PatternSyntaxException: Unclosed group near index 4
+;if(
+    ^
+1023.17:40:01 class beans.ScriptEditor : java.util.regex.PatternSyntaxException: Illegal repetition
+{int 
+1023.17:43:36 AdminFrame.exitForm
+1023.17:43:36 shutdown false
+
+1023.17:43:38 Logging started: 2008-10-23 17:43:38
+1023.17:43:38 DIA client version 1.00.054
+1023.17:43:38 Java 10.0-b22 on Linux version 2.6.24-19-generic
+1023.17:43:38 args[0]='--admin'
+1023.17:43:39 AdminFrame.stateChanged: currentPage: null
+1023.17:43:40 Server connection admin=true restart=false
+1023.17:43:40 minVersion=1.00.007 maxVersion=1.00.099
+1023.17:43:40 start application
+1023.17:43:40 BatchingPage tabSelected
+1023.17:44:19 AdminFrame.stateChanged: currentPage: ui.BatchingPage
+1023.17:44:19 Advance Validation tabSelected
+1023.17:46:16 AdminFrame.exitForm
+1023.17:46:16 shutdown false
+
+1023.17:46:19 Logging started: 2008-10-23 17:46:19
+1023.17:46:19 DIA client version 1.00.054
+1023.17:46:19 Java 10.0-b22 on Linux version 2.6.24-19-generic
+1023.17:46:19 args[0]='--admin'
+1023.17:46:20 AdminFrame.stateChanged: currentPage: null
+1023.17:46:20 Server connection admin=true restart=false
+1023.17:46:20 minVersion=1.00.007 maxVersion=1.00.099
+1023.17:46:20 start application
+1023.17:46:21 BatchingPage tabSelected
+1023.17:46:22 AdminFrame.stateChanged: currentPage: ui.BatchingPage
+1023.17:46:22 Advance Validation tabSelected
+1023.17:47:12 AdminFrame.exitForm
+1023.17:47:12 shutdown false
+
+1023.17:47:15 Logging started: 2008-10-23 17:47:15
+1023.17:47:15 DIA client version 1.00.054
+1023.17:47:15 Java 10.0-b22 on Linux version 2.6.24-19-generic
+1023.17:47:15 args[0]='--admin'
+1023.17:47:16 Server connection admin=true restart=false
+1023.17:47:16 AdminFrame.stateChanged: currentPage: null
+1023.17:47:16 shutdown false
+1023.17:47:16 FAILED IN SHUTDOWN - IGNORED: java.lang.NullPointerException
+1023.17:47:16 Server connection admin=true restart=false
+1023.17:47:16 shutdown false
+1023.17:47:16 FAILED IN SHUTDOWN - IGNORED: java.lang.NullPointerException
+1023.17:47:18 Server connection admin=true restart=false
+1023.17:47:18 shutdown false
+1023.17:47:18 FAILED IN SHUTDOWN - IGNORED: java.lang.NullPointerException
+1023.17:47:19 Server connection admin=true restart=false
+1023.17:47:19 shutdown false
+1023.17:47:19 FAILED IN SHUTDOWN - IGNORED: java.lang.NullPointerException
+1023.17:47:19 Server connection admin=true restart=false
+1023.17:47:19 shutdown false
+1023.17:47:19 FAILED IN SHUTDOWN - IGNORED: java.lang.NullPointerException
+1023.17:47:22 Server connection admin=true restart=false
+1023.17:47:22 minVersion=1.00.007 maxVersion=1.00.099
+1023.17:47:22 start application
+1023.17:47:22 BatchingPage tabSelected
+1023.17:47:24 AdminFrame.stateChanged: currentPage: ui.BatchingPage
+1023.17:47:24 Advance Validation tabSelected

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="1" failures="0" hostname="symbioun-desktop" name="FirstyJUnitTest" tests="1" time="0.119" timestamp="2009-06-15T13:26:02">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-6-sun-1.6.0.07/jre/lib/i386" />
+    <property name="java.vm.version" value="10.0-b23" />
+    <property name="java.vm.vendor" value="Sun Microsystems Inc." />
+    <property name="java.vendor.url" value="http://java.sun.com/" />
+    <property name="path.separator" value=":" />
+    <property name="java.vm.name" value="Java HotSpot(TM) Server VM" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="user.country" value="IN" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="sun.os.patch.level" value="unknown" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="user.dir" value="/home/sunil/Desktop/workspace/demo/core" />
+    <property name="java.runtime.version" value="1.6.0_07-b06" />
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment" />
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-6-sun-1.6.0.07/jre/lib/endorsed" />
+    <property name="os.arch" value="i386" />
+    <property name="java.io.tmpdir" value="/tmp" />
+    <property name="line.separator" value="
+" />
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="os.name" value="Linux" />
+    <property name="sun.jnu.encoding" value="UTF-8" />
+    <property name="java.library.path" value="/usr/lib/jvm/java-6-sun-1.6.0.07/jre/lib/i386/server:/usr/lib/jvm/java-6-sun-1.6.0.07/jre/lib/i386:/usr/lib/jvm/java-6-sun-1.6.0.07/jre/../lib/i386:/usr/lib/jvm/java-6-sun-1.6.0.07/jre/lib/i386/client:/usr/lib/jvm/java-6-sun-1.6.0.07/jre/lib/i386:/usr/lib/jvm/java-6-sun-1.6.0.07/jre/../lib/i386:/usr/java/packages/lib/i386:/lib:/usr/lib" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="java.class.version" value="50.0" />
+    <property name="sun.management.compiler" value="HotSpot Tiered Compilers" />
+    <property name="os.version" value="2.6.24-19-generic" />
+    <property name="user.home" value="/home/sunil" />
+    <property name="user.timezone" value="" />
+    <property name="java.security.policy" value="applet.policy" />
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob" />
+    <property name="file.encoding" value="UTF-8" />
+    <property name="java.specification.version" value="1.6" />
+    <property name="user.name" value="sunil" />
+    <property name="java.class.path" value="/home/sunil/netbeans-6.5/java2/ant/patches/72080.jar:/home/sunil/netbeans-6.5/java2/ant/patches/ant-42275.jar:/home/sunil/netbeans-6.5/java2/ant/lib/ant.jar:/home/sunil/netbeans-6.5/java2/ant/lib/ant-junit.jar:/home/sunil/Desktop/workspace/LIB/COMMON/antlr-2.7.6.jar:/home/sunil/Desktop/workspace/LIB/COMMON/asm.jar:/home/sunil/Desktop/workspace/LIB/COMMON/bsh-2.0b4.jar:/home/sunil/Desktop/workspace/LIB/COMMON/cglib.jar:/home/sunil/Desktop/workspace/LIB/COMMON/commons-beanutils-1.7.0.jar:/home/sunil/Desktop/workspace/LIB/COMMON/commons-beanutils.jar:/home/sunil/Desktop/workspace/LIB/COMMON/commons-collections-2.1.1.jar:/home/sunil/Desktop/workspace/LIB/COMMON/commons-collections-3.1.jar:/home/sunil/Desktop/workspace/LIB/COMMON/commons-fileupload-1.2.1.jar:/home/sunil/Desktop/workspace/LIB/COMMON/commons-io-1.4.jar:/home/sunil/Desktop/workspace/LIB/COMMON/commons-lang-2.3.jar:/home/sunil/Desktop/workspace/LIB/COMMON/commons-logging-1.1.jar:/home/sunil/Desktop/workspace/LIB/COMMON/commons-logging.jar:/home/sunil/Desktop/workspace/LIB/COMMON/dia.jar:/home/sunil/Desktop/workspace/LIB/COMMON/displaytag-1.1.1.jar:/home/sunil/Desktop/workspace/LIB/COMMON/displaytag-export-poi-1.1.1.jar:/home/sunil/Desktop/workspace/LIB/COMMON/displaytag-portlet-1.1.1.jar:/home/sunil/Desktop/workspace/LIB/COMMON/dom4j-1.6.1.jar:/home/sunil/Desktop/workspace/LIB/COMMON/freemarker-2.3.8.jar:/home/sunil/Desktop/workspace/LIB/COMMON/hibernate.jar:/home/sunil/Desktop/workspace/LIB/COMMON/jcl104-over-slf4j-1.4.2.jar:/home/sunil/Desktop/workspace/LIB/pdf writer/iText-2.1.4.jar:/home/sunil/Desktop/workspace/LIB/COMMON/jdic.jar:/home/sunil/Desktop/workspace/LIB/COMMON/jstl-1.1.2.jar:/home/sunil/Desktop/workspace/LIB/COMMON/jta.jar:/home/sunil/Desktop/workspace/LIB/COMMON/log4j-1.2.13.jar:/home/sunil/Desktop/workspace/LIB/COMMON/myjdbc.jar:/home/sunil/Desktop/workspace/LIB/COMMON/mysql-connector-java-3.1.13-bin.jar:/home/sunil/Desktop/workspace/LIB/COMMON/mysql-connector-java-3.1.14-bin.jar:/home/sunil/Desktop/workspace/LIB/COMMON/ognl-2.6.11.jar:/home/sunil/Desktop/workspace/LIB/COMMON/poi-3.0-FINAL.jar:/home/sunil/Desktop/workspace/LIB/COMMON/ScaleTIFF.jar:/home/sunil/Desktop/workspace/LIB/COMMON/servlet.jar:/home/sunil/Desktop/workspace/LIB/COMMON/slf4j-api-1.4.2.jar:/home/sunil/Desktop/workspace/LIB/COMMON/slf4j-log4j12-1.4.2.jar:/home/sunil/Desktop/workspace/LIB/COMMON/ssce.jar:/home/sunil/Desktop/workspace/LIB/COMMON/standard-1.0.6.jar:/home/sunil/Desktop/workspace/LIB/COMMON/struts2-core-2.0.6.jar:/home/sunil/Desktop/workspace/LIB/COMMON/VTJBean.jar:/home/sunil/Desktop/workspace/LIB/others/jalopy.jar:/home/sunil/Desktop/workspace/LIB/COMMON/xwork-2.0.1.jar:/home/sunil/Desktop/workspace/LIB/poi3.1/poi-3.1-beta1-20080428.jar:/home/sunil/Desktop/workspace/LIB/poi3.1/poi-contrib-3.1-beta1-20080428.jar:/home/sunil/Desktop/workspace/LIB/poi3.1/poi-scratchpad-3.1-beta1-20080428.jar:/home/sunil/Desktop/workspace/demo/core/build/classes:/home/sunil/Desktop/workspace/demo/core/src:/home/sunil/netbeans-6.5/platform9/modules/ext/junit-4.5.jar:/home/sunil/Desktop/workspace/demo/core/build/test/classes:/home/sunil/Desktop/workspace/demo/core/test" />
+    <property name="java.vm.specification.version" value="1.0" />
+    <property name="sun.arch.data.model" value="32" />
+    <property name="java.home" value="/usr/lib/jvm/java-6-sun-1.6.0.07/jre" />
+    <property name="java.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="user.language" value="en" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="java.version" value="1.6.0_07" />
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-6-sun-1.6.0.07/jre/lib/ext:/usr/java/packages/lib/ext" />
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-6-sun-1.6.0.07/jre/lib/resources.jar:/usr/lib/jvm/java-6-sun-1.6.0.07/jre/lib/rt.jar:/usr/lib/jvm/java-6-sun-1.6.0.07/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-6-sun-1.6.0.07/jre/lib/jsse.jar:/usr/lib/jvm/java-6-sun-1.6.0.07/jre/lib/jce.jar:/usr/lib/jvm/java-6-sun-1.6.0.07/jre/lib/charsets.jar:/usr/lib/jvm/java-6-sun-1.6.0.07/jre/classes" />
+    <property name="java.vendor" value="Sun Microsystems Inc." />
+    <property name="file.separator" value="/" />
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="sun.desktop" value="gnome" />
+    <property name="sun.cpu.isalist" value="" />
+  </properties>
+  <testcase classname="FirstyJUnitTest" name="initializationError" time="0.01">
+    <error message="No runnable methods" type="java.lang.Exception">java.lang.Exception: No runnable methods
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+</error>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

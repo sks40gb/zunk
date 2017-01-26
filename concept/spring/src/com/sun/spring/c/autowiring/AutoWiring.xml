@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation ="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd" xmlns:context="http://www.springframework.org/schema/context">
+
+<!-- Auto wiring byName -->
+<bean name ="student" class ="com.sun.spring.c.autowiring.Student" autowire ="byName">
+	<property name ="studentName" value ="Michel"/>
+</bean>
+<bean name ="javaBook" class ="com.sun.spring.c.autowiring.Book">
+	<property name ="title" value ="JAVA PROGRAMMING"/>
+</bean>
+<!-- ================= -->
+
+<!-- Auto wiring byType -->
+	<bean name ="car" class ="com.sun.spring.c.autowiring.Car" autowire="byType"/>
+	
+	<bean name ="alloyWheel" class ="com.sun.spring.c.autowiring.Wheel">
+		<property name ="name" value ="Alloy Wheel"/>
+	</bean>
+<!-- ===================== -->
+
+
+<!-- Auto wiring - constructor -->
+<bean name ="college" class ="com.sun.spring.c.autowiring.College" autowire ="constructor"/>
+<!-- ========================= -->
+
+<!-- Another wheel type bean -->
+<!--   
+<bean name ="wheel2" class ="com.sun.spring.c.autowiring.Wheel">
+	<property name ="name" value ="Toy Wheel"/>
+</bean>
+-->
+</beans>

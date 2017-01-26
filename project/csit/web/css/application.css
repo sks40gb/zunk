@@ -1,0 +1,141 @@
+
+
+body{   
+    text-align:center;
+    font: 14px Arial, Helvetica, sans-serif;
+    background-image:url("../images/bg/dark_background_4.gif");
+}
+
+table{
+    font: 14px Arial, Helvetica, sans-serif;
+}
+
+.container{ 
+    border:solid 2px red;
+    width:850px;
+    text-align:center;
+    margin:10px;
+    background-color:silver;
+    text-align:center;
+}
+
+.header{
+    font-size:40px;
+    color:#a96c57;
+}
+
+a{   
+    color:#85ec0c;
+}
+
+a:visited{
+    color:#ef9d00;
+}
+
+input:hover{
+    background-color:silver;
+}
+
+li , table, form, a, ul,#content,.message, .exception,#header{
+    -moz-border-radius:16px;
+}
+
+#content{
+    text-align:left;
+    background-color:white;
+    border:solid 2px gray;
+    padding:20px;
+    float:left;
+    width:93%;
+}
+
+#content p{
+    color:#3f2e00;
+    font-family:sans-serif;
+    line-height: 200%
+}
+
+.title{
+    font-weight:bolder;
+    background-color:maroon;
+    color:white;
+    font-size:14px;
+    margin:0 auto;
+    width:500px;
+    text-align:center;
+}
+.sub-title{
+    font-weight:bolder;
+    font-size:14px;   
+    background-color:green;
+    color:white;
+    padding:0px;
+    margin:4px 0;
+}
+
+#header-menu{
+    padding-top:10px;
+}
+
+#header marquee{
+    text-decoration:blink;
+    font-weight: bold;
+    font-size: 14pt;
+    font-family:sans-serif;
+    color:white;
+}
+
+/** header */
+#header{   
+
+}
+
+#header .top{    
+    text-align:right;
+    padding-bottom:5px;
+}
+
+#header .top a{
+    padding-left:10px;
+}
+
+#header .middle{
+    background-color:purple;
+}
+
+#header .bottom{
+
+}
+
+#header a{    
+    text-decoration:none;
+    font-weight:bolder;
+    color:#b5dc3d;
+}
+
+.left{
+    float:left;
+    width:80%;
+}
+
+.right{
+    float:right;
+    width:15%;
+}
+
+.slideshow {
+    border:solid gray 1px;    
+    height: 100px;
+}
+.slideshow img {
+    height: 100px;
+    border:solid 2px;
+}
+
+.left a{
+    color:#62e365;
+    background-color:#2a2f2a;
+    font-weight:bolder; 
+    margin:2px 4px;
+    padding:10px;
+}

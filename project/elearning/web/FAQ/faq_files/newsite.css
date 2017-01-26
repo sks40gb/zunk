@@ -1,0 +1,98 @@
+body {
+	font-family: "Trebuchet MS", Arial, sans-serif;
+	font-size: medium;
+	margin-right: 0in;
+	margin-left: 0in;
+
+}
+hr {
+	color: #FF0000;
+}
+h1 {
+	font-size: large;
+	font-variant: normal;
+	border-right-width: thick;
+	border-bottom-width: thick;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	border-right-color: #CCCCCC;
+	border-bottom-color: #CCCCCC;
+	background-color: #FFFFCC;
+	color: #FF0000;
+	background-position: center;
+
+
+
+}
+h2 {
+	font-size: large;
+	font-weight: bold;
+	border-right-width: thick;
+	border-bottom-width: thick;
+	border-top-style: none;
+	border-right-style: outset;
+	border-bottom-style: outset;
+	border-left-style: none;
+	border-right-color: #CCCCCC;
+	border-bottom-color: #CCCCCC;
+}
+h3 {
+	font-size: medium;
+	color: #FFFFCC;
+	background-color: #0033FF;
+	padding: 2px;
+	width: 100%;
+	border: medium solid #0000FF;
+}
+h4 {
+	font-weight: bold;
+	background-color: #FFFFCC;
+}
+h5 {
+    font-weight: bold;
+}
+.highlight {
+	background-color: #FFFF99;
+}
+.quote {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	left: 24px;
+	right: 24px;
+	color: #CC3300;
+
+}
+.summary {
+	background-color: #FFFFCC;
+	padding: 12px;
+}
+.callout {
+	font-size: large;
+	margin-top: 12px;
+	margin-right: 48px;
+	margin-bottom: 12px;
+	margin-left: 48px;
+}
+p {
+}
+.unnamed1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: small;
+}
+.marginalia {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: x-small;
+}
+button {
+	font-family: "Trebuchet MS", Arial, sans-serif;
+	color: #FFFCCC;
+	background-color: #FF3300;
+}
+.button1 {
+.clsid:D27CDB6E-AE6D-11cf-96B8-444553540000 
+codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="100" height="22">
+ param name="movie" value="button1.swf"
+  param name="quality" value="high"
+  embed src="button1.swf" quality="high" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="100" height="22" ></embed> 
+}

@@ -1,0 +1,11 @@
+Object          Class
+------------------------------------------------
+application 	javax.servlet.ServletContext
+config  	javax.servlet.ServletConfig
+exception 	java.lang.Throwable
+out             javax.servlet.jsp.JspWriter
+page            java.lang.Object
+PageContext 	javax.servlet.jsp.PageContext
+request 	javax.servlet.ServletRequest
+response 	javax.servlet.ServletResponse
+session 	javax.servlet.http.HttpSession

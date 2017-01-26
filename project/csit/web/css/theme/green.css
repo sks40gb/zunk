@@ -1,0 +1,49 @@
+/* 
+Document   : custom.css
+Created on : 6 May, 2009, 3:56:00 PM
+Author     : sunil
+Description:
+Purpose of the stylesheet follows.
+*/
+
+/* 
+TODO customize this sample style
+Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+
+input:visited{
+    -moz-border-radius:16px;
+}
+
+body{
+    background-image:url("../../images/theme/green/bg.gif");    
+    background-color:#091509;
+}
+
+.container{
+    background-image:url("../../images/theme/green/formbg.jpg");
+    background-position: bottom left;
+    background-color:white;
+}
+
+table, #content{
+    background-color:#cef6ce;
+}
+
+
+/** side menu **/
+#side-menu li{ background-color:#0f2c0f;}
+#side-menu li:hover{background-color:#3cf93c;}
+#side-menu li a:hover{color:black;}
+/** heade menu */
+#navbar li a {background-color: #0f2c0f;}
+#navbar li ul {background-color: #0f2c0f;}
+#navbar li:hover ul, #navbar li.hover ul {color:black;}
+#navbar li:hover li a, #navbar li.hover li a { background-color: #0f2c0f;color: white; }
+#navbar li li a:hover { background-color: #3cf93c; color:black;
+}
+
+#header marquee{
+    background-color:green;  
+}

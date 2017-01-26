@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation ="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd" xmlns:context="http://www.springframework.org/schema/context">
+
+	<!-- Method Injection -->
+    <bean name ="mobileStore" class ="com.sun.spring.d.beanscope.MobileStore">
+        <replaced-method name="buyMobile" replacer="mobileStoreReplacer"/>
+    </bean>
+	
+    <bean name ="mobileStoreReplacer" class ="com.sun.spring.d.beanscope.MobileStoreReplacer"/>
+	
+	<!-- Look up method --> 
+    <bean name ="springBook" class ="com.sun.spring.d.beanscope.ProgrammingBook"/>
+		
+    <bean name ="book" class ="com.sun.spring.d.beanscope.BookStore">
+        <lookup-method name="orderBook" bean ="springBook"/>
+    </bean>
+	
+	<!-- Bean Scope -->
+    <bean name ="student" class ="com.sun.spring.d.beanscope.Student"  scope="prototype"/>
+</beans>
