@@ -14,10 +14,6 @@ public class ProducerConsumer {
     public static int count;
 
     public static void main(String[] args) {
-        System.out.println(04*30);
-    }
-
-    public static void main1(String[] args) {
         List<Integer> list = new ArrayList<Integer>();
         Thread t1 = new Thread(new Producer(list));
         t1.setName("You and Me");
@@ -25,14 +21,6 @@ public class ProducerConsumer {
         new Thread(new Consumer(list, "ONE")).start();
         new Thread(new Consumer(list, "TWO")).start();
         new Thread(new Consumer(list, "THR")).start();
-
-        Class c = ProducerConsumer.class;
-
-         c = Class.class;
-         synchronized(ProducerConsumer.class){
-
-         }
-
     }
 }
 

@@ -1,7 +1,7 @@
 package com.sun.designpattern.structural.decorator;
 
 /**
- *
+ * io package is good example
  * @author Sunil
  */
 public class DecoratorApp {

@@ -30,6 +30,7 @@ public class ExchangerApp {
         @Override
         public void run() {
             try {
+                Thread.sleep(2000);
                 //do procesing & empty the queue
                 //exchange the empty queue for a full queue with Producer
                 String queue = exchanger.exchange("Empty Queue");

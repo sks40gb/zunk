@@ -43,6 +43,11 @@ public class CyclicBarrierApp {
             public void run() {
                 //This task will be executed once all thread reaches barrier
                 System.out.println("All parties are arrived at barrier, lets play");
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(CyclicBarrierApp.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
 

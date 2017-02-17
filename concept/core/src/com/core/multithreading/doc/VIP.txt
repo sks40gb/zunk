@@ -13,7 +13,5 @@ same lock.
 without affecting thread-safety of class, synchronized keyword suffer performance due to contention in case of multiple 
 reader and one or few writer.
 
-* if one thread is waiting for lock then there is no way to time out, thread can wait indefinitely for lock.
-
-* on similar note if thread is waiting for lock to acquired there is no way to interrupt the thread.
+* if one thread is waiting for lock then there is no way to time out or to interrupt the thread, thread can wait indefinitely for lock.
 

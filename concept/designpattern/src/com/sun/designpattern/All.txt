@@ -8,6 +8,7 @@ C - composite
 D - Decorator
 F - Facade
 F - Flyweight
+F - Factory
 I - Interpreter
 I - Iterator
 M - Mediator
@@ -20,4 +21,3 @@ S - Singleton
 S - Strategy
 T - Template
 V - Visitor
-F - Factory
