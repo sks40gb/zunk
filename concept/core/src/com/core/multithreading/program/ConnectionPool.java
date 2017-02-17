@@ -44,7 +44,7 @@ class Pool {
 
     private final int MAX_CONNECTION = 10;
     private final Semaphore semaphore = new Semaphore(MAX_CONNECTION);
-    private final List<Connection> connections = new ArrayList<Connection>();
+    private final List<Connection> connections = new ArrayList();
 
     public Pool() {
         for (int i = 0; i < MAX_CONNECTION; i++) {
