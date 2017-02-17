@@ -7,9 +7,9 @@ package com.core.datastructure;
 *	
 *	Array
 *	Push(Item)         - best O(1) and worst O(n) in case of resigning the array
-*	Pop()                   - O(1)  fetch and remove
-*	Peek()                 - O(1)  fetch
-*	isEmpty()            - if Empty
+*	Pop()              - O(1)  fetch and remove
+*	Peek()             - O(1)  fetch
+*	isEmpty()          - if Empty
 *	
 *	Linked List - in case if the item is being added and removed from the end of list
 *	Push(Item)         - best O(n) 
