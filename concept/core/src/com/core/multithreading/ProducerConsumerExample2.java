@@ -9,11 +9,11 @@ import java.util.List;
  */
 public class ProducerConsumerExample2 {
 
-    private List<Integer> jobList;
+    private final List<Integer> jobList;
     private int count;
 
     public ProducerConsumerExample2() {
-        jobList = new ArrayList<Integer>();
+        jobList = new ArrayList<>();
     }
 
     public static void main(String[] args) {

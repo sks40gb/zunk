@@ -1,8 +1,5 @@
 package com.core.multithreading;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 public class JoinTest implements Runnable {
 
     static volatile int x;
@@ -21,16 +18,26 @@ public class JoinTest implements Runnable {
     public static void main(String[] args) throws Exception {
         Thread t = new Thread(new JoinTest());
         t.start();
+        firstCall();
         t.join();
-        callMe();
+        secondCall();
     }
 
-    public static void callMe() {
+    public static void firstCall(){
+         try {
+            Thread.sleep(100);
+            System.out.println("====================================> Main : first call");
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public static void secondCall() {
         try {
             Thread.sleep(100);
-            System.out.println("====================================> THIS IS FROM MAIN");
+            System.out.println("====================================> Main : second call");
         } catch (InterruptedException ex) {
-            Logger.getLogger(JoinTest.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
     }
 }

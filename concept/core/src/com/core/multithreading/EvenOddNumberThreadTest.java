@@ -12,9 +12,9 @@ import java.util.logging.Logger;
 public class EvenOddNumberThreadTest {
 
     public static void main(String[] args) throws InterruptedException {
-        List<Integer> count =  new ArrayList<Integer>();
-        Thread oddThread = new NumberThread(count);
-        Thread evenThread = new NumberThread(count);
+        List<Integer> count =  new ArrayList();
+        Thread oddThread = new NumberThread("Odd",count);
+        Thread evenThread = new NumberThread("Even",count);
         oddThread.start();
         Thread.sleep(5000);
         evenThread.start();
@@ -26,8 +26,9 @@ public class EvenOddNumberThreadTest {
 
 class NumberThread extends Thread{
     List<Integer> count;
-    public NumberThread(List<Integer> count){
+    public NumberThread(String threadName, List<Integer> count){
         this.count = count;
+        setName(threadName);
     }
     public void run(){
         while(true){
