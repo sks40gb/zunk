@@ -65,7 +65,7 @@ class Connection {
         connect();
         doJob();
         disconnect();
-        semaphore.release();
+         semaphore.release();
     }
 
     private void connect() throws InterruptedException {

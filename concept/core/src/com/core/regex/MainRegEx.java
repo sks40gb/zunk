@@ -21,7 +21,7 @@ public class MainRegEx {
         Matcher m = pattern.matcher(str);
 
         if (m.find()) {
-            System.out.println("------> " + m.group());
+            System.out.println("greedy ------> " + m.group());
         }
 
     }
@@ -32,7 +32,7 @@ public class MainRegEx {
         Matcher m = pattern.matcher(str);
 
         if (m.find()) {
-            System.out.println("------> " + m.group());
+            System.out.println("reluctant ------> " + m.group());
         }
 
     }
@@ -43,7 +43,7 @@ public class MainRegEx {
         Matcher m = pattern.matcher(str);
 
         if (m.find()) {
-            System.out.println("------> " + m.group());
+            System.out.println("possessive------> " + m.group());
         }
 
     }
