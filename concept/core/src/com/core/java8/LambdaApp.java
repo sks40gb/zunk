@@ -1,16 +1,13 @@
 package com.core.java8;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 
 /**
  *
  * @author sks
  */
-public class LamdaApp {
+public class LambdaApp {
 
     public static void main(String[] args) {
         List<Integer> numbers = Arrays.asList(1, 7, 2, 9, 3, 4, 10, 5, 6);
