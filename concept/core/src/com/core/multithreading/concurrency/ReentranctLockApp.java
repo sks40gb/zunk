@@ -83,8 +83,8 @@ public class ReentranctLockApp {
 
 class Processor_ {
 
-    private static int MAX_SIZE = 10;
-    private volatile List<Integer> list = new ArrayList<Integer>(MAX_SIZE);
+    private final static int MAX_SIZE = 10;
+    private volatile List<Integer> list = new ArrayList(MAX_SIZE);
     private int count;
     private Random random = new Random();
     Lock lock = new ReentrantLock();
