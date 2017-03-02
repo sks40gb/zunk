@@ -13,35 +13,34 @@ package com.sun.designpattern.behavioral.state;
  *
  * The State pattern deals with what (state or type) an object is (in) -- it encapsulates state-dependent behavior,
  * whereas the Strategy pattern deals with how an object performs a certain task -- it encapsulates an algorithm.
+ * 
+ * @Task : Implements the the same for Fan which has 4 states.
  *
- * 
- * The State pattern deals with what (state or type) an object is (in) -- it encapsulates state-dependent behavior, whereas
- * the Strategy pattern deals with how an object performs a certain task -- it encapsulates an algorithm.
- * 
  * @author Sunil
  */
 public class StateApp {
 
     public static void main(String[] args) {
         TVContext context = new TVContext();
-        State tvStartState = new TVStartState();
-        State tvStopState = new TVStopState();
-
-        context.setState(tvStartState);
+        State startState = new TVStartState(context);
+        context.setState(startState);
         context.doAction();
-
-        context.setState(tvStopState);
+        context.doAction();
+        context.doAction();
         context.doAction();
 
     }
 }
 
-interface State {
+interface Device {
 
     public void doAction();
+    
+    public void setState(State state);
 }
 
-class TVContext implements State {
+
+class TVContext implements Device {
 
     private State tvState;
 
@@ -55,18 +54,38 @@ class TVContext implements State {
     }
 }
 
-class TVStopState implements State {
+interface State {
 
+    public void doAction();
+}
+
+
+class TVStopState implements State {
+    private Device device;
+    
+    public TVStopState(Device device){
+        this.device = device;
+    }
+    
     @Override
     public void doAction() {
         System.out.println("TV is turned OFF");
+        device.setState(new TVStartState(device));
+        
     }
 }
 
 class TVStartState implements State {
 
+    private Device device;
+    
+    public TVStartState(Device device){
+        this.device = device;
+    }
+    
     @Override
     public void doAction() {
         System.out.println("TV is turned ON");
+        device.setState(new TVStopState(device));
     }
 }
