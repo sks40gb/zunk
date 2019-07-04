@@ -1,0 +1,5 @@
+Static Import
+-----------------------
+import static java.lang.Integer.*;
+
+Polymorphism is only for instance methods, not instance variables.

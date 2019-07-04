@@ -1,7 +1,10 @@
 package com.core.generic;
 
 /**
- *
+ * Type safety and Type Casting.
+ * Generic Class are template Class.
+ * Bounded types - <T extends Number>
+ * 
  * @author sunil
  */
 public class MainClass {
