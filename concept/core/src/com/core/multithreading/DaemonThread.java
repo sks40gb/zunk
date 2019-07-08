@@ -2,41 +2,34 @@ package com.core.multithreading;
 
 public class DaemonThread extends Thread {
 
+    public DaemonThread(String name) {
+        super(name);
+    }
+
     public void run() {
-        System.out.println("Entering run method");
-
-        try {
-            System.out.println("In run Method: currentThread() is" + Thread.currentThread());
-
-            while (true) {
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException x) {
-                    x.printStackTrace();
-                }
-
-                System.out.println("In run method: woke up again");
-            }
-        } finally {
-            System.out.println("Leaving run Method");
+        // Checking whether the thread is Daemon or not 
+        if (Thread.currentThread().isDaemon()) {
+            System.out.println(getName() + " is Daemon thread");
+        } else {
+            System.out.println(getName() + " is User thread");
         }
     }
 
-    
     public static void main(String[] args) {
-        System.out.println("Entering main Method");
 
-        DaemonThread t = new DaemonThread();
-        t.setDaemon(true);
-        t.start();
+        DaemonThread t1 = new DaemonThread("t1");
+        DaemonThread t2 = new DaemonThread("t2");
+        DaemonThread t3 = new DaemonThread("t3");
 
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException x) {
-            x.printStackTrace();
-        }
+        // Setting user thread t1 to Daemon 
+        t1.setDaemon(true);
 
-        System.out.println("Leaving main method");
+        // starting first 2 threads  
+        t1.start();
+        t2.start();
+
+        // Setting user thread t3 to Daemon 
+        t3.setDaemon(true);
+        t3.start();
     }
 }
-

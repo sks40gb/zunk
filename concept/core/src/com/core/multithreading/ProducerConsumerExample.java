@@ -1,6 +1,7 @@
 package com.core.multithreading;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -8,93 +9,62 @@ import java.util.Random;
  */
 public class ProducerConsumerExample {
 
+    private final List<Integer> jobList;
+    private int count;
+
+    public ProducerConsumerExample() {
+        jobList = new ArrayList<>();
+    }
+
     public static void main(String[] args) {
-        Drop drop = new Drop();
-        (new Thread(new Producer(drop))).start();
-        (new Thread(new Consumer(drop))).start();
+        new ProducerConsumerExample().start();
     }
-}
 
-class Drop {
-    // Message sent from producer
-    // to consumer.
+    void start() {
+        Thread producer = new Thread(new Producer());
+        producer.start();
+        new Consumer("A").start();
+        new Consumer("B").start();
+        new Consumer("C").start();
+    }
 
-    private String message;
-    private boolean empty = true;
+    class Producer implements Runnable {
 
-    public synchronized String take() {
-        while (empty) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
+        public void run() {
+            while (true) {
+                synchronized (jobList) {
+                    System.out.println("PRODUCER : A : +" + count);
+                    jobList.add(count++);
+                    jobList.notifyAll();
+                }
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
-        empty = true;
-        notifyAll();
-        return message;
     }
 
-    public synchronized void put(String message) {
-        while (!empty) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-            }
+    class Consumer extends Thread {
+
+        public Consumer(String name) {
+            setName(name);
         }
-        empty = false;
-        this.message = message;
-        notifyAll();
-    }
-}
 
-class Producer implements Runnable {
-
-    private Drop drop;
-
-    public Producer(Drop drop) {
-        this.drop = drop;
-    }
-
-    public void run() {
-        String importantInfo[] = {
-            "Mares eat oats",
-            "Does eat oats",
-            "Little lambs eat ivy",
-            "A kid will eat ivy too"
-        };
-        Random random = new Random();
-
-        for (int i = 0;
-                i < importantInfo.length;
-                i++) {
-            drop.put(importantInfo[i]);
-            System.out.println("Filling message : " + importantInfo[i]);
-            try {
-                Thread.sleep(random.nextInt(5000));
-            } catch (InterruptedException e) {
-            }
-        }
-        drop.put("DONE");
-    }
-}
-
-class Consumer implements Runnable {
-
-    private Drop drop;
-
-    public Consumer(Drop drop) {
-        this.drop = drop;
-    }
-
-    public void run() {
-        Random random = new Random();
-        for (String message = drop.take();
-                !message.equals("DONE");
-                message = drop.take()) {
-            System.out.format("MESSAGE RECEIVED: %s%n", message);
-            try {
-                Thread.sleep(random.nextInt(5000));
-            } catch (InterruptedException e) {
+        public void run() {
+            while (true) {
+                try {
+                    synchronized (jobList) {
+                        if (jobList.isEmpty()) {
+                            jobList.wait();
+                        } else {
+                            System.out.println("CONSUMER : " + getName() + " : -" + jobList.remove(0));
+                        }
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

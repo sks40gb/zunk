@@ -6,49 +6,28 @@ package com.core.multithreading;
  */
 public class Test {
 
-    public static void main(String[] args) throws InterruptedException {
-
-        System.out.println("Started");
-        long currentTime = System.currentTimeMillis();
-        Thread currentThread = Thread.currentThread();
-        Thread t = new Thread(new Job("First"));
-        t.start();
-        while (t.isAlive()) {
-            Thread.sleep(1000);
-            t.join(1000);
-            if ((System.currentTimeMillis() - currentTime > 3000) && t.isAlive()) {
-                System.out.println("Tired of waiting..");
-                t.interrupt();
-                t.join();
-            }
+    private static ThreadLocal<Integer> localNumber = new ThreadLocal<Integer>() {
+        @Override
+        public Integer initialValue() {
+            return (int) (Math.random() * 10);
         }
-        System.out.println("completed");
+    };
 
+    public static void main(String[] args) throws InterruptedException {
+        Printer printer = Test::printNumber;
+        new Thread(() -> printer.print()).start();
+        new Thread(() -> printer.print()).start();
     }
+
+    public static void printNumber() {
+        for (int i = 0; i < 4; i++) {
+            System.out.println(Thread.currentThread().getName() + " Number : " + localNumber.get());
+        }
+    }
+
 }
 
-class Job implements Runnable {
+interface Printer {
 
-    Thread waitFor;
-    String name;
-
-    public Job(String name) {
-        this.name = name;
-    }
-
-    public void run() {
-
-        try {
-            for (int i = 0; i < 10; i++) {
-
-                Thread.sleep(1000);
-
-                System.out.println("Name : " + name + " count : " + i);
-            }
-        } catch (InterruptedException e) {
-            System.out.println("I wasn't completed");
-        }
-
-
-    }
+    public void print();
 }

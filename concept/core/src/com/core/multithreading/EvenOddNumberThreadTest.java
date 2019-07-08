@@ -13,12 +13,11 @@ public class EvenOddNumberThreadTest {
 
     public static void main(String[] args) throws InterruptedException {
         List<Integer> count =  new ArrayList();
-        Thread oddThread = new NumberThread("Odd",count);
         Thread evenThread = new NumberThread("Even",count);
+        Thread oddThread = new NumberThread("Odd",count);
         oddThread.start();
         Thread.sleep(5000);
         evenThread.start();
-        
     }
 
 }
