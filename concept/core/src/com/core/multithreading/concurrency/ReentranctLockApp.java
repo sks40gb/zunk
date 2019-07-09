@@ -98,12 +98,12 @@ class Processor_ {
                     condition.await();
                 }
                 list.add(count++);
-                System.out.println("ADDING : " + count + " TOTAL ZISE : " + list.size());
+                System.out.println("Adding by Producer : " + count + " TOTAL ZISE : " + list.size());
             } finally {
                 condition.signalAll();
                 lock.unlock();
             }
-            Thread.sleep(random.nextInt(1000));
+            Thread.sleep(random.nextInt(10000));
         }
 
     }
@@ -111,14 +111,15 @@ class Processor_ {
     public void consume() throws InterruptedException {
         while (true) {
             lock.lock();
-            System.out.println("LIST SIZE >>>>>>>>>>>>>  : " + list.size());
+            //System.out.println("LIST SIZE >>>>>>>>>>>>>  : " + list.size());
             if (list.isEmpty()) {
                 condition.await();
             } else {
-                System.out.println("REMOVING BY " + Thread.currentThread().getName() + " --- " + +list.get(0));
+                System.out.println("Removing by " + Thread.currentThread().getName() + " --- " + +list.get(0));
                 list.remove(0);
-                lock.unlock();
                 condition.signalAll();
+                lock.unlock();
+                Thread.sleep(5000);
             }
         }
     }

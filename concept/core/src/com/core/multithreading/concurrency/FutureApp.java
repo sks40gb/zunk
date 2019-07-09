@@ -23,7 +23,7 @@ public class FutureApp {
     }
 
     public void main() throws InterruptedException, ExecutionException {
-        List<Integer> items = new ArrayList<Integer>();
+        List<Integer> items = new ArrayList();
         ExecutorService executor = Executors.newFixedThreadPool(10);
         //EXECUTE IN PARALLEL
         Future<List<Integer>> future1 = executor.submit(new Task(items));

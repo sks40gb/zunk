@@ -22,27 +22,32 @@ public class CountDownLatchApp {
 
     public void execute() throws InterruptedException{
         ExecutorService executor = Executors.newFixedThreadPool(4);
-        System.out.println("MAIN THREAD STARTS");
+        System.out.println("Main thread starts.");
         for (int i = 0; i < 4; i++) {
-            executor.execute(new Player());
+            executor.execute(new Player("Player "+i));
             Thread.sleep(1000);
             countDownLatch.countDown();
         }
         executor.shutdown();
         executor.awaitTermination(400, TimeUnit.DAYS);
-        System.out.println("MAIN THREAD ENDS");
+        System.out.println("Main thread ends");
     }
 
     class Player implements Runnable {
+        private String name;
+
+        public Player(String name) {
+            this.name = name;
+        }
 
         public void run() {
-            System.out.println("Waiting Player " + ++count);
+            System.out.println(name  +" is waiting");
             try {
                 countDownLatch.await();
             } catch (InterruptedException ex) {
                 Logger.getLogger(CountDownLatchApp.class.getName()).log(Level.SEVERE, null, ex);
             }
-            System.out.println("Ready Player  " + count);
+            System.out.println(name + " is done.");
         }
     }
 }

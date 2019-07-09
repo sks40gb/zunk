@@ -14,7 +14,7 @@ public class ThreadLocalTest {
     };
 
     public static void main(String[] args) throws InterruptedException {
-        Printer printer = Test::printNumber;
+        Printer printer = ThreadLocalTest::printNumber;
         new Thread(() -> printer.print()).start();
         new Thread(() -> printer.print()).start();
     }

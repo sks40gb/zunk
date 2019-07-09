@@ -7,8 +7,8 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Sunil
- * If another thread interrupt the thread which is waiting on barrier it will throw BrokernBarrierException as shown below:
+ * @author Sunil If another thread interrupt the thread which is waiting on barrier it will throw
+ * BrokernBarrierException as shown below:
  */
 public class CyclicBarrierApp {
 
@@ -41,13 +41,13 @@ public class CyclicBarrierApp {
         final CyclicBarrier cb = new CyclicBarrier(3, new Runnable() {
             @Override
             public void run() {
-                //This task will be executed once all thread reaches barrier
-                System.out.println("All parties are arrived at barrier, lets play");
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(CyclicBarrierApp.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            //This task will be executed once all thread reaches barrier
+            System.out.println("All parties are arrived at barrier, lets play");
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(CyclicBarrierApp.class.getName()).log(Level.SEVERE, null, ex);
+            }
             }
         });
 

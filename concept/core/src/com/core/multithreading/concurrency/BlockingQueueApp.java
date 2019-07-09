@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  */
 public class BlockingQueueApp {
 
-    BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(10);
+    private BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(10);
 
     public static void main(String[] args) {
         new BlockingQueueApp().main();
@@ -23,41 +23,26 @@ public class BlockingQueueApp {
     public void main() {
         final Processor processor = new Processor();
         ExecutorService executorService = Executors.newFixedThreadPool(4);
-        executorService.execute(new Runnable() {
 
-            @Override
-            public void run() {
-                try {
-                    processor.produce();
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(BlockingQueueApp.class.getName()).log(Level.SEVERE, null, ex);
-                }
+         Runnable consumer = () -> {
+            try {
+                processor.consume();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(BlockingQueueApp.class.getName()).log(Level.SEVERE, null, ex);
             }
-        });
-
-        executorService.execute(new Runnable() {
-
-            @Override
-            public void run() {
-                try {
-                    processor.consume();
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(BlockingQueueApp.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        };
+        
+        Runnable producer = () -> {
+            try {
+                processor.produce();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(BlockingQueueApp.class.getName()).log(Level.SEVERE, null, ex);
             }
-        });
-
-        executorService.execute(new Runnable() {
-
-            @Override
-            public void run() {
-                try {
-                    processor.consume();
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(BlockingQueueApp.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
+        };
+        
+        executorService.execute(producer);
+        executorService.execute(consumer);
+        executorService.execute(consumer);
 
         executorService.shutdown();
 
@@ -77,7 +62,7 @@ public class BlockingQueueApp {
         public void consume() throws InterruptedException {
             while (true) {
                 Integer integer = queue.take();
-                System.out.println("TAKING BY : " + Thread.currentThread().getName() + " : " + integer + " SIZE : " + queue.size());
+                System.out.println("TAKING BY  : " + Thread.currentThread().getName() + " : " + integer + " SIZE : " + queue.size());
             }
         }
     }
