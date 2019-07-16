@@ -17,7 +17,7 @@ import java.util.LinkedList;
  */
 public class PrintQueue {
 
-    private LinkedList<String> queue = new LinkedList<String>();
+    private LinkedList<String> queue = new LinkedList();
     private final Object lock = new Object();
 
     public void enqueue(String str) {

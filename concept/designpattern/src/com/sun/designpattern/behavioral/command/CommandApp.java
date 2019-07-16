@@ -5,8 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * In object-oriented programming, the command pattern is a behavioral design pattern in which an object is used to
- * encapsulate all information needed to perform an action or trigger an event at a later time.
+ * Command decouples the object that invokes the operation from the one that knows how to perform it. 
  *
  * @author Sunil
  */

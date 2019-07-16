@@ -36,10 +36,10 @@ public class TreePrinter {
      * @param root tree root node
      */
     public static void print(PrintableNode root) {
-        List<List<String>> lines = new ArrayList<List<String>>();
+        List<List<String>> lines = new ArrayList<>();
 
-        List<PrintableNode> level = new ArrayList<PrintableNode>();
-        List<PrintableNode> next = new ArrayList<PrintableNode>();
+        List<PrintableNode> level = new ArrayList<>();
+        List<PrintableNode> next = new ArrayList<>();
 
         level.add(root);
         int nn = 1;
@@ -47,7 +47,7 @@ public class TreePrinter {
         int widest = 0;
 
         while (nn != 0) {
-            List<String> line = new ArrayList<String>();
+            List<String> line = new ArrayList<>();
 
             nn = 0;
 

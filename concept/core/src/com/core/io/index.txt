@@ -13,7 +13,6 @@ BufferedReader
 FilterReader
 
 FileWriter
-BufferWriter
 FilterWriter
 PrintWriter
 
@@ -42,7 +41,7 @@ System.out - is a PrintStream
 What are filter streams?
 ------------------------------------------------------------------------------------------------------------------------
 Filter streams are a category of IO streams whose responsibility is to add extra functionality (advantage) to the 
-existing streams like giving line numbers in the destination file that do not exist int the source file or increasing 
+existing streams like giving line numbers in the destination file that do not exist in the source file or increasing 
 performance of copying etc.
 
 

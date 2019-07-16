@@ -21,7 +21,7 @@ public class HashMapApp {
 class HashMap<K, V> {
 
     private static final int DEFAULT_SIZE = 10;
-    private final LinkedList<K, V> array[];
+    private final LinkedList<K, V>[] array;
 
     public HashMap() {
         array = new LinkedList[DEFAULT_SIZE];

@@ -35,9 +35,7 @@ public class DataInputStreamApp {
 
         // Read raw bytes and print in Hex
         try {
-            BufferedInputStream in =
-                    new BufferedInputStream(
-                    new FileInputStream(filename));
+            BufferedInputStream in = new BufferedInputStream(new FileInputStream(filename));
             int inByte;
             while ((inByte = in.read()) != -1) {
                 System.out.printf("%02X ", inByte);   // Print Hex codes
@@ -49,9 +47,7 @@ public class DataInputStreamApp {
 
         // Read primitives
         try {
-            DataInputStream in =
-                    new DataInputStream(
-                    new FileInputStream(filename));
+            DataInputStream in =new DataInputStream(new FileInputStream(filename));
             System.out.println("byte:    " + in.readByte());
             System.out.println("short:   " + in.readShort());
             System.out.println("int:     " + in.readInt());

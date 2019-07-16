@@ -110,9 +110,10 @@ class PrintPrime implements Runnable {
     private void print() {
 
         if (number.isPrimeNumber()) {
-            System.err.println("Prime Number  : " + number.getNumber() + " by " + Thread.currentThread().getName());
-            condition.signalAll();
+            System.err.println("Prime Number  : " + number.getNumber() + " by " + Thread.currentThread().getName()); 
             number.inrement();
+            condition.signalAll();
+           
 //                System.out.println(getClass() + " SINGAL");
         } else {
             try {

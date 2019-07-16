@@ -1,6 +1,14 @@
 package com.core.multithreading;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -12,81 +20,37 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Sunil
- */
 public class Test {
 
-    public static void main(String... rars) throws InterruptedException, ExecutionException {
-        ExecutorService executorService = Executors.newCachedThreadPool();
+    private int id;
+    private String name;
 
-        for (int i = 0; i < 10; i++) {
-            executorService.submit(() -> {
-                Connection connection = Connection.getConnection();
-                try {
-                    connection.execute();
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            });
-
-        }
-        executorService.shutdown();
+    public void print(String format) {
+        System.out.println("Format : " + format + " Id : " + id + " name : " + name);
     }
 
-    static class Connection {
+    public static void main(String... rars) throws InterruptedException, ExecutionException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 
-        private static Connection connection;
-        private Semaphore  semaphore = new Semaphore(2);
+        Test t = new Test();
+        t.id = 10;
+        t.name = "Sunil";
 
-        private Connection() {
+        Arrays.stream(t.getClass().getDeclaredMethods()).forEach(f -> {
+            System.out.println("Method " + f.getName() + " return type " + f.getReturnType());
+        });
 
-        }
+        Method method = t.getClass().getMethod("print", String.class);
+        method.invoke(t, "---");
 
-        public static Connection getConnection() {
-            if (connection != null) {
-                return connection;
-            } else {
-                synchronized (Connection.class) {
-                    if (connection == null) {
-                        connection = new Connection();
-                    }
-                }
-            }
-            return connection;
-        }
-
-        public void execute() throws InterruptedException {
-            semaphore.acquire();
-            connect();
-            doJob();
-            disconnnect();
-            semaphore.release();
-        }
-
-        public void connect() {
-            synchronized (this) {
-                System.out.println("Connected : " + Thread.currentThread().getName());
-            }
-
-        }
-
-        public void disconnnect() {
-            synchronized (this) {
-                System.out.println("Disconnected : " + Thread.currentThread().getName());
-            }
-
-        }
-
-        public void doJob() {
+        Arrays.stream(t.getClass().getFields()).forEach((Field f) -> {
             try {
-                System.out.println("Job started " + Thread.currentThread().getName());
-                Thread.sleep((int) (Math.random() * 10000));
-                System.out.println("Job Completed " + Thread.currentThread().getName());
-            } catch (InterruptedException ex) {
+                System.out.println("Field " + f.getName() + " value : " + f.get(t));
+            } catch (IllegalArgumentException ex) {
+                Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
                 Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+        });
+
     }
 }

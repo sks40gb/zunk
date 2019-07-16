@@ -8,7 +8,7 @@ public class BinarySearchApp {
 
     public static void main(String[] args) throws Exception {
         int array[] = {11, 22, 33, 44, 55, 66, 77, 88};
-        int index = binarySearch(array, 77, 0, array.length - 1);
+        int index = binarySearch(array, 707, 0, array.length - 1);
         System.out.println(index);
     }
 

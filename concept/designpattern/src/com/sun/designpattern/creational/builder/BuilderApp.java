@@ -1,135 +1,115 @@
 package com.sun.designpattern.creational.builder;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
-* 1) too many constructors to maintain.
-* 2) error prone because many fields has same type e.g. sugar and and butter are in cups so instead of 
-* 2 cup sugar if you pass 2 cup butter, your compiler will not complain but will get a buttery cake 
-* with almost no sugar with high cost of wasting butter.
-*/
+ * 1) too many constructors to maintain. 2) error prone because many fields has same type e.g. sugar and and butter are
+ * in cups so instead of 2 cup sugar if you pass 2 cup butter, your compiler will not complain but will get a buttery
+ * cake with almost no sugar with high cost of wasting butter. 4) Delegate the object creation to a Builder object
+ * instead of creating the objects directly.
+ */
 public class BuilderApp {
 
     public static void main(String[] args) {
 
-        Cook cook = new Cook();
-
-        PizzaBuilder hawaiianPizzaBuilder = new HawaiianPizzaBuilder();
-        cook.setPizzaBuilder(hawaiianPizzaBuilder);
-        cook.constructPizza();
-        Pizza hawaiian = cook.getPizza();
-        System.out.println(hawaiian);
-
-        PizzaBuilder spicyPizzaBuilder = new SpicyPizzaBuilder();
-        cook.setPizzaBuilder(spicyPizzaBuilder);
-        cook.constructPizza();
-        Pizza spicy = cook.getPizza();
-        System.out.println(spicy);
+        Email email = new Email.EmailBuilder()
+                .addRecipient("john@Doe.com")
+                .setMainText("Check the builder pattern")
+                .setGreeting("Hi John!")
+                .setClosing("Regards")
+                .setTitle("Builder pattern resources")
+                .build();
+        
+        System.out.println("Email " + email);
     }
 }
 
-/**
- * "Product"
- */
-class Pizza {
+class Email {
 
-    private String dough;
-    private String sauce;
-    private String topping;
-    
-    public void setDough(String dough) {
-        this.dough = dough;
+    private final String title;
+    private final String recipients;
+    private final String message;
+
+    private Email(String title, String recipients, String message) {
+        this.title = title;
+        this.recipients = recipients;
+        this.message = message;
     }
 
-    public void setSauce(String sauce) {
-        this.sauce = sauce;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTopping(String topping) {
-        this.topping = topping;
+    public String getRecipients() {
+        return recipients;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void send() {
     }
 
     @Override
     public String toString() {
-        return "Pizza{" + "dough=" + dough + ", sauce=" + sauce + ", topping=" + topping + '}';
-    }
-
-}
-
-/**
- * "Abstract Builder"
- */
-abstract class PizzaBuilder {
-
-    protected Pizza pizza;
-
-    public Pizza getPizza() {
-        return pizza;
-    }
-
-    public void createNewPizzaProduct() {
-        pizza = new Pizza();
-    }
-
-    public abstract void buildDough();
-
-    public abstract void buildSauce();
-
-    public abstract void buildTopping();
-}
-
-/**
- * "ConcreteBuilder"
- */
-class HawaiianPizzaBuilder extends PizzaBuilder {
-
-    public void buildDough() {
-        pizza.setDough("cross");
-    }
-
-    public void buildSauce() {
-        pizza.setSauce("mild");
-    }
-
-    public void buildTopping() {
-        pizza.setTopping("pineapple");
-    }
-}
-
-/**
- * "ConcreteBuilder"
- */
-class SpicyPizzaBuilder extends PizzaBuilder {
-
-    public void buildDough() {
-        pizza.setDough("pan baked");
-    }
-
-    public void buildSauce() {
-        pizza.setSauce("hot");
-    }
-
-    public void buildTopping() {
-        pizza.setTopping("salami");
-    }
-}
-
-class Cook {
-
-    private PizzaBuilder pizzaBuilder;
-
-    public void setPizzaBuilder(PizzaBuilder pb) {
-        pizzaBuilder = pb;
+        return "Email{" + "title=" + title + ", recipients=" + recipients + ", message=" + message + '}';
     }
     
-    public Pizza getPizza() {
-        return pizzaBuilder.getPizza();
-    }
-    
-    public void constructPizza() {
-        pizzaBuilder.createNewPizzaProduct();
-        pizzaBuilder.buildDough();
-        pizzaBuilder.buildSauce();
-        pizzaBuilder.buildTopping();
+
+    //Make the email creation more strict so that creating an email would only be possible through the EmailBuilder.
+    //That is EmailBUilder is an inner class.
+    public static class EmailBuilder {
+
+        private Set<String> recipients = new HashSet();
+        private String title;
+        private String greeting;
+        private String mainText;
+        private String closing;
+
+        public EmailBuilder addRecipient(String recipient) {
+            this.recipients.add(recipient);
+            return this;
+        }
+
+        public EmailBuilder removeRecipient(String recipient) {
+            this.recipients.remove(recipient);
+            return this;
+        }
+
+        public EmailBuilder setTitle(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public EmailBuilder setGreeting(String greeting) {
+            this.greeting = greeting;
+            return this;
+        }
+
+        public EmailBuilder setMainText(String mainText) {
+            this.mainText = mainText;
+            return this;
+        }
+
+        public EmailBuilder setClosing(String closing) {
+            this.closing = closing;
+            return this;
+        }
+
+        public Email build() {
+            String message = greeting + "\n" + mainText + "\n" + closing;
+            String recipientSection = commaSeparatedRecipients();
+            return new Email(title, recipientSection, message);
+        }
+
+        private String commaSeparatedRecipients() {
+            StringBuilder sb = new StringBuilder();
+            for (String recipient : recipients) {
+                sb.append(",").append(recipient);
+            }
+            return sb.toString().replaceFirst(",", "");
+        }
     }
 }
-
-

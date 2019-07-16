@@ -14,6 +14,10 @@ public interface ClassInsideInterface {
         public String rollname;
         public int roleId;
         public Object person;
+        
+        public void print(){
+            System.out.println("Print the role here.");
+        }
     } 
 
     Role getRole();
@@ -25,6 +29,7 @@ class Test implements ClassInsideInterface {
     public static void main(String[] args) {
         Test s = new Test();
         Role role = s.getRole();
+        role.print();
     }
 
     public Role getRole() {

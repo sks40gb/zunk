@@ -91,6 +91,7 @@ class Dog extends Animal implements Serializable {
             System.out.println("writeObject Method is called.");
             os.defaultWriteObject();  // default serialization should be performed
             os.writeObject(color);
+            os.writeObject(name);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -105,6 +106,8 @@ class Dog extends Animal implements Serializable {
             System.out.println("readObject Method is called.");
             is.defaultReadObject();   //default deserilizable should be performed.
             color = String.valueOf(is.readObject());  //java.io.OptionalDataException if "color" is not saved.
+            name = String.valueOf(is.readObject());
+          
         } catch (IOException ex) {
             ex.printStackTrace();
         } catch (ClassNotFoundException ex) {

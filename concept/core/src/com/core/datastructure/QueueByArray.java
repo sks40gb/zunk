@@ -19,7 +19,7 @@ public class QueueByArray {
         private final String array[] = new String[10];
         private int headIndex = -1;
         private int tailIndex = -1;
-
+ 
         public void enqueque(String item) {
             System.out.println("enqueue : " + item);
             if (isEmpty()) {

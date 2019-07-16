@@ -1,74 +1,47 @@
 package com.core.a.sample;
 
-import com.core.datastructure.TreePrinter;
+import java.util.HashMap;
+import java.util.Queue;
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.Exchanger;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class App {
 
     public static void main(String... args) throws Exception {
-        BinaryTree bt = new BinaryTree();
-        for(int i = 1; i < 10; i++){
-            bt.insert(i+"");
+        Add add = (a, b) -> a + b;
+        Predicate<Integer> predicate = (a) -> a > 1;
+
+        int one = 5;
+        int two = 200;
+
+        Function<Integer, Integer> sqaure = (a) -> a * a;
+        
+        Supplier<Integer> times = ()-> 10; 
+        
+        Consumer<Integer> print = (a)->System.out.println("Value is : " +a * times.get());
+
+        if (predicate.test(one)) {
+            print.accept(sqaure.apply(one));
         }
-        bt.print();
+
     }
 
-}
+    interface Add {
 
-class Node implements TreePrinter.PrintableNode {
+        int add(int a, int b);
 
-    public Node left;
-    public Node right;
-    public String text;
-
-    public Node(String text) {
-        this.text = text;
     }
-
-    public Node getLeft() {
-        return left;
-    }
-
-    public Node getRight() {
-        return right;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    @Override
-    public String toString() {
-        return "Node{" + "text=" + text + '}';
-    }
-    
-    
-}
-
-class BinaryTree {
-
-    public Node root;
-
-    public void insert(String element) {
-        System.out.println("-----");
-       root = BinaryTree.this.insert(root, element);
-    }
-    public Node insert(Node parent, String element) {
-        Node node = new Node(element);
-        if (parent == null) {
-            parent = node;
-        } else if (parent.left == null) {
-            parent.left = node;
-        } else if (parent.right == null) {
-            parent.right = node;
-        }else{
-            insert(parent.left,element);
-        }
-        System.out.println(parent);
-        return parent;
-    }
-
-    public void print() {
-        TreePrinter.print(root);
-    }
-
 }

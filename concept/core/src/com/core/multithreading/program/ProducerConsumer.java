@@ -14,7 +14,7 @@ public class ProducerConsumer {
     public static int count;
 
     public static void main(String[] args) {
-        List<Integer> list = new ArrayList<Integer>();
+        List<Integer> list = new ArrayList<>();
         Thread t1 = new Thread(new Producer(list));
         t1.setName("You and Me");
         t1.start();
@@ -26,17 +26,18 @@ public class ProducerConsumer {
 
 class Producer implements Runnable {
 
-    private List<Integer> list;
+    private final List<Integer> list;
 
     public Producer(List<Integer> list) {
         this.list = list;
     }
 
+    @Override
     public void run() {
         while (true) {
             synchronized (list) {
                 list.add(ProducerConsumer.count++);
-                System.out.println("PRO >> : " + ProducerConsumer.count);
+                System.out.println("Producing : " + ProducerConsumer.count);
                 list.notifyAll();
             }
             try {
@@ -51,7 +52,7 @@ class Producer implements Runnable {
 class Consumer implements Runnable {
 
     private String name;
-    private List<Integer> list;
+    private final List<Integer> list;
 
     public Consumer(List<Integer> list, String name) {
         this.name = name;
@@ -63,7 +64,7 @@ class Consumer implements Runnable {
             try {
                 synchronized (list) {
                     if (!list.isEmpty()) {
-                        System.out.println(name + " : " + list.get(0));
+                        System.out.println("Consuming : " + name + " : " + list.get(0));
                         list.remove(0);
                         try {
                             list.wait();

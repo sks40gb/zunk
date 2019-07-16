@@ -39,7 +39,7 @@ public class FormatEx {
      */
     public static void format2() {
         System.out.println("FORMAT 2===============================");
-        System.out.format("%2$-33d  +   %1$s", "SINGH", 400);
+        System.out.format("%2$-33d     %1$s", "SINGH", 400);
         System.out.println("");
     }
 }

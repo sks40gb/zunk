@@ -44,20 +44,6 @@ class Perstistent {
         ObjectInputStream inputStream = new ObjectInputStream(is);
         return inputStream.readObject();
     }
-
-    public List readObjectFromDirectory(File directory) {
-        List list = new ArrayList();
-        if (directory.isDirectory()) {
-            for (File file : directory.listFiles()) {
-                if (file.isFile()) {
-                    list.add(readObjectFromDirectory(file));
-                }
-            }
-        } else {
-            throw new RuntimeException(directory.getName() + " is not directory");
-        }
-        return list;
-    }
 }
 
 class Customer implements Serializable {

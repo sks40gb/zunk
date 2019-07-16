@@ -7,14 +7,14 @@ package com.core.generic;
  * 
  * @author sunil
  */
-public class MainClass {
+public class App {
 
     public static void main(String[] args) {
         Math math = new Math();
         math.setName("Math");
         math.setDuration(1000);
 
-        SubjectList<Math> subjectList = new SubjectList<Math>();
+        SubjectList<Math> subjectList = new SubjectList<>();
         subjectList.addSubject(math);
        // subjectList.addSubject(physics);
         addDifferentClass(subjectList);

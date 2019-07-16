@@ -17,8 +17,10 @@ public class Sample {
     public static void main(String s[]){
 
         // alphanumeric values
-        //String regex = "[0-9a-zA-Z]*";          String str = "ThIS is OK tO tESt";
-        String regex = "\\w*";          String str = "ThIS $$_ the 123 is OK tO tESt";
+        //String regex = "[0-9a-zA-Z]*";          
+        //String str = "ThIS is OK tO tESt";
+        String regex = "\\w*";          
+        String str = "ThIS $$_ the 123 is OK tO tESt";
         
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(str);

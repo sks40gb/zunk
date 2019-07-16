@@ -1,9 +1,8 @@
 package com.core.functional;
 
 /**
- * Any interface which has only one absract method is considered and Functional Interface regardless of whether
- *
- * @FunctionalInterface is applied or not.
+ * Any interface which has only one abstract method is considered as Functional Interface regardless of whether
+ * FunctionalInterface annotation is applied or not.
  *
  * Functional interface must have one and only one abstract method.
  *

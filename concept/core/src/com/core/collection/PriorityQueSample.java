@@ -8,9 +8,9 @@ public class PriorityQueSample {
     public static void main(String[] args) {
                 
         PriorityQueue<String> pq = new PriorityQueue<String>();
-        pq.add("sunday");
-        pq.add("monday");
-        pq.add("tuesday");
+        pq.add("SUNDAY");
+        pq.add("MONDAY");
+        pq.add("TUESDAY");
         pq.offer("WEDNESDAY");
         pq.offer("THURSDAY");
         pq.offer("FRIDAY");

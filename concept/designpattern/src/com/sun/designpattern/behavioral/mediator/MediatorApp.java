@@ -9,6 +9,9 @@ import java.util.List;
  * 
  * The Mediator pattern promotes a "many-to-many relationship network"
  * 
+ * Air traffic controller is a great example of mediator pattern where the airport control room works as a 
+ * mediator for communication between different flights. 
+ * 
  * @author sunsingh
  */
 public class MediatorApp {

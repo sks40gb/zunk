@@ -6,25 +6,26 @@ import java.util.List;
 /**
  *
  * @author sunil
+ * @param <C>
  */
 public class SubjectList<C extends Subject> {
 
     List<C> subjectList;
 
     public SubjectList() {
-        subjectList = new ArrayList<C>();
+        subjectList = new ArrayList<>();
     }
 
     public void print() {
-        for (Subject c : subjectList) {
-            StringBuffer buffer = new StringBuffer();
+        subjectList.stream().forEach((c)->{
+            StringBuilder buffer = new StringBuilder();
             buffer.append("Name :");
             buffer.append(c.getName());
             buffer.append("\n");
             buffer.append("duration");
             buffer.append(c.getDuration());
             System.out.println("INFO : \n " + buffer.toString());
-        }
+        });
     }
 
     public void addSubject(C c) {
