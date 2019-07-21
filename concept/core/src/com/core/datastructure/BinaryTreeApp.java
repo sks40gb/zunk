@@ -77,7 +77,7 @@ class BinaryTree {
     private BTNode insert(BTNode node, int data) {
         if (node == null) {
             node = new BTNode(data);
-        } else if (node.getRight() == null) {
+        } else if (node.right == null) {
             node.right = insert(node.right, data);
         } else {
             node.left = insert(node.left, data);
