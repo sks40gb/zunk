@@ -87,7 +87,7 @@ Guarded Blocks
     * The most common coordination idiom is the guarded block. Such a block begins by polling a condition that must be
       true before the block can proceed. ex : ProducerConsumer
     * Note : Always invoke wait inside a loop.
-    * Thread.wait and Thread.notifyAll must be within synchronized block or method since it aquire the lock first.
+    * Thread.wait and Thread.notifyAll must be within synchronized block or method since it acquire the lock first.
 
 
 Immutable Objects
@@ -110,8 +110,8 @@ Immutable Objects
 High Level Concurrency Objects ( Java 1.5+)
 ========================================================================================================================
 
-    1. Lock objects           -  support locking idioms that simplify many concurrent applications.
-    2. Executors              - define a high-level API for launching and managing threads. Executor implementations provided by
+    1. Lock objects           - Support locking idioms that simplify many concurrent applications.
+    2. Executors              - Define a high-level API for launching and managing threads. Executor implementations provided by
                                 java.util.concurrent provide thread pool management suitable for large-scale applications.
     3. Concurrent collections - make it easier to manage large collections of data, and can greatly reduce the need for synchronization.
     4. Atomic variables       - have features that minimize synchronization and help avoid memory consistency errors.

@@ -130,7 +130,6 @@ If an application has thread leak then with time it will have too many unused th
     Give unique and descriptive names to the threads created in application. - Add log entry in all thread at various entry and exit points in threads.
     Change debugging config levels (debug, info, error etc) and analyze log messages.
     When you find the class that is leaking out threads check how new threads are instantiated and how they're closed.
-    Make sure the thread is Guaranteed to close properly by doing following - Handling all Exceptions properly.
     Make sure the thread is Guaranteed to close properly by doing following
         Handling all Exceptions properly.
         releasing all resources (e.g. connections, files etc) before it closes.
