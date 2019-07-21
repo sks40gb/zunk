@@ -1,47 +1,105 @@
 package com.core.a.sample;
 
-import java.util.HashMap;
-import java.util.Queue;
-import java.util.concurrent.BrokenBarrierException;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CyclicBarrier;
-import java.util.concurrent.Exchanger;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class App {
 
     public static void main(String... args) throws Exception {
-        Add add = (a, b) -> a + b;
-        Predicate<Integer> predicate = (a) -> a > 1;
-
-        int one = 5;
-        int two = 200;
-
-        Function<Integer, Integer> sqaure = (a) -> a * a;
         
-        Supplier<Integer> times = ()-> 10; 
-        
-        Consumer<Integer> print = (a)->System.out.println("Value is : " +a * times.get());
-
-        if (predicate.test(one)) {
-            print.accept(sqaure.apply(one));
+         ConnectionPool pool = new ConnectionPool();
+        for (int i = 0; i < 10; i++) {
+          
+           new Thread(()->{
+                System.out.println("Getting connection ");
+               Connection connection = null;
+               try {
+                   connection = pool.getConnection();
+               } catch (InterruptedException ex) {
+                   Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+               }
+               System.out.println("Connecion aquired " + connection.getIndex());
+               try {
+                   Thread.sleep(5000);
+               } catch (InterruptedException ex) {
+                   Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+               }
+               pool.disconnect(connection);
+              
+           }).start();
+            
         }
-
+        
     }
 
-    interface Add {
+}
 
-        int add(int a, int b);
+class ConnectionPool {
 
+    private int MAX = 2;
+    private int size = 0;
+    List<Connection> connectionList = new ArrayList<>();
+    Semaphore semaphore = new Semaphore(MAX);
+
+    public ConnectionPool() {
+        for (int i = 0; i < MAX; i++) {
+            connectionList.add(Connection.getConnection());
+        }
+    }
+
+    public Connection getConnection() throws InterruptedException {
+      
+        this.semaphore.acquire();
+        System.out.println("Aquiring lock....x");
+        for (Connection c : connectionList) {
+            if (c.isFree()) {
+                c.connect();
+                return c;
+            }
+        }
+        return null;
+    }
+    
+    public void disconnect(Connection connection){
+         System.out.println("Relasing lock " + connection.getIndex());
+        connection.release();
+        this.semaphore.release();
+    }
+
+}
+
+class Connection {
+
+    public int index;
+    private static int globalIndex;
+    private boolean inUse;
+
+    public Connection() {
+       this.index = globalIndex++;
+        System.out.println("global " + globalIndex);
+    }
+    
+    public static Connection getConnection() {
+     
+        return new Connection();
+    }
+
+    public boolean isFree() {
+        return inUse == false;
+    }
+
+    public void connect() {
+        this.inUse = true;
+    }
+
+    public void release() {
+        this.inUse = false;
+    }
+    
+    public int getIndex(){
+        return this.index;
     }
 }
