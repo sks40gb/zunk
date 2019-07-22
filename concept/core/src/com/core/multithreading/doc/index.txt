@@ -1,10 +1,10 @@
-Thread.sleep
+Thread.sleep(1000)
 -----------------------------
     * Throws InterruptedException
     * The sleep period can be terminated by interrupts.
     * You cannot assume that invoking sleep will suspend the thread for precisely the time period specified.
 
-Thread.interrupted
+Thread.interrupted()
 -----------------------------
     for (int i = 0; i < inputs.length; i++) {
         heavyCrunch(inputs[i]);
@@ -14,14 +14,14 @@ Thread.interrupted
         }
     }
 
-Thread.interrupt
+thread.interrupt()
 -----------------------------
     * Invoking Thread.interrupt sets this flag.
     * By convention, any method that exits by throwing an InterruptedException clears interrupt status when it does so.
       However, it's always possible that interrupt status will immediately be set again, by another thread invoking interrupt.
     * Interrupt does not stop Thread
 
-Thread.join();
+thread.join();
 -----------------------------
     * Thread.join() (as the documentation states), Waits for this thread to die.
     * Overloads of join allow the programmer to specify a waiting period. However, as with sleep, join is dependent
@@ -138,7 +138,7 @@ Executor Interfaces
 
 Thread Pools
 ----------------------------
- 1. Fixed thread pool -  java.util.concurrent.Executors. newFixedThreadPool()
+ 1. newFixedThreadPool -  java.util.concurrent.Executors. newFixedThreadPool()
  2. newCachedThreadPool method -  creates an executor with an expandable thread pool.
  3. newSingleThreadExecutor method - creates an executor that executes a single task at a time.
  * If none of the executors provided by the above factory methods meet your needs, constructing instances of
