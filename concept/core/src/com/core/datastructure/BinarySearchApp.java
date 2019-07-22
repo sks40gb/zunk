@@ -7,24 +7,38 @@ package com.core.datastructure;
 public class BinarySearchApp {
 
     public static void main(String[] args) throws Exception {
-        int array[] = {11, 22, 33, 44, 55, 66, 77, 88};
-        int index = binarySearch(array, 707, 0, array.length - 1);
+        int array[] = {1, 3, 6, 99, 102, 120};
+        int index = recursiveBinarySearch(array, 0, array.length - 1, 120);
         System.out.println(index);
     }
 
-    public static int binarySearch(int[] array, int key, int fromIndex, int toIndex) {
-        if (fromIndex >= toIndex) {
-            return -1;
-        } else {
-            int midIndex = (fromIndex + toIndex) / 2;
-            int midValue = array[midIndex];
-            if (midValue == key) {
+    //Method 1
+    public static int recursiveBinarySearch(int arr[], int fromIndex, int toIndex, int item) {
+        if (fromIndex <= toIndex) {
+            int midIndex = fromIndex + (toIndex - fromIndex) / 2;
+            if (arr[midIndex] == item) {
                 return midIndex;
-            } else if (key > midValue) {
-                return binarySearch(array, key, midIndex + 1, toIndex);
-            } else if (key < midValue) {
-                return binarySearch(array, key, fromIndex, midIndex - 1);
             }
+            if (arr[midIndex] > item) {
+                return recursiveBinarySearch(arr, fromIndex, midIndex - 1, item);
+            }
+            return recursiveBinarySearch(arr, midIndex + 1, toIndex, item);
+        }
+        return -1;
+    }
+
+    //Method 2
+    public static int iteratrorBinarySearch(int[] array, int key, int fromIndex, int toIndex) {
+        while (fromIndex <= toIndex) {
+            int midIndex = fromIndex + (toIndex - fromIndex) / 2;
+            if (key == array[midIndex]) {
+                return midIndex;
+            } else if (key > array[midIndex]) {
+                fromIndex = midIndex + 1;
+            } else {
+                toIndex = midIndex - 1;
+            }
+
         }
         return -1;
     }
