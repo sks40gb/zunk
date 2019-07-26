@@ -9,18 +9,19 @@ Mapping
 
     	Note.java
 	--------------------
-    	@JoinColumn(name = "fcl_file_number_id", referencedColumnName = "id")
     	@ManyToOne(targetEntity = FclFileNumberImpl.class)
+        @JoinColumn(name = "fcl_file_number_id", referencedColumnName = "id")
     	private FileNumber fclFileNumber;
+
 
 	UserImpl.java
 	--------------------
-	@ManyToMany(targetEntity = UserImpl.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToMany(targetEntity = RoleImpl.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     	@JoinTable(name = "user_role",
                    joinColumns =@JoinColumn(name = "user_id"),
                    inverseJoinColumns = @JoinColumn(name = "role_id")
                   )
-    	private Set<Role> roles = new HashSet<Role>();
+    	private Set<Role> roles = new HashSet<Role>(); 
 
 
 	hibernate.properties
@@ -52,7 +53,7 @@ Mapping
 
 	Primary keys
 	-------------------------
-	1. Natural Keys - example unique keys like email, login_id which has businees logic
+	1. Natural Keys - example unique keys like email, login_id which has business logic
 	    - user will take care of this key
 	2. Surrogate key - it does not have any business significant
 	    - Hibernate will take care of this
@@ -72,7 +73,7 @@ Mapping
 	TABLE -
 		@Id
 		@GeneratedValue(strategy=GenerationType.TABLE, generator="tbl-gen")
-		@TableGenerator(name="tbl-gen",pkColumnName="ENTITY_TBL_NAME", allocationSize=150,table="GENERATORS")
+		@TableGenerator(name="tbl-gen",table="GENERATORS",pkColumnName="ENTITY_TBL_NAME", allocationSize=150)
 
 		Performance -good, as explained above, keys preallocation enables low database hit ratio
 		that can be configured using the low value.
@@ -130,15 +131,15 @@ Mapping
 		@ElementCollection(fetch=FetchType.Eager)
                 @Fetch(FetchMode.JOIN)
 		@JoinTable(name="USER_ADDRESS", @JoinColumns(@JoinColumn(name="USER_ID"))  // USER_ID is FK
-		Collection<Address> addresses = mew ArrayList<Address>();
+		Collection<Address> addresses = new ArrayList<Address>();
 
                 FetchMode
                 -------------------------------
                 1. fetch-”join” = Disable the lazy loading, always load all the collections and entities.
                 2. fetch-”select” (default) = Lazy load all the collections and entities.
-                3. batch-size=”N” = Fetching up to ‘N’ collections or entities, *Not record*.
+                3. batch-size=”N” OR @BatchSize(size = 10)  = Fetching up to ‘N’ collections or entities, *Not record*.
                 4. fetch-”subselect” = Group its collection into a sub select statement.
-                http://www.mkyong.com/hibernate/hibernate-fetching-strategies-examples/
+                http://www.mkyong.com/hibernate/hibernate-fetching-strategies-examples
 
         One-To-One
         -------------------------------------------------
@@ -151,10 +152,11 @@ Mapping
 
 	One-To-Many
 	--------------------------------------------------
+                User.java
 		@OneToMany
 		@JoinTable(name="USER_VEHICLE",
-					joinColumns=@joinColumn(name="USER_ID"),
-					inverseJoinColumns=@joinColumn(name="VEHICLE_ID")
+                            joinColumns=@joinColumn(name="USER_ID"),
+                            inverseJoinColumns=@joinColumn(name="VEHICLE_ID")
 			)// If this is not defined then hibernate will create third table automatically.
 		private List<Vehicle> vehicles;
 
@@ -238,10 +240,12 @@ Mapping
 	  private String streeingWheel;
 	}
 
-	-Hibernate will follow *SINGLE TABLE STRATGEY* and create one single table, it will add some extra called DTYPE and other fields streeingHandle and streeingWheel.
+	-Hibernate will follow *SINGLE TABLE STRATGEY* and create one single table, it will add some extra called DTYPE 
+         and other fields streeingHandle and streeingWheel.
 	-DTYPE - (Discriminator) says what is the exact class - TwoWheeler and FourWheeler
 
-	@Inheritance (stategy = InheritanceType.SINGLE_TABLE)  - is optional annotation which is applicable to the parent class being inherited.
+	@Inheritance (stategy = InheritanceType.SINGLE_TABLE)  - is optional annotation which is applicable to the 
+         parent class being inherited.
 	*We can change discriminator name
 
 		@Entity(name="vehicle")
@@ -256,11 +260,12 @@ Mapping
 	-----------------------------------------------
 	*We do not need discriminator column
 		@Entity(name="vehicle")
-		@Inheritance (stategy = InheritanceType.TABLE_PER_CLASS)
+		@Inheritance (stategy = InheritanceType.TABLE_PER_CLASS) 
 		public class Vehicle{
 
 		}
          * GenerationType.IDENTITY or GenerationType.AUTO cannot be used instead use GenerationType.TABLE
+
 
 	C) JOINED STRATEGY  - best normalized >>> @PrimaryKeyJoinColumn(name="PERSON_ID")
 	----------------------------------------------
