@@ -15,19 +15,21 @@ http://forums.mysql.com/read.php?98,358569
 ------------------------------------------------
 1. Stored procedure reduced the traffic between application and database server because instead of sending multiple
 uncompiled long SQL commands statement, application only has to send the stored procedure name and get the result back.
-2. reusable and transparent - to any application which wants to use it.
-3. secured - Database administrator can grant the right to application.
+2. Reusable and transparent - to any application which wants to use it.
+3. Secured - Database administrator can grant the right to application.
 
-disadvantages
+Disadvantages
 -------------
-1. database server high load in both memory for and processors
-2. you could be asking the database server to perform a number of logical operations or a complex of business logic which is not the role of it.
+1. Database server high load in both memory and processors
+2. You could be asking the database server to perform a number of logical operations or a complex of business logic 
+which is not the role of it.
 3. contains declarative SQL so it is very difficult to write a procedure with complexity of business like other languages.
-4. cannot debug stored procedure in almost RDMBSs.
+4. Cannot debug stored procedure in almost RDMBSs.
 5. Writing and maintain stored procedure usually required specialized skill set.
 
 
-The first stored procedure is very simple. It retrieves all products from products table. First let’s take a look at the stored procedure source code bellow:
+The first stored procedure is very simple. It retrieves all products from products table. First let’s take a look at the 
+stored procedure source code bellow:
 ############################################################################################
 DELIMITER //
 CREATE PROCEDURE GetAllProducts()
@@ -37,7 +39,8 @@ END //
 DELIMITER ;
 ############################################################################################
 
-* The first command you see is DELIMITER //. This command is not related to the stored procedure. DELIMITER statement is used to change the standard delimiter (semicolon) to another
+* The first command you see is DELIMITER //. This command is not related to the stored procedure. DELIMITER statement is 
+used to change the standard delimiter (semicolon) to another
 
 CALL GetAllProducts();
 
@@ -59,9 +62,11 @@ SELECT COUNT(*) INTO total_products
 Stored Procedure Parameters
 ----------------------------
 * a parameter has one of three modes
-1. IN    - indicates that a parameter can be passed into stored procedures but any modification inside stored procedure does not change parameter
+1. IN    - indicates that a parameter can be passed into stored procedures but any modification inside stored procedure 
+does not change parameter
 2. OUT   - indicates that stored procedure can change this parameter and pass back to the calling program.
-3. INOUT -  mode is combined of IN and OUT mode; you can pass parameter into stored procedure and get it back with the new value from calling program.
+3. INOUT -  mode is combined of IN and OUT mode; you can pass parameter into stored procedure and get it back with the 
+new value from calling program.
 
 ############################################################################################
 DELIMITER $$
@@ -82,8 +87,15 @@ SELECT @total AS Total;
 ex : @total
 
 
+How to retreive multiple rows from stored procedure in mysql?
+------------------------------------------------------------------------------------------------
+Plan A: Fill another table, it may be a temporary table.
+Plan B: Just execute your SELECT statement without INTO clause from the procedure; then you could read data-set from the application (c#, PHP+mysqli,...)
+Plan C: Do not use the procedure, just execute the SELECT query.
+
+
 Conditional Control
---------------------------------
+------------------------------------------------------------------------------------------------
 IF expression THEN commands
 [ELSEIF expression THEN commands]
 [ELSE commands]
@@ -149,7 +161,8 @@ DELIMITER;
 
 4. SQL Cursor - Cursor is used to iterate through a set of rows, which returned by a query, and process individual row
 
-** One of the most important point when working with cursor is you should use a NOT FOUND handler to avoid raising a fatal “no data to fetch” condition.
+** One of the most important point when working with cursor is you should use a NOT FOUND handler to avoid raising a 
+fatal “no data to fetch” condition.
 
 DECLARE cursor_name CURSOR FOR SELECT_statement;
 
@@ -160,7 +173,8 @@ Second you have to open the cursor using OPEN statement. You must open cursor be
 OPEN cursor_name;
 Next you can retrieve next row from cursor and move the cursor to the following row in a result set by using FETCH statement.
 FETCH cursor_name INTO variable list;
-And finally, you must close the cursor to deactivate it and release the memory associated with that cursor. To close the cursor you use CLOSE statement:
+And finally, you must close the cursor to deactivate it and release the memory associated with that cursor. To close the
+ cursor you use CLOSE statement:
 CLOSE cursor_name;
 
 
