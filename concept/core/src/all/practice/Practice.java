@@ -7,6 +7,7 @@ import java.util.function.UnaryOperator;
 
 public class Practice {
 
+
     public static void main(String[] args) {
        
         

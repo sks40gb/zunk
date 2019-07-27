@@ -79,13 +79,13 @@ class LinkedList<T> {
     }
 
     public void reverseByRecursive(Node current) {
-        if (current.getNext() == null) {
+        if (current.next == null) {
             first = current;
             return;
         }
-        reverseByRecursive(current.getNext());
-        current.getNext().setNext(current);
-        current.setNext(null);
+        reverseByRecursive(current.next);
+        current.next.next = current;
+        current.next= null;
     }
 
     public void reverse() {
@@ -94,8 +94,8 @@ class LinkedList<T> {
         Node next;
 
         while (current != null) {
-            next = current.getNext();
-            current.setNext(prev);
+            next = current.next;
+            current.next = prev;
             prev = current;
             current = next;
         }
@@ -140,7 +140,7 @@ interface Iterator<T> {
 class Node<T> {
 
     private final T data;
-    private Node next;
+    public Node next;
 
     public Node(T value) {
         this.data = value;
