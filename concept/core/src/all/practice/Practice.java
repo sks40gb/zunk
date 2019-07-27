@@ -1,25 +1,30 @@
 package all.practice;
 
+import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
+import java.util.function.UnaryOperator;
+
+
 public class Practice {
 
     public static void main(String[] args) {
-        int[] items = {1, 3, 6, 99, 102, 120};
-        System.out.println(binarySearch(items, 99, 0, items.length - 1));
+       
+        
+        UnaryOperator<Integer> sqaure = (number) -> number*number;
+        System.out.println("square of 4 is " + sqaure.apply(4));
+        
+        BinaryOperator<Integer> sum = (first, second) -> first + second;
+        
+        System.out.println("The sum of 5 and 4 is " + sum.apply(5, 4) );
+        
+        
+
     }
+}
 
-    public static int binarySearch(int[] array, int key, int fromIndex, int toIndex) {
-        while (fromIndex <= toIndex) {
-            int midIndex = fromIndex + (toIndex - fromIndex) / 2;
-            if (key == array[midIndex]) {
-                return midIndex;
-            } else if (key > array[midIndex]) {
-                fromIndex = midIndex + 1;
-            } else {
-                toIndex = midIndex - 1;
-            }
-
-        }
-        return -1;
-    }
-
+@FunctionalInterface
+interface Math{
+    
+    public int calc(int a,int b, int c);
+    
 }
