@@ -16,22 +16,15 @@ Facade
 Flyweight
 Proxy
 
-
-A - Adaptor
-B - Bridge v/s Template
+Behavioral
+-------------------------
 C - chain of responsibility 
 C - command
-C - composite
-D - Decorator
-F - Facade
-F - Flyweight
-F - Factory
 I - Interpreter
 I - Iterator
 M - Mediator
 M - Momento
 O - Observer
-P - Proxy
 S - State
 S - Strategy
 T - Template
