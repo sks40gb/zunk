@@ -1,6 +1,23 @@
-A - Abstract Factory
+Creational
+-------------------------
+Abstract Factory
+Factory Method
+Prototype
+Singleton
+Builder
+
+Structural 
+-------------------------
+Adaptor
+Bridge
+Composite
+Decorator
+Facade
+Flyweight
+Proxy
+
+
 A - Adaptor
-B - Builder
 B - Bridge v/s Template
 C - chain of responsibility 
 C - command
@@ -14,10 +31,8 @@ I - Iterator
 M - Mediator
 M - Momento
 O - Observer
-P - Prototype
 P - Proxy
 S - State
-S - Singleton
 S - Strategy
 T - Template
 V - Visitor
