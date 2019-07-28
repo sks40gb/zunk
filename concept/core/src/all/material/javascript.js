@@ -1,24 +1,22 @@
 //Which keywords are used to handle exceptions?
 //------------------------------------------------------------------------------------------------------------------------
 
-try{
-	//Code
+try {
+    //Code
+} catch (exp) {
+    //Code to throw an exception
+} finally {
+    //Code runs either it finishes successfully or after catch
 }
-catch(exp){
-	//Code to throw an exception
-}
-finally{
-	//Code runs either it finishes successfully or after catch
-  }
 
 /*
-What is variable typing?
-------------------------------------------------------------------------------------------------------------------------
-Variable typing is used to assign a number to a variable and then assign string to the same variable. Example is as follows:
-*/
+ What is variable typing?
+ ------------------------------------------------------------------------------------------------------------------------
+ Variable typing is used to assign a number to a variable and then assign string to the same variable. Example is as follows:
+ */
 
-i= 8;
-i="john";
+i = 8;
+i = "john";
 
 
 
@@ -43,7 +41,7 @@ push()     //-> it add the element at the bottom of array
 unshift()  //-> add the item at the start of array
 
 pop()      //-> remove the item from the end of array
-shift ()   //-> remove the item the starting of array
+shift()   //-> remove the item the starting of array
 
 
 
@@ -72,26 +70,26 @@ function myfunction() {
 
 //1. Factory Function 
 
-function createCircle(radius){
-  return {
-    radius,
-    draw : function(){
-      console.log("draw with radius : " + this.radius);
+function createCircle(radius) {
+    return {
+        radius,
+        draw: function () {
+            console.log("draw with radius : " + this.radius);
+        }
     }
-  }
 }
 
-let circle = createCircle(5);
+let circle = createCircle(5);   //<-- not there is no new operator here.
 circle.draw();
 
 
 //2. Constructor Function
 
 function Circle(radius) {
-  this.radius = radius;
-  this.draw = function() {
-    console.log("Circle draw : " + this.radius);
-  }
+    this.radius = radius;
+    this.draw = function () {
+        console.log("Circle draw : " + this.radius);
+    }
 }
 
 var circle = new Circle(5);
@@ -102,21 +100,21 @@ circle.draw();
 //------------------------------------------------------------------------------------------------------------------------
 
 /*There is no direct way to make it private however local variable or function can act as private variable and function.
-This is possible because of closures.*/
+ This is possible because of closures.*/
 
 function Circle(radius) {
-  
-  let colors = ['red', 'green'];  //local or private function
-  
-  function printWithColor(size){  //local or private function
-     console.log("size is " + size + " with colors " + colors);
-  }
-  
-  this.radius = radius;
-  
-  this.draw = function() {
-    printWithColor(this.radius); //<-- no this keyword is used
-  }
+
+    let colors = ['red', 'green'];  //local or private function
+
+    function printWithColor(size) {  //local or private function
+        console.log("size is " + size + " with colors " + colors);
+    }
+
+    this.radius = radius;
+
+    this.draw = function () {
+        printWithColor(this.radius); //<-- no this keyword is used
+    };
 }
 
 var circle = new Circle(5);
@@ -129,18 +127,18 @@ circle.draw(5);
 // Method 1
 
 function Circle(radius) {
-  
-  let colors = ['red', 'green'];  
- 
-  this.getAvailableColors = function(){   //<--- Getters which is class level function accessing the local variable
-     return colors;
-  }
 
-  this.radius = radius;
-  
-  this.draw = function() {
-    console.log("draw " + this.radius);
-  }
+    let colors = ['red', 'green'];
+
+    this.getAvailableColors = function () {   //<--- Getters which is class level function accessing the local variable
+        return colors;
+    };
+
+    this.radius = radius;
+
+    this.draw = function () {
+        console.log("draw " + this.radius);
+    };
 
 }
 
@@ -150,25 +148,24 @@ circle.draw(5);
 
 // Method 2
 
-
 function Circle(radius) {
-  
-  let colors = ['red', 'green'];  
-  //Getters
-  this.getAvailableColors = function(){
-     return colors;
-  }
 
-  Object.defineProperty(this, "colors", {
-     get : function(){
-       console.log("getting colors " + colors)
-       return colors;
-     },
-     set : function(value){
-       console.log("setting colors "+ value);
-       colors = value;
-     }
-  })
+    let colors = ['red', 'green'];
+    //Getters
+    this.getAvailableColors = function () {
+        return colors;
+    };
+
+    Object.defineProperty(this, "colors", {
+        get: function () {
+            console.log("getting colors " + colors);
+            return colors;
+        },
+        set: function (value) {
+            console.log("setting colors " + value);
+            colors = value;
+        }
+    });
 
 }
 
@@ -196,25 +193,25 @@ Circle.apply({}, [4]);  // functions are arguments are passed as an array. that 
 //Loop over the each key of object
 
 for (let key in circle) {
-  if (typeof circle[key] !== 'function') {
-    console.log(key, circle[key])
-  }
+    if (typeof circle[key] !== 'function') {
+        console.log(key, circle[key]);
+    }
 }
 
 //returns array of keys
 
-Object.keys(circle)
+Object.keys(circle);
 
 
 //returns the array of values
 
-Object.values(circle)
+Object.values(circle);
 
 
 //check if the property exist in the object
 
-if('radius' in circle){
-  console.log("Circle has the radius property or function");
+if ('radius' in circle) {
+    console.log("Circle has the radius property or function");
 }
 
 
@@ -233,26 +230,69 @@ delete circle.radius;
  */
 //----------------------------------------------------------------------------------------------------------------------
 
-let items = ["Sunday", "Monday", "Tuesday", "Wednesday","Thursday","Friday"];
+let items = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
 //For each - array.forEach(function(currentValue, index, arr), thisValue)
-items.forEach((item, index)=>{
-  console.log(item, index);
-})
+items.forEach((item, index) => {
+    console.log(item, index);
+});
 
 //Map - array.map(function(currentValue, index, arr), thisValue)
-let modifiedDays = items.map(item=>{
-   return {name :"sunil", day : item};
-})
+let modifiedDays = items.map(item => {
+    return {name: "sunil", day: item};
+});
 
 //Filter - array.filter(function(currentValue, index, arr), thisValue)
-let holidays = items.filter(item=>{
-   return item.startsWith("S");
-})
+let holidays = items.filter(item => {
+    return item.startsWith("S");
+});
 
 //reduce - array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
-let concateDays = items.reduce((acc, item)=>{
-  acc +=  " " + item;
-  return acc;
+let concateDays = items.reduce((acc, item) => {
+    acc += " " + item;
+    return acc;
 }, "Days ");  //<-- initial value
 
+
+/**
+ * 
+ * Inheritance
+ * --------------------------------------------------------------------------------------------------------------------
+ */
+
+//Method 1
+function Vehicle(name) {
+
+    this.name = name;
+
+    this.print = function () {
+        console.log(this.name);
+    }
+}
+
+function Car(name) {
+    Vehicle.call(this, name);
+}
+
+let vehicle = new Vehicle("BMW");
+vehicle.print();
+
+let car = new Car("Maruti");
+car.print();
+
+
+//Method 2
+function Vehicle(name) {
+    this.name = name;
+    this.print = function () {
+        console.log(this.name);
+    };
+}
+
+function Car() {
+}
+
+Car.prototype = new Vehicle("Ferrari");
+let car = new Car();
+
+car.print();
