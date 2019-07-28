@@ -21,13 +21,13 @@ package com.sun.designpattern.behavioral.state;
 public class StateApp {
 
     public static void main(String[] args) {
-        TVContext context = new TVContext();
-        State startState = new TVStartState(context);
-        context.setState(startState);
-        context.doAction();
-        context.doAction();
-        context.doAction();
-        context.doAction();
+        TV tv = new TV();
+        State startState = new TVStartState(tv);
+        tv.setState(startState);
+        tv.doAction();
+        tv.doAction();
+        tv.doAction();
+        tv.doAction();
 
     }
 }
@@ -40,17 +40,17 @@ interface Device {
 }
 
 
-class TVContext implements Device {
+class TV implements Device {
 
-    private State tvState;
+    private State state;
 
     public void setState(State state) {
-        this.tvState = state;
+        this.state = state;
     }
 
     @Override
     public void doAction() {
-        this.tvState.doAction();
+        this.state.doAction();
     }
 }
 
