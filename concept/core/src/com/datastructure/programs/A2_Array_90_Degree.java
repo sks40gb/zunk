@@ -25,21 +25,20 @@ public class A2_Array_90_Degree {
         rotateMatrix(myMatrix);
     }
 
-    public static void rotateMatrix(String[][] myMatrix) {
-        String[][] matrix = new String[3][3];
-        for (int i = (myMatrix.length - 1), k =0; i >= 0; i--, k++) {
-            for (int j = 0; j < myMatrix[i].length; j++) {
-                //System.out.println(myMatrix[i][j]);
-                matrix[j][k] = myMatrix[i][j];
+    public static void rotateMatrix(String[][] matrix) {
+        String[][] result = new String[3][3];
+        for(int i=0; i<matrix.length; i++){
+            int rowIndex = matrix.length - i -1;
+            for(int j=0; j<matrix[rowIndex].length; j++){
+                result[j][i] = matrix[rowIndex][j];  
             }
         }
-        
-        for (int i = 0; i < matrix.length; i++) {
-            String[] strings = matrix[i];
+        for (int i = 0; i < result.length; i++) {
+            String[] strings = result[i];
             for (int j = 0; j < strings.length; j++) {
-                System.out.print(matrix[i][j]);
+                System.out.print(result[i][j]);
             }
-            System.out.println("----");
+            System.out.println("");
             
         }
 
