@@ -26,15 +26,24 @@ public class BinaryTree<T extends Integer> {
         System.out.println("Finding key " + tree.search(6));
         System.out.println("Inorder");
         tree.inorder();
+
         System.out.println("");
         System.out.println("PreOrder");
         tree.preOrder();
+
         System.out.println("");
         System.out.println("PostOrder");
         tree.postOrder();
+
+        System.out.println("");
+        System.out.println("Find Min " + tree.findMin());     //1
+
+        System.out.println("Find Max " + tree.findMax());     //10
+        
+        System.out.println("Height of tree " + tree.height()); //4
     }
 
-    private Node root;
+    private Node<T> root;
 
     public void insert(T data) {
         this.root = insert(this.root, data);
@@ -106,6 +115,43 @@ public class BinaryTree<T extends Integer> {
             inorder(node.right);
             System.out.print(node.data + "=>");
         }
+    }
+
+    public int height(){
+        return this.height(root);
+    }
+    public int height(Node<T> node){
+        if(node == null){
+            return -1;
+        }
+        int left = height(node.left);
+        int right = height(node.right);
+        int max = Math.max(left, right);
+        return max + 1;
+    }
+    
+    public Node findMin() {
+        return findMin(this.root);
+    }
+
+    private Node findMin(Node node) {
+        Node<T> current = node;
+        while (current != null && current.left != null) {
+            current = current.left;
+        }
+        return current;
+    }
+
+    public Node findMax() {
+        return findMax(this.root);
+    }
+
+    private Node findMax(Node node) {
+        Node<T> current = node;
+        while (current != null && current.right != null) {
+            current = current.right;
+        }
+        return current;
     }
 
     public void printBFS() {
