@@ -7,7 +7,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  *
  * @author sunsingh
  */
-public class BinaryTree {
+public class BinaryTree<T extends Integer> {
 
     public static void main(String[] args) {
         BinaryTree tree = new BinaryTree();
@@ -22,21 +22,29 @@ public class BinaryTree {
         tree.insert(1);
         tree.insert(10);
         BinaryTreePrinter.printNode(tree.root);
-        
+
         System.out.println("Finding key " + tree.search(6));
+        System.out.println("Inorder");
+        tree.inorder();
+        System.out.println("");
+        System.out.println("PreOrder");
+        tree.preOrder();
+        System.out.println("");
+        System.out.println("PostOrder");
+        tree.postOrder();
     }
 
     private Node root;
 
-    public void insert(int data) {
+    public void insert(T data) {
         this.root = insert(this.root, data);
     }
-    
-    public Node search(int key){
+
+    public Node search(T key) {
         return search(this.root, key);
     }
 
-    public Node search(Node<Integer> node, int key) {
+    public Node<T> search(Node<T> node, T key) {
         if (node == null) {
             return null;
         } else if (node.data == key) {
@@ -49,9 +57,9 @@ public class BinaryTree {
         return null;
     }
 
-    public Node insert(Node<Integer> node, int data) {
+    public Node<T> insert(Node<T> node, T data) {
         if (node == null) {
-            node = new Node(data);
+            node = new Node<T>(data);
             return node;
         }
         if (data < node.data) {
@@ -62,6 +70,42 @@ public class BinaryTree {
             throw new RuntimeException("Value is already available");
         }
         return node;
+    }
+
+    public void inorder() {
+        this.inorder(root);
+    }
+
+    public void inorder(Node<T> node) {
+        if (node != null) {
+            inorder(node.left);
+            System.out.print(node.data + "=>");
+            inorder(node.right);
+        }
+    }
+
+    public void preOrder() {
+        this.preOrder(root);
+    }
+
+    public void preOrder(Node<T> node) {
+        if (node != null) {
+            System.out.print(node.data + "=>");
+            inorder(node.left);
+            inorder(node.right);
+        }
+    }
+
+    public void postOrder() {
+        this.postOrder(root);
+    }
+
+    public void postOrder(Node<T> node) {
+        if (node != null) {
+            inorder(node.left);
+            inorder(node.right);
+            System.out.print(node.data + "=>");
+        }
     }
 
     public void printBFS() {
