@@ -1,7 +1,5 @@
 package com.core.array;
 
-import all.material.*;
-
 /**
  *
  * @author Sunil
