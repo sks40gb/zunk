@@ -1,7 +1,7 @@
 package com.datastructure.programs.linkedlist;
 
 /**
- *
+ *  @TODO - yet to be implemented completely.
  * @author sunsingh
  */
 public class AddTwoNumbers {
@@ -28,13 +28,12 @@ public class AddTwoNumbers {
         int diff = LengthDiff(length(first), length(second));
         Node a = first;
         Node b = second;
-        Node current = first;
         if (diff < 0) {
             a = second;
             b = first;
-            current = second;
             
         }
+        Node current = a;
         //Move the node at the same length;
         if (diff != 0) {
             for (int i = 0; i < Math.abs(diff); i++) {
@@ -63,7 +62,7 @@ public class AddTwoNumbers {
     }
 
     static int carry = 0;
-
+    
     public static Node sum(Node first, Node second) {
         if (first == null) {
             return null;
