@@ -43,7 +43,7 @@ public class BinarySearchTree<T extends Integer> {
         System.out.println("Height of tree " + tree.height()); //4
     }
 
-    private Node<T> root;
+    public Node<T> root;
 
     public void insert(T data) {
         this.root = insert(this.root, data);
