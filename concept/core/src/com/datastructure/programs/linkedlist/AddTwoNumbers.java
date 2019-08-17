@@ -8,6 +8,9 @@ public class AddTwoNumbers {
 
     public static void main(String[] args) {
         LinkedList first = new LinkedList();
+        first.add(6);
+        first.add(8);
+        first.add(9);
         first.add(5);
         first.add(6);
         first.add(3);
@@ -16,7 +19,7 @@ public class AddTwoNumbers {
         second.add(8);
         second.add(4);
         second.add(2);
-        
+
         addNumbers(first.head, second.head);
     }
 
@@ -25,9 +28,12 @@ public class AddTwoNumbers {
         int diff = LengthDiff(length(first), length(second));
         Node a = first;
         Node b = second;
+        Node current = first;
         if (diff < 0) {
             a = second;
             b = first;
+            current = second;
+            
         }
         //Move the node at the same length;
         if (diff != 0) {
@@ -35,22 +41,39 @@ public class AddTwoNumbers {
                 first = first.next;
             }
         }
-        result.head = sum(first, second, 0);
+        result.head = sum(first, second);
+        
+        //If first element has extra items in it.
+        while(current != first){
+            int sum = current.data + carry;
+            carry = sum/10;
+            sum = sum%10;
+            Node node = new Node(sum);
+            node.next = result.head;
+            result.head = node;
+            current = current.next;
+        }
+        
+        if (carry > 0) {
+            Node node = new Node(carry);
+            node.next = result.head;
+            result.head = node;
+        }
         result.print();
     }
 
-    public static Node sum(Node first, Node second, int carryOver) {
+    static int carry = 0;
+
+    public static Node sum(Node first, Node second) {
         if (first == null) {
             return null;
         }
-        int sum = first.data + second.data;
-        int carry = 0;
-        if (sum > 10) {
-            sum = sum % 10;
-            carryOver = 1;
-        }
-        Node result = new Node(sum);
-        result.next = sum(first.next, second.next, carryOver);
+        Node result = new Node(0);
+        result.next = sum(first.next, second.next);
+        int sum = first.data + second.data + carry;
+        carry = sum / 10;
+        sum = sum % 10;
+        result.data = sum;
         return result;
     }
 
