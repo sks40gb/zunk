@@ -1,4 +1,4 @@
-package com.datastructure.programs;
+package com.datastructure.programs.array;
 
 /*
  * http://collabedit.com/4htbj
@@ -18,7 +18,7 @@ package com.datastructure.programs;
  * 9,6,3
  *
  */
-public class A2_Array_90_Degree {
+public class Rotate90Degree {
 
     public static void main(String[] args) {
         String[][] myMatrix = new String[][]{new String[]{"1", "2", "3"}, new String[]{"4", "5", "6"}, new String[]{"7", "8", "9"}};

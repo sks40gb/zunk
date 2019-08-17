@@ -1,13 +1,16 @@
-package com.datastructure.programs;
+package com.datastructure.programs.linkedlist;
+
+import com.datastructure.programs.LinkedList;
+import com.datastructure.programs.Node;
 
 /**
  *
  * @author sunsingh
  */
-public class A1_MiddleOfLinkedList extends LinkedList {
+public class FindMiddleNode extends LinkedList {
 
     public static void main(String[] args) {
-        A1_MiddleOfLinkedList list = new A1_MiddleOfLinkedList();
+        FindMiddleNode list = new FindMiddleNode();
         for (int i = 0; i < 15; i++) {
             list.add(i);
         }
