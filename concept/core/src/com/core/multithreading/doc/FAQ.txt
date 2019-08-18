@@ -1,150 +1,209 @@
 1 - What is Multithreading?
-In multithreading, programs may contains more than one part that can run concurrently and each part is known as thread. Multithreading enables to write efficient program that make maximum use of CPU, because idle time is kept minimum.
+In multithreading, programs may contains more than one part that can run concurrently and each part is known as thread. 
+Multithreading enables to write efficient program that make maximum use of CPU, because idle time is kept minimum.
 
-----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 2 - What is difference between Multiprocessing and Multithreading?
-Multiprocessing
 
-Multithreading
-In Multitasking operating system tasks are know as heavy-weight process. 	In Multithreading environment tasks are light weight process or threads.
-Multitasking process takes a seperate address space. These are the different programs run on a single system. 	Threads on other hand share the same address space and co-operatively share the same heavy weight process.
-Inter-process communication is expensive and limited. 	Inter-thread communication is very light-weight and pervasive.
-Context switching, changing the running process, is also heavy-weight. 	Context switching is fast and an integral part of running any one program.
+[1] - In Multitasking operating system tasks are know as heavy-weight process. In Multithreading environment tasks are 
+      light  weight process or threads. 
+[2] - Multitasking process takes a seperate address space. These are the different programs run on 
+      a single system. Threads on other hand share the same address space and co-operatively share the same heavy weight 
+      process.
+[3] - Inter-process communication is expensive and limited.Inter-thread communication is very light-weight and pervasive.
+[4] - Context switching, changing the running process, is also heavy-weight.Context switching is fast and an integral
+      part of running any one program.
 
-----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 3 - What is difference between Process and thread?
 
-    Both process and Thread are independent path of execution but one process can have multiple Threads.
-    Every process has its own memory space, executable code and a unique process identifier (PID) while every thread has its own stack in Java but it uses process main memory and share it with other threads.
-    Threads are also refereed as task or light weight process.
-    Threads from same process can communicate with each other by using keyword like wait and notify and much simpler than inter process communication.
-    Another difference between Process and Thread is that it's How Thread and process are created. It's easy to create Thread as compared to Process which requires duplication of parent process.
-    All Threads which is part of same process share system resource like file descriptors , Heap Memory and other resource but each Thread has its own Exception handler and own stack.
-    Every thread in Java is created and controlled by a unique object of the java.lang.Thread class.
+Both process and Thread are independent path of execution but one process can have multiple Threads.
+Every process has its own memory space, executable code and a unique process identifier (PID) while every thread has
+its own stack in Java but it uses process main memory and share it with other threads.
+Threads are also refereed as task or light weight process.
+Threads from same process can communicate with each other by using keyword like wait and notify and much simpler 
+than inter process communication. Another difference between Process and Thread is that it's How Thread and process 
+are created. It's easy to create Thread as compared to Process which requires duplication of parent process.
+All Threads which is part of same process share system resource like file descriptors , Heap Memory and other 
+resource but each Thread has its own Exception handler and own stack.
+Every thread in Java is created and controlled by a unique object of the java.lang.Thread class.
 
-----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 4 - What are different ways of creating thread?
 There are two ways of creating Threads
 
     Implementing Runnable interface.
     Extending Thread class.
 
-----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 5 - What is the difference between yield and sleeping?
-yield() - yield method pauses the currently executing thread temporarily for giving a chance to the remaining waiting threads of the same priority to execute.
+yield() - yield method pauses the currently executing thread temporarily for giving a chance to the remaining waiting 
+          threads of the same priority to execute.
 
-sleep() - It causes the current thread to suspend execution for a specified period. When a thread goes into sleep state it doesn't release the lock
+sleep() - It causes the current thread to suspend execution for a specified period. When a thread goes into sleep state 
+          it doesn't release the lock
 
-----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 6 - What is the difference between the methods sleep() and wait()?
-sleep() - It causes the current thread to suspend execution for a specified period. When a thread goes into sleep state it doesn't release the lock
+sleep() - It causes the current thread to suspend execution for a specified period. When a thread goes into sleep state 
+          it doesn't release the lock
 
-wait() - - It causes current thread to wait until either another thread invokes the notify() method or the notifyAll() method for this object, or a specified amount of time has elapsed.
+wait() -  It causes current thread to wait until either another thread invokes the notify() method or the notifyAll() 
+          method for this object, or a specified amount of time has elapsed.
 
-----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 7 - What is a ThreadLocal class?
-ThreadLocal is another way to make thread-safety in java. it eliminates sharing by providing explicitly copy of Object to each thread. Since Object is no more shared there is no requirement of Synchronization which can improve scalability and performance of application. You can use ThreadLocal to make non thread safe object a thread safe object.
+ThreadLocal is another way to make thread-safety in java. it eliminates sharing by providing explicitly copy of Object 
+to each thread. Since Object is no more shared there is no requirement of Synchronization which can improve scalability 
+and performance of application. You can use ThreadLocal to make non thread safe object a thread safe object.
 
-----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 8 - What is a daemon thread?
-Daemon thread in Java are those thread which runs in background and mostly created by JVM for performing background task like Garbage collection and other house keeping tasks. Thread.setDaemon(true) makes a thread daemon but it can only be called before starting Thread in Java.
+Daemon thread in Java are those thread which runs in background and mostly created by JVM for performing background task 
+like Garbage collection and other house keeping tasks. Thread.setDaemon(true) makes a thread daemon but it can only be 
+called before starting Thread in Java.
 
-----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 9 - What does join( ) method do?
 Join method in Java has two variants one which has no argument and other which takes time in millisecond.
 
     join()
     join(long millisec)
 
-A call to any of these two methods invoked on a thread will wait and not return until either the thread has completed or it is timed out after the specified time, respectively.
-10 - Why wait() and notify() methods are defined in the Object class, and not in the Thread class?
-The wait (), notify () and notify all () methods are object-specific. The wait() method suspends the current thread of execution, The notify()method tells the object to wake up the suspended threads that it is currently keeping track of. Since wait(), notify() and notifyAll() are object specific, they must be used within code that is synchronized on the object. The another reason to define these method in Object class is that, locks are made available on per Object basis.
+A call to any of these two methods invoked on a thread will wait and not return until either the thread has completed 
+or it is timed out after the specified time, respectively.
 
-----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+10 - Why wait() and notify() methods are defined in the Object class, and not in the Thread class?
+
+The wait (), notify () and notify all () methods are object-specific. The wait() method suspends the current thread of 
+execution, The notify() method tells the object to wake up the suspended threads that it is currently keeping track of. 
+Since wait(), notify() and notifyAll() are object specific, they must be used within code that is synchronized on the 
+object. The another reason to define these method in Object class is that, locks are made available on per Object basis.
+
+------------------------------------------------------------------------------------------------------------------------
 11 - What is difference between Preemptive scheduling vs. time slicing?
 
-    Preemptive scheduling means that higher priority task executes until it enter into waiting and dead state or higher priority task come in existence.
-    Time slicing means task executes for a defined slice/ period of time and then enter in the pool of ready state. The scheduler then determine which task execute next based on priority or other factor.
+Preemptive scheduling means that higher priority task executes until it enter into waiting and dead state or higher 
+priority task come in existence. Time slicing means task executes for a defined slice/ period of time and then enter in 
+the pool of ready state. The scheduler then determine which task execute next based on priority or other factor.
 
-
-----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 12 - What is the difference between synchronized method and synchronized block?
-Synchronized method - If the methods of an object should only be executed by one thread at a time, then the declaration of all such methods should be specified with the keyword synchronized. A thread wishing to execute a synchronized method must first obtain the object's lock (i.e., hold the lock) before it can enter the object to execute the method. This is simply achieved by calling the method. If the lock is already held by another thread, the calling thread waits.
+Synchronized method - If the methods of an object should only be executed by one thread at a time, then the declaration 
+of all such methods should be specified with the keyword synchronized. A thread wishing to execute a synchronized method 
+must first obtain the object's lock (i.e., hold the lock) before it can enter the object to execute the method. This is 
+simply achieved by calling the method. If the lock is already held by another thread, the calling thread waits.
 
-Synchronized block - It allows execution of arbitrary code to be synchronized on the lock of an arbitrary object. The general form of the synchronized statement is as follows:
+Synchronized block - It allows execution of arbitrary code to be synchronized on the lock of an arbitrary object. The 
+general form of the synchronized statement is as follows:
 synchronized (<object reference expression>) { <code block> }
-The <object reference expression> must evaluate to a non-null reference value, otherwise, a NullPointerException is thrown. The code block is usually related to the object on which the synchronization is being done.
+The <object reference expression> must evaluate to a non-null reference value, otherwise, a NullPointerException is 
+thrown. The code block is usually related to the object on which the synchronization is being done.
 
-----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 13 - Can we call run() method of a Thread class?
-Yes, we can call run() method of a Thread class but then it will behave like a normal method. To actually execute it in a Thread, you should call Thread.start() method to start it.
+Yes, we can call run() method of a Thread class but then it will behave like a normal method. To actually execute it in 
+a Thread, you should call Thread.start() method to start it.
 
-----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 14 - What is Starvation?
-Starvation is a situation where a thread is unable to get continuous access to shared resources and unable to make progress. This happen when some another thread use shared resource for longer time.
+Starvation is a situation where a thread is unable to get continuous access to shared resources and unable to make 
+progress. This happen when some another thread use shared resource for longer time.
 
-----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 When InvalidMonitorStateException is thrown? Why?
-This exception is thrown when you try to call wait()/notify()/notifyAll() any of these methods for an Object from a point in your program where u are NOT having a lock on that object.(i.e. u r not executing any synchronized block/method of that object and still trying to call wait()/notify()/notifyAll()) wait(), notify() and notifyAll() all throw IllegalMonitorStateException. since This exception is a subclass of RuntimeException so we r not bound to catch it (although u may if u want to). and being a RuntimeException this exception is not mentioned in the signature of wait(), notify(), notifyAll() methods.
+This exception is thrown when you try to call wait()/notify()/notifyAll() any of these methods for an Object from a 
+point in your program where you are NOT having a lock on that object.(i.e. u r not executing any synchronized 
+block/method of that object and still trying to call wait()/notify()/notifyAll()) wait(), notify() and notifyAll() all 
+throw IllegalMonitorStateException. since This exception is a subclass of RuntimeException so we r not bound to catch it 
+(although u may if u want to). and being a RuntimeException this exception is not mentioned in the signature of wait(), 
+notify(), notifyAll() methods.
 
-----------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------
 How to find a deadlock has occurred in Java? How to detect a Deadlock in Java?
 
-Earlier versions of Java had no mechanism to handle/detect deadlock. Since JDK 1.5 there are some powerful methods added in the java.lang.management package to diagnose and detect deadlocks. The java.lang.management.ThreadMXBean interface is management interface for the thread system of the Java virtual machine. It has two methods which can leveraged to detect deadlock in a Java application.
+Earlier versions of Java had no mechanism to handle/detect deadlock. Since JDK 1.5 there are some powerful methods added 
+in the java.lang.management package to diagnose and detect deadlocks. The java.lang.management.ThreadMXBean interface is 
+management interface for the thread system of the Java virtual machine. It has two methods which can leveraged to detect 
+deadlock in a Java application.
 
-    findMonitorDeadlockedThreads() - This method can be used to detect cycles of threads that are in deadlock waiting to acquire object monitors. It returns an array of thread IDs that are deadlocked waiting on monitor.
-    findDeadlockedThreads() - It returns an array of thread IDs that are deadlocked waiting on monitor or ownable synchronizers
+findMonitorDeadlockedThreads() - This method can be used to detect cycles of threads that are in deadlock waiting to 
+                                 acquire object monitors. It returns an array of thread IDs that are deadlocked waiting 
+                                 on monitor.
+findDeadlockedThreads()        - It returns an array of thread IDs that are deadlocked waiting on monitor.
 
 
-
-----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 How will you take thread dump in Java? How will you analyze Thread dump?
 
-A Thread Dump is a complete list of active threads. A java thread dump is a way of finding out what each thread in the JVM is doing at a particular point of time. This is especially useful when your java application seems to have some performance issues. Thread dump will help you to find out which thread is causing this. There are several ways to take thread dumps from a JVM. It is highly recommended to take more than 1 thread dump and analyze the results based on it. Follow below steps to take thread dump of a java process
+A Thread Dump is a complete list of active threads. A java thread dump is a way of finding out what each thread in the 
+JVM is doing at a particular point of time. This is especially useful when your java application seems to have some 
+performance issues. Thread dump will help you to find out which thread is causing this. There are several ways to take 
+thread dumps from a JVM. It is highly recommended to take more than 1 thread dump and analyze the results based on it. 
+Follow below steps to take thread dump of a java process
 
-    Step 1
+Step 1
 
-    On UNIX, Linux and Mac OSX Environment run below command:
+On UNIX, Linux and Mac OSX Environment run below command:
 
-    ps -el | grep java
+ps -el | grep java
 
-    On Windows:
+On Windows:
 
-    Press Ctrl+Shift+Esc to open the task manager and find the PID of the java process
+Press Ctrl+Shift+Esc to open the task manager and find the PID of the java process
 
-    Step 2:
+Step 2:
 
-    Use jstack command to print the Java stack traces for a given Java process PID
+Use jstack command to print the Java stack traces for a given Java process PID
 
-    jstack [PID]
+jstack [PID]
 
-    More details of jstack command can be found here : JSTACK Command Manual
+More details of jstack command can be found here : JSTACK Command Manual
 
 
-
-----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 How can I trace whether the application has a thread leak?
-If an application has thread leak then with time it will have too many unused threads. Try to find out what type of threads is leaking out. This can be done using following ways
 
-    Give unique and descriptive names to the threads created in application. - Add log entry in all thread at various entry and exit points in threads.
-    Change debugging config levels (debug, info, error etc) and analyze log messages.
-    When you find the class that is leaking out threads check how new threads are instantiated and how they're closed.
-    Make sure the thread is Guaranteed to close properly by doing following
-        Handling all Exceptions properly.
-        releasing all resources (e.g. connections, files etc) before it closes.
+If an application has thread leak then with time it will have too many unused threads. Try to find out what type of 
+threads is leaking out. This can be done using following ways
+
+1.Give unique and descriptive names to the threads created in application. - Add log entry in all thread at various 
+  entry and exit points in threads.
+2.Change debugging config levels (debug, info, error etc) and analyze log messages.
+3.When you find the class that is leaking out threads check how new threads are instantiated and how they're closed.
+4. Make sure the thread is Guaranteed to close properly by doing following
+   Handling all Exceptions properly.
+   releasing all resources (e.g. connections, files etc) before it closes.
 
 
-----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 What is thread pool? Why should we use thread pools?
-A thread pool is a collection of threads on which task can be scheduled. Instead of creating a new thread for each task, you can have one of the threads from the thread pool pulled out of the pool and assigned to the task. When the thread is finished with the task, it adds itself back to the pool and waits for another assignment. One common type of thread pool is the fixed thread pool. This type of pool always has a specified number of threads running; if a thread is somehow terminated while it is still in use, it is automatically replaced with a new thread. Below are key reasons to use a Thread Pool
 
-    Using thread pools minimizes the JVM overhead due to thread creation. Thread objects use a significant amount of memory, and in a large-scale application, allocating and de-allocating many thread objects creates a significant memory management overhead.
-    You have control over the maximum number of tasks that are being processed in parallel (= number of threads in the pool).
+A thread pool is a collection of threads on which task can be scheduled. Instead of creating a new thread for each task, 
+you can have one of the threads from the thread pool pulled out of the pool and assigned to the task. When the thread is 
+finished with the task, it adds itself back to the pool and waits for another assignment. 
+One common type of thread pool is the fixed thread pool. This type of pool always has a specified number of threads 
+running; if a thread is somehow terminated while it is still in use, it is automatically replaced with a new thread. 
+Below are key reasons to use a Thread Pool
 
-Most of the executor implementations in java.util.concurrent use thread pools, which consist of worker threads. This kind of thread exists separately from the Runnable and Callable tasks it executes and is often used to execute multiple tasks.
+Using thread pools minimizes the JVM overhead due to thread creation. Thread objects use a significant amount of memory, 
+and in a large-scale application, allocating and de-allocating many thread objects creates a significant memory 
+management overhead.
 
-----------------------------------------------------------------------------------------------------------------------------------------
+You have control over the maximum number of tasks that are being processed in parallel (= number of threads in the pool).
+
+Most of the executor implementations in java.util.concurrent use thread pools, which consist of worker threads. 
+This kind of thread exists separately from the Runnable and Callable tasks it executes and is often used to execute 
+multiple tasks.
+
+------------------------------------------------------------------------------------------------------------------------
 Can we synchronize the constructor of a Java Class?
-As per Java Language Specification, constructors cannot be synchronized because other threads cannot see the object being created before the thread creating it has finished it. There is no practical need of a Java Objects constructor to be synchronized, since it would lock the object being constructed, which is normally not available to other threads until all constructors of the object finish
+
+As per Java Language Specification, constructors cannot be synchronized because other threads cannot see the object 
+being created before the thread creating it has finished it. There is no practical need of a Java Objects constructor to 
+be synchronized, since it would lock the object being constructed, which is normally not available to other threads 
+until all constructors of the object finish
 
