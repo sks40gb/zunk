@@ -207,3 +207,11 @@ being created before the thread creating it has finished it. There is no practic
 be synchronized, since it would lock the object being constructed, which is normally not available to other threads 
 until all constructors of the object finish
 
+Difference in usage between Thread.interrupted() and Thread.isInterrupted()?
+------------------------------------------------------------------------------------------------------------------------
+1. Interrupted() is static and checks the current thread. isInterrupted() is an instance method which checks the Thread 
+object that it is called on.
+
+2. Another difference is that interrupted() also clears the status of the current thread. In other words, if you call it 
+twice in a row and the thread is not interrupted between the two calls, the second call will return false even if the 
+first call returned true.

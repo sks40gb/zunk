@@ -1,7 +1,7 @@
 * With synchronized keyword, you have to leave the lock, once you exit from synchronized method or block, there is no 
 way you can take the lock to other method. java.util.concurrent.locks.ReentrantLock solves this problem by providing 
 control for acquiring and releasing lock, which means you can acquire lock in method A and can release in method B, 
-if they both needs to be locked in same object lock. Though this could be risky as compiler will neither check nor warn 
+if they both needs to be locked in same object lock. Though this could be risky as compiler will neither check or warn 
 you about any accidental leak of locks. Which means, this can potentially block other threads, which are waiting for 
 same lock.
 
