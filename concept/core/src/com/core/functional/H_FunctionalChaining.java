@@ -10,8 +10,8 @@ import java.util.function.Function;
 public class H_FunctionalChaining {
 
     public static void main(String[] args) {
-        nestedConsumerExample();
-        //nestedFunctionExample();
+        //nestedConsumerExample();
+        nestedFunctionExample();
     }
 
     private static void nestedConsumerExample() {
