@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Sunil If another thread interrupt the thread which is waiting on barrier it will throw
+ * If another thread interrupt the thread which is waiting on barrier it will throw
  * BrokernBarrierException as shown below:
  */
 public class CyclicBarrierApp {
