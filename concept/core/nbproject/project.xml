@@ -6,8 +6,8 @@
             <name>core</name>
             <minimum-ant-version>1.6.5</minimum-ant-version>
             <source-roots>
+                <root id="src.src3.dir" name="Datastructure"/>
                 <root id="src.src2.dir" name="Design Pattern"/>
-                <root id="src.datastructure.dir" name="Datastructure"/>
                 <root id="src.dir"/>
             </source-roots>
             <test-roots>
