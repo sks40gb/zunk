@@ -9,83 +9,76 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Sunil
- * A semaphore controls access to a shared resource through the use of a counter. If the counter is greater than zero,
- * then access is allowed. If it is zero, then access is denied. What the counter is counting are permits that allow 
- * access to the shared resource. Thus, to access the resource, a thread must be granted a permit from the semaphore.
+ * @author Sunil A semaphore controls access to a shared resource through the use of a counter. If the counter is
+ * greater than zero, then access is allowed. If it is zero, then access is denied. What the counter is counting are
+ * permits that allow access to the shared resource. Thus, to access the resource, a thread must be granted a permit
+ * from the semaphore.
  */
 public class SemaphoreApp {
+// max 2 people
 
-    public static void main(String[] args) throws InterruptedException {
-//        java.util.concurrent.ExecutorService
-        System.out.println("start");
-        ExecutorService executorService = Executors.newCachedThreadPool();
-        for (int i = 0; i < 10; i++) {
-            executorService.execute(new Runnable() {
+    static Semaphore semaphore = new Semaphore(2);
 
-                @Override
-                public void run() {
-                    Connection connection = Connection.getConnection();
-                    try {
-                        connection.execute();
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(SemaphoreApp.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            });
+    static class MyATMThread extends Thread {
+
+        String name = "";
+
+        MyATMThread(String name) {
+            this.name = name;
         }
-        executorService.shutdown();
-        executorService.awaitTermination(4, TimeUnit.DAYS);
-        System.out.println("shutdown");
 
-    }
-}
+        public void run() {
 
-class Connection {
+            try {
 
-    private volatile int count = 3;
-    private Semaphore semaphore = new Semaphore(3);
-    private static Connection connection;
+                System.out.println(name + " : acquiring lock...");
+                System.out.println(name + " : available Semaphore permits now: "
+                        + semaphore.availablePermits());
 
-    private Connection() {
-    }
+                semaphore.acquire();
+                System.out.println(name + " : got the permit!");
 
-    public static Connection getConnection() {
-        if (connection != null) {
-            return connection;
-        } else {
-            synchronized (Connection.class) {
-                if (connection == null) {
-                    connection = new Connection();
+                try {
+                    System.out.println(name + " : is performing operation "
+                            + ", available Semaphore permits : "
+                            + semaphore.availablePermits());
+
+                    // sleep 1 second
+                    Thread.sleep(5000);
+
+                } finally {
+
+                    // calling release() after a successful acquire()
+                    System.out.println(name + " : releasing lock...");
+                    semaphore.release();
+                    System.out.println(name + " : available Semaphore permits now: "
+                            + semaphore.availablePermits());
+
                 }
+
+            } catch (InterruptedException e) {
+
+                e.printStackTrace();
+
             }
+
         }
-        return connection;
+
     }
 
-    public void execute() throws InterruptedException {
-        semaphore.acquire();
-        connect();
-        doJob();
-        disconnect();
-        semaphore.release();
-    }
+    public static void main(String[] args) {
 
-    private void connect() throws InterruptedException {
-        synchronized (this) {
-            count++;
-            System.out.println("CONNECT " + Thread.currentThread().getName() + " : " + count);
-        }
-    }
+        System.out.println("Total available Semaphore permits : "
+                + semaphore.availablePermits());
 
-    private void disconnect() {
-        synchronized (this) {
-            count--;
-            System.out.println("DISCONNECT " + Thread.currentThread().getName() + " : " + count);
-        }
-    }
+        MyATMThread t1 = new MyATMThread("A");
+        t1.start();
 
-    private void doJob() throws InterruptedException {
-        Thread.sleep(4000);
+        MyATMThread t2 = new MyATMThread("B");
+        t2.start();
+
+        MyATMThread t3 = new MyATMThread("C");
+        t3.start();
+
     }
 }

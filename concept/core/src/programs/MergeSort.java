@@ -1,5 +1,5 @@
 
-package com.datastructure.a;
+package programs;
 
 /**
  *

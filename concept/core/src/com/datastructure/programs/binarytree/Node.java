@@ -17,5 +17,9 @@ public class Node<T> {
     public String toString() {
         return "Node{" + "data=" + data + '}';
     }
+    
+    public boolean isLeaf(){
+        return left == null && right == null;
+    }
 
 }
