@@ -23,6 +23,12 @@ Mapping
                   )
     	private Set<Role> roles = new HashSet<Role>(); 
 
+        Map
+        ------------------
+        @OneToMany(mappedBy = "role")
+        @MapKey(name = "roleName")
+        Map<String, Role> roleMap;
+
 
 	hibernate.properties
 	--------------------
@@ -63,8 +69,6 @@ Mapping
 				GeneratedType.IDENTITY -  Identity sequencing uses special IDENTITY columns in the database to allow the database to 
                                                           automatically assign an id to the object when its row is inserted. Identity columns are
                                                           supported in many databases, such as MySQL, DB2, SQL Server, Sybase and Postgres.
-                                                          does not support IDENTITY columns but they can be simulated through using sequence objects and
-                                                          triggers.
 				GeneratedType.SEQUENCE - Sequence objects use special database objects to generate ids. Sequence objects are only
                                                           supported in some databases, such as Oracle, DB2, and Postgres. Usually, a SEQUENCE object
                                                           has a name, an INCREMENT, and other database object settings. Each time the <sequence>.NEXTVAL
@@ -117,13 +121,6 @@ Mapping
 		@EmbeddedId - if the instance variable is key type. In that case it should not have @Id or @Embedded
                               or @GeneratedType. Just add @EmbeddedId
 
-
-	Saving Collection
-	-------------------------------
-            
-            @OneToMany(mappedBy = "role")
-            @MapKey(name = "roleName")
-            Map<String, Role> roleMap;
 
 
 	Proxy, Eager and Lazy
@@ -265,6 +262,7 @@ Mapping
 
 		}
          * GenerationType.IDENTITY or GenerationType.AUTO cannot be used instead use GenerationType.TABLE
+         * It will create the table for parent class as well.
 
 
 	C) JOINED STRATEGY  - best normalized >>> @PrimaryKeyJoinColumn(name="PERSON_ID")
