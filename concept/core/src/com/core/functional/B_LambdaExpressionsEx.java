@@ -38,35 +38,34 @@ public class B_LambdaExpressionsEx {
 
     }
 
-}
+    static class Employee {
 
-class Employee {
+        private int id;
+        private String name;
+        private double salary;
 
-    private int id;
-    private String name;
-    private double salary;
+        public Employee(int id, String name, double salary) {
+            this.id = id;
+            this.name = name;
+            this.salary = salary;
+        }
 
-    public Employee(int id, String name, double salary) {
-        this.id = id;
-        this.name = name;
-        this.salary = salary;
-    }
+        public String toString() {
+            return "\nEmployee{" + "id=" + id + ", name=" + name + ", salary=" + salary + '}';
+        }
 
-    @Override
-    public String toString() {
-        return "\nEmployee{" + "id=" + id + ", name=" + name + ", salary=" + salary + '}';
-    }
+        public int getId() {
+            return id;
+        }
 
-    public int getId() {
-        return id;
-    }
+        public String getName() {
+            return name;
+        }
 
-    public String getName() {
-        return name;
-    }
+        public double getSalary() {
+            return salary;
+        }
 
-    public double getSalary() {
-        return salary;
     }
 
 }
