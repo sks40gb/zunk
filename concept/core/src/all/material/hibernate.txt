@@ -317,7 +317,7 @@ Mapping
 	----
 
 	Query query = session.createQuery("select max(id) from UserDetails);
-	List<Integer> list = (List<Intger>)query.list();  <---
+	List<Integer> list = (List<Integer>)query.list();  <---
 
 
 	Parameter Binding
@@ -345,7 +345,7 @@ Mapping
 	Named Native Query
 	---------------------------------
 	@Entity
-	@NamedNativeQuery(name="userDetails.byName", query="SELECT * FROM USER_DETAILS WHERE USER_NAME= ?", resultClass=userDetails.class);
+	@NamedNativeQuery(name="userDetails.byName", query="SELECT * FROM USER_DETAILS WHERE USER_NAME= ?", resultClass=UserDetails.class);
 	@Table
 	public class User{
 	}
@@ -357,7 +357,7 @@ Mapping
 
 	Criteria
 	-------------------------------------------
-	Problem with HQL - Changing the huge Query is big pain.
+	* Problem with HQL - Changing the huge Query is big pain.
 	Criteria criteria = session.createCriteria(UserDetails.class);
 	criteria.add(Restrictions.eq("firstName","SUN"));
 
