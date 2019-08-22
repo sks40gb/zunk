@@ -113,7 +113,7 @@ function Circle(radius) {
     this.radius = radius;
 
     this.draw = function () {
-        printWithColor(this.radius); //<-- no this keyword is used
+        printWithColor(this.radius); //<-- not this keyword is used since it is instance variable.
     };
 }
 
@@ -174,7 +174,11 @@ circle.colors;              // Getter method is called
 circle.colors = ["yellow"]; // Setter method is called
 
 
-//call vs apply
+//delete property
+
+delete circle.radius;
+
+//call vs apply vs bind
 //------------------------------------------------------------------------------------------------------------------------
 //The function .call() and .apply() are very similar in their usage except a little difference. .call() is used when 
 //the number of the function's arguments are known to the programmer, as they have to be mentioned as arguments in the 
@@ -184,6 +188,9 @@ circle.colors = ["yellow"]; // Setter method is called
 Circle.call({}, 4);     //<-- first argument decides the context this, second arguments are arguments of called function Circle.
 
 Circle.apply({}, [4]);  // functions are arguments are passed as an array. that is the only difference from the call.
+
+var newCircle = Circle.bind({}); //<-- Bind will create new function attached to the current object which can be called later.
+newCircle(4);
 
 
 
@@ -213,11 +220,6 @@ Object.values(circle);
 if ('radius' in circle) {
     console.log("Circle has the radius property or function");
 }
-
-
-//delete property
-
-delete circle.radius;
 
 
 //Closures
@@ -271,7 +273,7 @@ function Vehicle(name) {
 }
 
 function Car(name) {
-    Vehicle.call(this, name);
+    Vehicle.call(this, name);         //<-- all methods and propeties will be copied to the Car.
 }
 
 let vehicle = new Vehicle("BMW");
@@ -292,7 +294,7 @@ function Vehicle(name) {
 function Car() {
 }
 
-Car.prototype = new Vehicle("Ferrari");
+Car.prototype = new Vehicle("Ferrari");  //<-- the properties and methods will go under __proto__ not at the class.
 let car = new Car();
 
 car.print();
