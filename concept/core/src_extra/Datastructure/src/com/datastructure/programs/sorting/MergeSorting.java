@@ -1,4 +1,4 @@
-package com.datastructure.programs;
+package com.datastructure.programs.sorting;
 
 import java.util.Arrays;
 
