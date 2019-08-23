@@ -1,17 +1,17 @@
 ApplicationContext
-=============================================================================
+-----------------------------------------------------------------------------
 1. FileSystemXmlApplicationContext
 2. ClassPathXmlApplicationContext
 3. WebXmlApplicationContext
 
 
 Dependency Injection - 
-=============================================================================
+-----------------------------------------------------------------------------
 1. Contructor DI
 2. Setter DI
 
 Scope
-=============================================================================
+-----------------------------------------------------------------------------
 1. Singletone
 2. Prototype
 3. Request
@@ -19,12 +19,12 @@ Scope
 5. Global Session
 
 
-<bean id="vehicle" class="com.sun.Car" scope="singleton" init-method="init" destroy-method="destory">
-   <contructor-arg ref="wheel"/>
+<bean id-"vehicle" class-"com.sun.Car" scope-"singleton" init-method-"init" destroy-method-"destory">
+   <contructor-arg ref-"wheel"/>
 </bean>
 
 Init and Destroy methods
-=============================================================================
+-----------------------------------------------------------------------------
 InitializingBean - afterProperitesSet()
 DisposableBean   - destory()
 
@@ -38,14 +38,14 @@ DisposableBean   - destory()
 Default initialization and destroy methods:
 --------------------------------------------------
 
-<beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans
+<beans xmlns-"http://www.springframework.org/schema/beans"
+    xmlns:xsi-"http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation-"http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
-    default-init-method="init"
-    default-destroy-method="destroy">
+    default-init-method-"init"
+    default-destroy-method-"destroy">
 
-   <bean id="..." class="...">
+   <bean id-"..." class-"...">
        <!-- collaborators and configuration for this bean go here -->
    </bean>
 
@@ -53,7 +53,7 @@ Default initialization and destroy methods:
 
 
 BeanPostProcessor
-=============================================================================
+-----------------------------------------------------------------------------
 
 public class InitHelloWorld implements BeanPostProcessor {
 
@@ -76,23 +76,23 @@ public class InitHelloWorld implements BeanPostProcessor {
 
 
 Spring Bean Definition Inheritance
-=============================================================================
-<?xml version="1.0" encoding="UTF-8"?>
+-----------------------------------------------------------------------------
+<?xml version-"1.0" encoding-"UTF-8"?>
 
-<beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans
+<beans xmlns-"http://www.springframework.org/schema/beans"
+    xmlns:xsi-"http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation-"http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-   <bean id="helloWorld" class="com.tutorialspoint.HelloWorld">
-       <property name="message1" value="Hello World!"/>
-       <property name="message2" value="Hello Second World!"/>
+   <bean id-"helloWorld" class-"com.tutorialspoint.HelloWorld">
+       <property name-"message1" value-"Hello World!"/>
+       <property name-"message2" value-"Hello Second World!"/>
    </bean>
 
-   <bean id="helloIndia" class="com.tutorialspoint.HelloIndia"
-       parent="helloWorld">
-       <property name="message1" value="Hello India!"/>
-       <property name="message3" value="Namaste India!"/>
+   <bean id-"helloIndia" class-"com.tutorialspoint.HelloIndia"
+       parent-"helloWorld">
+       <property name-"message1" value-"Hello India!"/>
+       <property name-"message3" value-"Namaste India!"/>
    </bean>
 
 </beans>
@@ -101,24 +101,24 @@ Spring Bean Definition Inheritance
 
 
 Bean Definition Template
-=============================================================================
-<?xml version="1.0" encoding="UTF-8"?>
+-----------------------------------------------------------------------------
+<?xml version-"1.0" encoding-"UTF-8"?>
 
-<beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans
+<beans xmlns-"http://www.springframework.org/schema/beans"
+    xmlns:xsi-"http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation-"http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-   <bean id="beanTeamplate" abstract="true">
-       <property name="message1" value="Hello World!"/>
-       <property name="message2" value="Hello Second World!"/>
-       <property name="message3" value="Namaste India!"/>
+   <bean id-"beanTeamplate" abstract-"true">
+       <property name-"message1" value-"Hello World!"/>
+       <property name-"message2" value-"Hello Second World!"/>
+       <property name-"message3" value-"Namaste India!"/>
    </bean>
 
-   <bean id="helloIndia" class="com.tutorialspoint.HelloIndia"
-       parent="beanTeamplate">
-       <property name="message1" value="Hello India!"/>
-       <property name="message3" value="Namaste India!"/>
+   <bean id-"helloIndia" class-"com.tutorialspoint.HelloIndia"
+       parent-"beanTeamplate">
+       <property name-"message1" value-"Hello India!"/>
+       <property name-"message3" value-"Namaste India!"/>
    </bean>
 
 </beans>
@@ -126,53 +126,53 @@ Bean Definition Template
 
 
 Spring Injecting Inner Beans
-=============================================================================
- <bean id="outerBean" class="...">
-      <property name="target">
-         <bean id="innerBean" class="..."/>
+-----------------------------------------------------------------------------
+ <bean id-"outerBean" class-"...">
+      <property name-"target">
+         <bean id-"innerBean" class-"..."/>
       </property>
    </bean>
 
 
 Spring Injecting Collection
-=============================================================================
+-----------------------------------------------------------------------------
 <!-- Bean Definition to handle references and values -->
-   <bean id="..." class="...">
+   <bean id-"..." class-"...">
 
       <!-- Passing bean reference  for java.util.List -->
-      <property name="addressList">
+      <property name-"addressList">
         <list>
-           <ref bean="address1"/>
-           <ref bean="address2"/>
+           <ref bean-"address1"/>
+           <ref bean-"address2"/>
            <value>Pakistan</value>
         </list>
       </property>
 
      <!-- Passing bean reference  for java.util.Set -->
-     <property name="addressSet">
+     <property name-"addressSet">
         <set>
-           <ref bean="address1"/>
-           <ref bean="address2"/>
+           <ref bean-"address1"/>
+           <ref bean-"address2"/>
            <value>Pakistan</value>
         </set>
       </property>
 
      <!-- Passing bean reference  for java.util.Map -->
-     <property name="addressMap">
+     <property name-"addressMap">
         <map>
-           <entry key="one" value="INDIA"/>
-           <entry key ="two" value-ref="address1"/>
-           <entry key ="three" value-ref="address2"/>
+           <entry key-"one" value-"INDIA"/>
+           <entry key -"two" value-ref-"address1"/>
+           <entry key -"three" value-ref-"address2"/>
         </map>
       </property>
 
       <!-- results in a setAddressProp(java.util.Properties) call -->
-     <property name="addressProp">
+     <property name-"addressProp">
         <props>
-           <prop key="one">INDIA</prop>
-           <prop key="two">Pakistan</prop>
-           <prop key="three">USA</prop>
-           <prop key="four">USA</prop>
+           <prop key-"one">INDIA</prop>
+           <prop key-"two">Pakistan</prop>
+           <prop key-"three">USA</prop>
+           <prop key-"four">USA</prop>
         </props>
       </property>
 
@@ -180,26 +180,26 @@ Spring Injecting Collection
 
 
 Injecting null and empty string values
-=============================================================================
-<bean id="..." class="exampleBean">
-   <property name="email" value=""/>
+-----------------------------------------------------------------------------
+<bean id-"..." class-"exampleBean">
+   <property name-"email" value-""/>
 </bean>
 
-<bean id="..." class="exampleBean">
-   <property name="email"><null/></property>
+<bean id-"..." class-"exampleBean">
+   <property name-"email"><null/></property>
 </bean>
 
 
 
 Autowiring Modes
-=============================================================================
+-----------------------------------------------------------------------------
 1. byName
 2. byType
 3. constructor
 4. autodetect
 
 Limitations with autowiring:
-=============================================================================
+-----------------------------------------------------------------------------
 Overriding possibility	- You can still specify dependencies using <constructor-arg> and <property> settings which will always override autowiring.
 Primitive data types	- You cannot autowire so-called simple properties such as primitives, Strings, and Classes.
 Confusing nature	- Autowiring is less exact than explicit wiring, so if possible prefer using explict wiring.
@@ -207,7 +207,7 @@ Confusing nature	- Autowiring is less exact than explicit wiring, so if possible
 
 
 Event Handling - Every time an ApplicationEvent gets published to the ApplicationContext, that bean is notified.
-=============================================================================
+-----------------------------------------------------------------------------
 1 ContextRefreshedEvent   -  refresh() - started or initialzed
 2 ContextStartedEvent     -  start()
 3 ContextStoppedEvent     -  stop()
@@ -227,13 +227,13 @@ public class CStartEventHandler implements ApplicationListener<ContextStartedEve
 ----------------------------------
 public class MainApp {
    public static void main(String[] args) {
-      ConfigurableApplicationContext context =
+      ConfigurableApplicationContext context -
       new ClassPathXmlApplicationContext("Beans.xml");
 
       // Let us raise a start event.
       context.start();
 
-      HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
+      HelloWorld obj - (HelloWorld) context.getBean("helloWorld");
 
       obj.getMessage();
 
@@ -243,23 +243,23 @@ public class MainApp {
 }
 
 
-<beans xmlns="...">
+<beans xmlns-"...">
 
-   <bean id="helloWorld" class="com.tutorialspoint.HelloWorld">
-       <property name="message" value="Hello World!"/>
+   <bean id-"helloWorld" class-"com.tutorialspoint.HelloWorld">
+       <property name-"message" value-"Hello World!"/>
    </bean>
 
-   <bean id="cStartEventHandler"
-         class="com.tutorialspoint.CStartEventHandler"/>
+   <bean id-"cStartEventHandler"
+         class-"com.tutorialspoint.CStartEventHandler"/>
 
-   <bean id="cStopEventHandler"
-         class="com.tutorialspoint.CStopEventHandler"/>
+   <bean id-"cStopEventHandler"
+         class-"com.tutorialspoint.CStopEventHandler"/>
 
 </beans>
 
 
 Custom Events in Spring
-=============================================================================
+-----------------------------------------------------------------------------
 
 
 public class CustomEvent extends ApplicationEvent{
@@ -281,11 +281,11 @@ public class CustomEventPublisher
 
    public void setApplicationEventPublisher
               (ApplicationEventPublisher publisher){
-      this.publisher = publisher;
+      this.publisher - publisher;
    }
 
    public void publish() {
-      CustomEvent ce = new CustomEvent(this);
+      CustomEvent ce - new CustomEvent(this);
       publisher.publishEvent(ce);
    }
 }
@@ -305,10 +305,10 @@ public class CustomEventHandler
 
 public class MainApp {
    public static void main(String[] args) {
-      ConfigurableApplicationContext context =
+      ConfigurableApplicationContext context -
       new ClassPathXmlApplicationContext("Beans.xml");
 
-      CustomEventPublisher cvp =
+      CustomEventPublisher cvp -
       (CustomEventPublisher) context.getBean("customEventPublisher");
       cvp.publish();
       cvp.publish();
@@ -317,20 +317,20 @@ public class MainApp {
 
 ---------
 
-<beans xmlns="....">
+<beans xmlns-"....">
     
-   <bean id="customEventHandler"
-      class="com.tutorialspoint.CustomEventHandler"/>
+   <bean id-"customEventHandler"
+      class-"com.tutorialspoint.CustomEventHandler"/>
 
-   <bean id="customEventPublisher"
-      class="com.tutorialspoint.CustomEventPublisher"/>
+   <bean id-"customEventPublisher"
+      class-"com.tutorialspoint.CustomEventPublisher"/>
 
 </beans>
 
 
 
 AOP
-=============================================================================
+-----------------------------------------------------------------------------
 Aspect
 Join point
 Advice
@@ -352,7 +352,7 @@ public class InternetAdvice implements MethodBeforeAdvice, AfterReturningAdvice,
     private CafeOwner cafeOwner;
 
     public void setCafeOwner(CafeOwner cafeOwner) {
-        this.cafeOwner = cafeOwner;
+        this.cafeOwner - cafeOwner;
     }
 
     public CafeOwner getCafeOwner() {
@@ -383,32 +383,32 @@ public class InternetAdvice implements MethodBeforeAdvice, AfterReturningAdvice,
     }
 }
 
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="...">
+<?xml version-"1.0" encoding-"UTF-8"?>
+<beans xmlns-"...">
 
    <aop:config>
-      <aop:aspect id="log" ref="logging">
-         <aop:pointcut id="selectAll"
-         expression="execution(* com.tutorialspoint.*.*(..))"/>
-         <aop:before pointcut-ref="selectAll" method="beforeAdvice"/>
-         <aop:after pointcut-ref="selectAll" method="afterAdvice"/>
-         <aop:after-returning pointcut-ref="selectAll"
-                              returning="retVal"
-                              method="afterReturningAdvice"/>
-         <aop:after-throwing pointcut-ref="selectAll"
-                             throwing="ex"
-                             method="AfterThrowingAdvice"/>
+      <aop:aspect id-"log" ref-"logging">
+         <aop:pointcut id-"selectAll"
+         expression-"execution(* com.tutorialspoint.*.*(..))"/>
+         <aop:before pointcut-ref-"selectAll" method-"beforeAdvice"/>
+         <aop:after pointcut-ref-"selectAll" method-"afterAdvice"/>
+         <aop:after-returning pointcut-ref-"selectAll"
+                              returning-"retVal"
+                              method-"afterReturningAdvice"/>
+         <aop:after-throwing pointcut-ref-"selectAll"
+                             throwing-"ex"
+                             method-"AfterThrowingAdvice"/>
       </aop:aspect>
    </aop:config>
 
    <!-- Definition for student bean -->
-   <bean id="student" class="com.tutorialspoint.Student">
-      <property name="name"  value="Zara" />
-      <property name="age"  value="11"/>
+   <bean id-"student" class-"com.tutorialspoint.Student">
+      <property name-"name"  value-"Zara" />
+      <property name-"age"  value-"11"/>
    </bean>
 
    <!-- Definition for logging aspect -->
-   <bean id="logging" class="com.tutorialspoint.Logging"/>
+   <bean id-"logging" class-"com.tutorialspoint.Logging"/>
 
 </beans>
 --------------------
@@ -416,7 +416,7 @@ public class InternetAdvice implements MethodBeforeAdvice, AfterReturningAdvice,
 
 
 Modules
-=============================================================================
+-----------------------------------------------------------------------------
 1. Core
 2. Context
 3. AOP
