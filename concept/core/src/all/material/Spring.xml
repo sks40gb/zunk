@@ -1,3 +1,19 @@
+Spring having this much of demand because of the following 3 reasons….
+-----------------------------------------------------------------------------
+Simplicity
+Testability
+Loose Coupling
+
+Module
+-----------------------------------------------------------------------------
+1. Core
+2. Context
+3. AOP
+4. ORM
+5. DAO
+6. MVC
+7. JEE
+
 ApplicationContext
 -----------------------------------------------------------------------------
 1. FileSystemXmlApplicationContext
@@ -9,6 +25,35 @@ Dependency Injection -
 -----------------------------------------------------------------------------
 1. Contructor DI
 2. Setter DI
+
+Constructor Injection
+---------------------------------------------------------------------------------------
+<bean id="id1" class="DemoBean">
+    <constructor-arg value="myuserName"  index="0" />
+    <constructor-arg value="mypassword"  index="1" />
+</bean>
+
+Constuctor Injection by ref
+---------------------------------------------------------------------------------------
+<bean id="id1" class="DemoBean">
+    <constructor-arg ref="sb" />
+</bean>
+<bean id="sb" class="SampleBean" />
+
+Difference between setter and constructor injection
+---------------------------------------------------------------------------------------
+Setter Injection                                                                                                           Constructor Injection
+1. In Setter Injection, partial injection of dependencies can possible,
+    means if we have 3 dependencies like int, string, long, then its not necessary to inject all values if we use
+    setter injection. If you are not inject it will takes default values for those primitives
+
+2. Setter Injection will overrides the constructor injection value, provided if we write setter
+    and constructor injection for the same property [i already told regarding this, hope you remember ]
+
+3. If we have more dependencies for example 15 to 20 are there in our bean class then, in this case setter injection
+    is not recommended as we need to write almost 20 setters right, bean length will increase.
+
+4. Setter injection makes bean class object as mutable [We can change ]
 
 Scope
 -----------------------------------------------------------------------------
@@ -415,12 +460,3 @@ public class InternetAdvice implements MethodBeforeAdvice, AfterReturningAdvice,
 <aop:aspectj-autoproxy/>
 
 
-Modules
------------------------------------------------------------------------------
-1. Core
-2. Context
-3. AOP
-4. ORM
-5. DAO
-6. MVC
-7. JEE
