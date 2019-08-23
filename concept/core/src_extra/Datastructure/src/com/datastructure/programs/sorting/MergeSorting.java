@@ -1,4 +1,4 @@
-package com.datastructure.programs;
+package com.datastructure.programs.sorting;
 
 import java.util.Arrays;
 
@@ -24,46 +24,33 @@ public class MergeSorting {
     }
 
     public static void merge(int[] arr, int low, int middle, int high) {
-        int[] left = new int[middle - low + 1];
-        int[] right = new int[high - middle];
-
         int[] result = new int[high - low + 1];
         
-        //Copy to left temp array
-        for (int i = 0; i < left.length; i++) {
-            left[i] = arr[i + low];
-        }
-
-        //Copy to right temp array
-        for (int i = 0; i < right.length; i++) {
-            right[i] = arr[i + middle+1];
-        }
-
         //Copy the left and right minimum element first.
-        int leftIndex = 0;
-        int rightIndex = 0;
+        int leftIndex = low;
+        int rightIndex = middle+1;
         int resultIndex = 0;
-        while (leftIndex < left.length && rightIndex < right.length) {
-            if (left[leftIndex] < right[rightIndex]) {
-                result[resultIndex] = left[leftIndex];
+        while (leftIndex <= middle && rightIndex <= high) {
+            if (arr[leftIndex] < arr[rightIndex]) {
+                result[resultIndex] = arr[leftIndex];
                 leftIndex++;
             } else {
-                result[resultIndex] = right[rightIndex];
+                result[resultIndex] = arr[rightIndex];
                 rightIndex++;
             }
             resultIndex++;
         }
         
         //copy Left leftover item
-        while(leftIndex < left.length){
-            result[resultIndex] = left[leftIndex];
+        while(leftIndex  <= middle){
+            result[resultIndex] = arr[leftIndex];
             leftIndex++;
             resultIndex++;
         }
         
         //copy right left over items
-        while(rightIndex < right.length){
-            result[resultIndex] =right[rightIndex];
+        while(rightIndex  <= high){
+            result[resultIndex] =arr[rightIndex];
             leftIndex++;
             rightIndex++;
         }

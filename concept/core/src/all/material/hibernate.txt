@@ -1,51 +1,19 @@
-Mapping
---------------------------------------------------------------------------------------------------
-    	FileNumber.java
-	--------------------
-	@OneToMany(mappedBy = "fclFileNumber", targetEntity = NoteImpl.class)
-    	@org.hibernate.annotations.Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
-    	private List<Note> notes;
-
-
-    	Note.java
-	--------------------
-    	@ManyToOne(targetEntity = FclFileNumberImpl.class)
-        @JoinColumn(name = "fcl_file_number_id", referencedColumnName = "id")
-    	private FileNumber fclFileNumber;
-
-
-	UserImpl.java
-	--------------------
-	@ManyToMany(targetEntity = RoleImpl.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    	@JoinTable(name = "user_role",
-                   joinColumns =@JoinColumn(name = "user_id"),
-                   inverseJoinColumns = @JoinColumn(name = "role_id")
-                  )
-    	private Set<Role> roles = new HashSet<Role>(); 
-
-        Map
-        ------------------
-        @OneToMany(mappedBy = "role")
-        @MapKey(name = "roleName")
-        Map<String, Role> roleMap;
-
-
-	hibernate.properties
-	--------------------
-	hibernate.connection.url = jdbc:mysql://localhost:3306/bridgewell_production
+hibernate.properties
+------------------------
+	hibernate.connection.url = jdbc:mysql://localhost:3306/db_name
 	hibernate.connection.username = root
 	hibernate.connection.password = root
 
 	hibernate.hbm2ddl.auto= validate | update | create | create-drop
 	hibernate.show_sql=true
        
-	Setup
-	------------
+Setup
+------------------------
 	SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	Session session = factory.getCurrentSession();
 
-	Annotations
-	----------------------
+Annotations
+----------------------
 	@Entity - name - entity name and will be used while writing HQL
 	@Table  - name - table name from DB
 	@Id
@@ -57,8 +25,8 @@ Mapping
 	--
 	@Embeddable - class level - it can be embed to any class which will save the record into the same table.
 
-	Primary keys
-	-------------------------
+Primary keys
+------------------------
 	1. Natural Keys - example unique keys like email, login_id which has business logic
 	    - user will take care of this key
 	2. Surrogate key - it does not have any business significant
@@ -85,7 +53,7 @@ Mapping
 	SEQUENCE -
 		@Id
 		@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq-gen")
-		@SequenceGenerator(name="seq-gen", sequenceName="MY_SEQ_GEN", initialValue=25, allocationSize=12
+		@SequenceGenerator(name="seq-gen", sequenceName="MY_SEQ_GEN", initialValue=25, allocationSize=12)
 
 		Performance -good, as explained above, low database hit ratio and when hitting the database a sequence is very efficient
 		Portability - Not that well, it requires a database support
@@ -98,8 +66,9 @@ Mapping
 		Performance - moderate to poor.
 		Portability - Not that well.
 
-	Embedding Objects and overriding property and column name
-	----------------------------------
+
+Embedding Objects and overriding property and column name
+----------------------------------
 		@Embeddable - class level - it can be embed to any class which will save the record into the same table.
 		class Address {
 		}
@@ -123,8 +92,8 @@ Mapping
 
 
 
-	Proxy, Eager and Lazy
-    --------------------------------------------
+Proxy, Eager and Lazy
+--------------------------------------------
 		@ElementCollection(fetch=FetchType.Eager)
                 @Fetch(FetchMode.JOIN)
 		@JoinTable(name="USER_ADDRESS", @JoinColumns(@JoinColumn(name="USER_ID"))  // USER_ID is FK
@@ -137,6 +106,10 @@ Mapping
                 3. batch-size=”N” OR @BatchSize(size = 10)  = Fetching up to ‘N’ collections or entities, *Not record*.
                 4. fetch-”subselect” = Group its collection into a sub select statement.
                 http://www.mkyong.com/hibernate/hibernate-fetching-strategies-examples
+        
+
+Mapping
+------------------------------------------------------------------------------------------------------------------------
 
         One-To-One
         -------------------------------------------------
@@ -191,13 +164,28 @@ Mapping
 		@ManyToMany(mappedBy="vehicles")
 		private List<User> users;
 
+                    
+                @ManyToMany()
+                @JoinTable(
+                  name = "course_like", 
+                  joinColumns = @JoinColumn(name = "student_id"), 
+                  inverseJoinColumns = @JoinColumn(name = "course_id"))
+                 Set<Course> likedCourses;
+
 		Note : this will create one third table for many-to-many
+
+
+        Map
+        ------------------
+        @OneToMany(mappedBy = "role")
+        @MapKey(name = "roleName")
+        Map<String, Role> roleMap;
 
 
 	@NotFound
 	-----------------------------------------------
 		@NotFound(action=NotFoundAction.IGNORE ) - This is very handy when we do the work on legacy DB where 
-                there are several missing links between tables,it will ignore those cases and it will throw any exception.
+                there are several missing links between tables,it will ignore those cases and it will not throw any exception.
                 It is not JPA standard.
 
 		@ManyToOne
@@ -219,13 +207,28 @@ Mapping
 		 *PERSIST - we need to call session.persist(user) instead of session.save(user)
 
 
-	Implementing Inheritance
-	-----------------------------------------------
+Implementing Inheritance
+-----------------------------------------------
 
 	A) SINGLE TABLE STRATEGY - no normalized
 	-------------------------------------------------
 
-	@Entity
+	-Hibernate will follow *SINGLE TABLE STRATGEY* and create one single table, it will add some extra called DTYPE 
+         and other fields streeingHandle and streeingWheel.
+	-DTYPE - (Discriminator) says what is the exact class - TwoWheeler and FourWheeler
+
+	@Inheritance (stategy = InheritanceType.SINGLE_TABLE)  - is optional annotation which is applicable to the 
+         parent class being inherited.
+	*We can change discriminator name
+
+        @Entity(name="vehicle")
+        @Inheritance (stategy = InheritanceType.SINGLE_TABLE)
+        @DiscriminationColumn(name="VEHICLE_TYPE", DescriminatorType=DescriminatorType.STRING (default) or INTEGER or CHAR)
+        public class Vehicle{
+
+        }
+
+        @Entity
 	@DescriminatorValue("Bike") // it is an optional, by default it will be the class name TwoWheeler
 	public class TwoWheeler extends Vehicle{
 	  private String streeingHandle;
@@ -236,22 +239,7 @@ Mapping
 	public class FourWheeler extends Vehicle{
 	  private String streeingWheel;
 	}
-
-	-Hibernate will follow *SINGLE TABLE STRATGEY* and create one single table, it will add some extra called DTYPE 
-         and other fields streeingHandle and streeingWheel.
-	-DTYPE - (Discriminator) says what is the exact class - TwoWheeler and FourWheeler
-
-	@Inheritance (stategy = InheritanceType.SINGLE_TABLE)  - is optional annotation which is applicable to the 
-         parent class being inherited.
-	*We can change discriminator name
-
-		@Entity(name="vehicle")
-		@Inheritance (stategy = InheritanceType.SINGLE_TABLE)
-		@DiscriminationColumn(name="VEHICLE_TYPE", DescriminatorType=DescriminatorType.STRING (default) or INTEGER or CHAR)
-		public class Vehicle{
-
-		}
-
+        
 
 	B) TABLE PER CLASS - more normalized form since it does not contains extra column with NULL value.
 	-----------------------------------------------
@@ -292,8 +280,8 @@ Mapping
         @org.hibernate.annotations.Entity(selectBeforeUpdate=true)
 
 
-    HQL
-	--------------------------------------------------------------------------
+HQL
+--------------------------------------------------------------------------
 	Query query = session.createQuery("from UserDetails);
 	query.setFirstResult(5); // starts from
 	query.setMaxResult(100); // max size of result
@@ -361,7 +349,7 @@ Mapping
 	Criteria criteria = session.createCriteria(UserDetails.class);
 	criteria.add(Restrictions.eq("firstName","SUN"));
 
-	criteria.add(Restrications.or(Restrication.eq("firstName","SUN"), Restircations.between("id",1,10)));
+	criteria.add(Restrications.or(Restrications.eq("firstName","SUN"), Restircations.between("id",1,10)));
 
 
 	Projections
