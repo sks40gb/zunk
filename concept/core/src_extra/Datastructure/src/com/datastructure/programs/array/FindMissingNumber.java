@@ -10,8 +10,8 @@ public class FindMissingNumber {
         int[] arr = {1, 2, 3, 4, 6, 7, 8, 9, 10}; //5
         System.out.println(findOneMissingNumber(arr, 10));
 
-        int[] arr2 = {1, 2, 3, 4, 5, 6, 7, 9, 10, 12}; //4 and 8 is missing
-        int n = arr.length + 2;
+        int[] arr2 = {1, 2, 3, 4, 5, 6, 7, 9, 10, 12}; //8 and 11 is missing
+        int n = arr2.length + 2;
         findTwoMissingNumbers(arr2, n);
     }
 
@@ -28,6 +28,7 @@ public class FindMissingNumber {
         int[] missing = new int[2];
         //Actual sum
         int expectedSum = n * (n + 1) / 2;
+        System.out.println("e " + expectedSum + " : n " + n);
         //Current sum with missing items
         int sum = getSum(arr);
         //Avarage of missing items
