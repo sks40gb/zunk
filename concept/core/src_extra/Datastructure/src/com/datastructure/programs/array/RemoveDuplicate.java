@@ -7,20 +7,23 @@ package com.datastructure.programs.array;
 public class RemoveDuplicate {
 
     public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 4, 4, 4, 5,5,5,5};
-        new RemoveDuplicate().removeDuplicate(arr);
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
+        int arr[] = {10, 20, 20, 30, 30, 40, 50, 50, 60, 60, 60, 60, 60, 70, 70, 70, 70, 70};
+        int length = removeDuplicateElements(arr);
+        for (int i = 0; i < length; i++) {
+            System.out.print(arr[i] + " ");
         }
+    }
+    public static int removeDuplicateElements(int arr[]) {
+        int currentIndex = 0;
+        for (int i = 0; i < arr.length-1; i++) {
+            if(arr[i] != arr[i+1]){
+                arr[currentIndex] = arr[i];
+                currentIndex++;
+            }
+            
+        }
+        arr[currentIndex] = arr[arr.length -1];
+        return currentIndex + 1;
     }
 
-    public void removeDuplicate(int[] arr) {
-        int pIndex = 1;
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i] != arr[i - 1]) {
-                arr[pIndex] = arr[i];
-                pIndex++;
-            }
-        }
-    }
 }
