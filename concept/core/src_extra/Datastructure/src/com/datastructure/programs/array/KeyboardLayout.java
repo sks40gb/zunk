@@ -6,9 +6,13 @@ import java.util.Map;
 
 /**
 
-Imagine you have a special keyboard with all keys in a single row. The layout of characters on a keyboard is denoted by a string S1 of length 26. S1 is indexed from 0 to 25. Initially, your finger is at index 0. To type a character, you have to move your finger to the index of the desired character. The time taken to move your finger from index i to index j is |j-i|, where || denotes absolute value.
+Imagine you have a special keyboard with all keys in a single row. The layout of characters on a keyboard is denoted by 
+* a string S1 of length 26. S1 is indexed from 0 to 25. Initially, your finger is at index 0. To type a character, 
+* you have to move your finger to the index of the desired character. The time taken to move your finger from index i 
+* to index j is |j-i|, where || denotes absolute value.
 
-Write a function solution(), that given a string S1 that describes the keyboard layout and a string S2, returns an integer denoting the time taken to type string S2.
+Write a function solution(), that given a string S1 that describes the keyboard layout and a string S2, 
+* returns an integer denoting the time taken to type string S2.
 
 Examples:
 
