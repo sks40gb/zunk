@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class ReentranctLockApp {
 
     public static void main(String[] args) throws InterruptedException {
-        final Processor_ processor = new Processor_();
+        final Processor processor = new Processor();
         System.out.println("Main is starting.");
         Thread t1 = new Thread(new Runnable() {
 
@@ -70,7 +70,6 @@ public class ReentranctLockApp {
         t3.start();
 //        t4.start();
 
-
         t1.join();
         t2.join();
         t3.join();
@@ -78,48 +77,46 @@ public class ReentranctLockApp {
         System.out.println("Main is existing.");
     }
 
-}
+   static class Processor {
 
+        private final static int MAX_SIZE = 10;
+        private volatile List<Integer> list = new ArrayList(MAX_SIZE);
+        private int count;
+        private Random random = new Random();
+        Lock lock = new ReentrantLock();
+        Condition condition = lock.newCondition();
 
-class Processor_ {
-
-    private final static int MAX_SIZE = 10;
-    private volatile List<Integer> list = new ArrayList(MAX_SIZE);
-    private int count;
-    private Random random = new Random();
-    Lock lock = new ReentrantLock();
-    Condition condition = lock.newCondition();
-
-    public void produce() throws InterruptedException {
-        while (true) {
-            try {
-                lock.lock();
-                if (list.size() == MAX_SIZE) {
-                    condition.await();
+        public void produce() throws InterruptedException {
+            while (true) {
+                try {
+                    lock.lock();
+                    if (list.size() == MAX_SIZE) {
+                        condition.await();
+                    }
+                    list.add(count++);
+                    System.out.println("Adding by Producer : " + count + " TOTAL ZISE : " + list.size());
+                } finally {
+                    condition.signalAll();
+                    lock.unlock();
                 }
-                list.add(count++);
-                System.out.println("Adding by Producer : " + count + " TOTAL ZISE : " + list.size());
-            } finally {
-                condition.signalAll();
-                lock.unlock();
+                Thread.sleep(random.nextInt(10000));
             }
-            Thread.sleep(random.nextInt(10000));
+
         }
 
-    }
-
-    public void consume() throws InterruptedException {
-        while (true) {
-            lock.lock();
-            //System.out.println("LIST SIZE >>>>>>>>>>>>>  : " + list.size());
-            if (list.isEmpty()) {
-                condition.await();
-            } else {
-                System.out.println("Removing by " + Thread.currentThread().getName() + " --- " + +list.get(0));
-                list.remove(0);
-                condition.signalAll();
-                lock.unlock();
-                Thread.sleep(5000);
+        public void consume() throws InterruptedException {
+            while (true) {
+                lock.lock();
+                //System.out.println("LIST SIZE >>>>>>>>>>>>>  : " + list.size());
+                if (list.isEmpty()) {
+                    condition.await();
+                } else {
+                    System.out.println("Removing by " + Thread.currentThread().getName() + " --- " + +list.get(0));
+                    list.remove(0);
+                    condition.signalAll();
+                    lock.unlock();
+                    Thread.sleep(5000);
+                }
             }
         }
     }

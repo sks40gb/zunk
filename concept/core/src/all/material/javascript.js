@@ -48,14 +48,10 @@ shift()   //-> remove the item the starting of array
 
 //What is the 'Strict' mode in JavaScript and how can it be enabled?
 //------------------------------------------------------------------------------------------------------------------------
-//Strict Mode adds certain compulsions to JavaScript. Under the strict mode, JavaScript shows errors for a piece of codes, which did not show an error before, but might be problematic and potentially unsafe. Strict mode also solves some mistakes that hamper the JavaScript engines to work efficiently.
+//The purpose of "use strict" is to indicate that the code should be executed in "strict mode".
 
-//Strict mode can be enabled by adding the string literal "use strict" above the file. This can be illustrated by the given example:
-
-function myfunction() {
-    "use strict";
-    var v = "This is a strict mode function";
-}
+"use strict";
+x = 3.14;       // This will cause an error because x is not declared
 
 
 //Explain window.onload and onDocumentReady?
@@ -166,7 +162,18 @@ function Circle(radius) {
             colors = value;
         }
     });
-
+    
+    Object.defineProperties(this, {
+        'property1': {
+          value: true,
+          writable: true
+        },
+        'property2': {
+          value: 'Hello',
+          writable: false
+        }
+      });
+      
 }
 
 var circle = new Circle(5);
@@ -298,3 +305,27 @@ Car.prototype = new Vehicle("Ferrari");  //<-- the properties and methods will g
 let car = new Car();
 
 car.print();
+
+
+/**
+ * Creating Singleton 
+ * ---------------------------------------------------------------------------------------------------------------------
+ */
+
+//Method 1
+var bike = new function(name){
+	this.name = name;
+	this.print = function(){
+		console.log("This is bike ", this.name);
+	};
+}("KTM");
+
+
+//Method 2
+var bike = {
+    name : "KTM",
+    print : function(){
+        console.log("This is bike ", this.name);
+    }
+    
+};
