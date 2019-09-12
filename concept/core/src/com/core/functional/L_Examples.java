@@ -17,7 +17,7 @@ public class L_Examples {
         list.add(new Employee(2, "David", "Manager"));
         list.add(new Employee(3, "Kim", "Admin"));
         list.add(new Employee(4, "Drew", "Admin"));
-
+        
         groupingBy(list);
         collectAsList(list);
 
