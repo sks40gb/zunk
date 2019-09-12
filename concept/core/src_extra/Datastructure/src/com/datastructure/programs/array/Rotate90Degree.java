@@ -26,21 +26,21 @@ public class Rotate90Degree {
     }
 
     public static void rotateMatrix(String[][] matrix) {
-        String[][] result = new String[3][3];
-        for(int i=0; i<matrix.length; i++){
-            int rowIndex = matrix.length - i -1;
-            for(int j=0; j<matrix[rowIndex].length; j++){
-                result[j][i] = matrix[rowIndex][j];  
+        String[][] rotation = new String[3][3];
+
+        for (int row = matrix.length - 1; row >= 0; row--) {
+            for (int col = 0; col < matrix[row].length; col++) {
+                String v = matrix[row][col];
+                rotation[col][2 - row] = v;
             }
-        }
-        for (int i = 0; i < result.length; i++) {
-            String[] strings = result[i];
-            for (int j = 0; j < strings.length; j++) {
-                System.out.print(result[i][j]);
-            }
-            System.out.println("");
-            
         }
 
+        for (int row = 0; row < rotation.length; row++) {
+            for (int col = 0; col < rotation[row].length; col++) {
+                System.out.print(rotation[row][col]);
+            }
+            System.out.println("");
+
+        }
     }
 }
