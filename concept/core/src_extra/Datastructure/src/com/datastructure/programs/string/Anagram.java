@@ -19,7 +19,7 @@ public class Anagram {
     }
     
     public static boolean isAnagram(String s1,String s2){
-        if(s1 == null || s2 == null && s1.length() != s2.length()){
+        if(s1 == null || s2 == null || (s1.length() != s2.length())){
             return false;
         }else{
             char[] arr1 = s1.toCharArray();
