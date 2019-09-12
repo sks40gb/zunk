@@ -16,14 +16,15 @@ public class FindDuplicate {
 
     // Function to print duplicates 
     void printRepeating(int arr[]) {
-        System.out.println("The repeating elements are : ");
         for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i] + " : " + Math.abs(arr[i]));
-            if (arr[Math.abs(arr[i])] >= 0) {
-                arr[Math.abs(arr[i])] = -arr[Math.abs(arr[i])];
+
+            int index = Math.abs(arr[i]);
+            if (arr[index] < 0) {
+                System.out.println("Duplicate found " + Math.abs(arr[i]));
             } else {
-                System.out.print(Math.abs(arr[i]) + " ");
+                arr[index] = -arr[index];
             }
+
         }
     }
 
