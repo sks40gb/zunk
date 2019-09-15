@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
+ * @NonTricky
  * @author sunil
  */
 public class FirstNonRepeatedCharacter {
