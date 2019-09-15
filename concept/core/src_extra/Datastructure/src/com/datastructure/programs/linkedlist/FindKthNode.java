@@ -15,17 +15,16 @@ public class FindKthNode {
         list.add(5);
         System.out.println(getNode(list.head, 2));
     }
-    
-    private static Node getNode(Node head, int k){
+
+    private static Node getNode(Node head, int k) {
         Node slow = head;
         Node fast = head;
-        int start = 1;
-        while(fast != null){
+        for (int i = 0; i < k - 1; i++) {
             fast = fast.next;
-            start++;
-            if(start > k){
-                slow = slow.next;
-            }
+        }
+        while (fast.next != null) {
+            fast = fast.next;
+            slow = slow.next;
         }
         return slow;
     }
