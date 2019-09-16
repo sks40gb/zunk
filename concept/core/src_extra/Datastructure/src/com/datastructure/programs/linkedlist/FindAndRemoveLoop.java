@@ -17,7 +17,7 @@ public class FindAndRemoveLoop {
         node3.next = node4;
         node4.next = node5;
         node5.next = node3; //loop here
-        
+
         System.out.println("Is looped " + isLoop(node1));
         System.out.println("Starting Point of Loop " + findLoopStartingPoint(node1));
     }
@@ -25,29 +25,28 @@ public class FindAndRemoveLoop {
     public static boolean isLoop(Node node) {
         Node slow = node;
         Node fast = node;
-        while(fast!= null && fast.next != null){
+        while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
-            if(slow == fast){
+            if (slow == fast) {
                 return true;
             }
         }
         return false;
     }
-    
-    public static Node findLoopStartingPoint(Node head){
+
+    public static Node findLoopStartingPoint(Node head) {
         Node fast = head;
         Node slow = head;
-        while(fast != null && fast.next != null){
+        while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
-            if(slow == fast){
+            if (slow == fast) {
                 break;
             }
         }
-        
         slow = head;
-        while(slow != fast){
+        while (slow != fast) {
             slow = slow.next;
             fast = fast.next;
         }
