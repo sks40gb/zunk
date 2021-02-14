@@ -12,11 +12,11 @@ package com.sun.designpattern.creational.abstractfactory;
 public class AbstractFactoryApp {
 
     public static void main(String[] args) {
-        Application application = new Application(createOsSpecificFactory());
+        int sys = 1; //readFromConfigFile("OS_TYPE");
+        Application application = new Application(createOsSpecificFactory(sys));
     }
 
-    static GUIFactory createOsSpecificFactory() {
-        int sys = 1; //readFromConfigFile("OS_TYPE");
+    static GUIFactory createOsSpecificFactory(int sys) {
         if (sys == 0) {
             return new WinFactory();
         } else {

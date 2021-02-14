@@ -7,7 +7,8 @@ public class SingletonApp {
     }
 
     /**
-     * SingletonHolder is loaded on the first execution of NewSingleton.getInstance() or the first access to
+     * SingletonHolder is loaded on the first execution of
+     * NewSingleton.getInstance() or the first access to
      * SingletonHolder.INSTANCE, not before.
      */
     private static class SingletonHolder {
@@ -21,10 +22,11 @@ public class SingletonApp {
 }
 
 /**
- * The INSTANCE is created as soon as the NewSingleton class is initialized. That might even be long before
- * getInstance() is called. It might be (for example) when some static method of the class is used
+ * The INSTANCE is created as soon as the NewSingleton class is initialized.
+ * That might even be long before
  *
- * @author sunil
+ * getInstance() is called. It might be (for example) when some static
+ * method of the class is used
  */
 class TraditionalSingleton {
 

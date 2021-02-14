@@ -4,10 +4,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * 1) too many constructors to maintain. 2) error prone because many fields has same type e.g. sugar and and butter are
- * in cups so instead of 2 cup sugar if you pass 2 cup butter, your compiler will not complain but will get a buttery
- * cake with almost no sugar with high cost of wasting butter. 4) Delegate the object creation to a Builder object
- * instead of creating the objects directly.
+  1) too many constructors to maintain.
+  2) error prone because many fields
+    has same type e.g. sugar and and butter are  in cups so instead of 2
+    cup sugar if you pass 2 cup butter, your compiler will not complain
+    but will get a buttery cake with almost no sugar with high cost of
+ wasting butter.
+  3) Delegate the object creation to a Builder object instead of
+     creating the objects directly.
  */
 public class BuilderApp {
 
@@ -52,14 +56,9 @@ class Email {
     public void send() {
     }
 
-    @Override
-    public String toString() {
-        return "Email{" + "title=" + title + ", recipients=" + recipients + ", message=" + message + '}';
-    }
-    
-
-    //Make the email creation more strict so that creating an email would only be possible through the EmailBuilder.
-    //That is EmailBUilder is an inner class.
+    // Make the email creation more strict so that creating an email would only
+    // be possible through the EmailBuilder.
+    // That is EmailBUilder is an inner class.
     public static class EmailBuilder {
 
         private Set<String> recipients = new HashSet();

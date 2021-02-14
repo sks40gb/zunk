@@ -4,9 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Prototype allows us to hide the complexity of making new instances from the client. The concept is to copy an
- * existing object rather than creating a new instance from scratch, something that may include costly operations.. /**
- * Client Class
+ * Prototype allows us to hide the complexity of making new
+ * instances from the client. The concept is to copy an existing
+ * object rather than creating a new instance from scratch,
+ * something that may include costly operations.
  */
 public class PrototypeApp {
 
@@ -62,7 +63,8 @@ class BlackColor extends Color {
 
 class ColorStore {
 
-    private static final Map<String, Color> colorMap = new HashMap<String, Color>();
+    private static final Map<String, Color> colorMap =
+        new HashMap<String, Color>();
 
     static {
         colorMap.put("blue", new BlueColor());
