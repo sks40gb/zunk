@@ -24,12 +24,12 @@ class ProxyApp {
 
 interface Image {
 
-    public abstract void displayImage();
+    void displayImage();
 }
 
 class ProxyImage implements Image {
 
-    private String filename;
+    private final String filename;
     private RealImage image;
 
     public ProxyImage(String filename) {
@@ -46,7 +46,7 @@ class ProxyImage implements Image {
 
 class RealImage implements Image {
 
-    private String filename;
+    private final String filename;
 
     public RealImage(String filename) {
         this.filename = filename;

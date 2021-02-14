@@ -75,7 +75,8 @@ class OracleHelper {
 
 class HelperFacade {
 
-    public static void generateReport(DBTypes dbType, ReportTypes reportType, String tableName) {
+    public static void generateReport(DBTypes dbType, ReportTypes reportType,
+                                      String tableName) {
         Connection con = null;
         switch (dbType) {
             case MYSQL:

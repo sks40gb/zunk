@@ -1,6 +1,6 @@
 package com.sun.designpattern.structural.adapter;
 
-public class AdaptarApp {
+public class AdaptorApp {
 
     public static void main(String[] args) {
         Player player = new Player();
@@ -10,14 +10,14 @@ public class AdaptarApp {
         player.play(mp3);
 
         // Play video
-        Music video = new MusicAdaptar(new Video());
+        Music video = new MusicAdaptor(new Video());
         player.play(video);
     }
 }
 
 interface Music {
 
-    public void listen();
+    void listen();
 }
 
 class MP3 implements Music {
@@ -41,11 +41,11 @@ class Video {
     }
 }
 
-class MusicAdaptar implements Music {
+class MusicAdaptor implements Music {
 
     private Video video;
 
-    MusicAdaptar(Video video) {
+    MusicAdaptor(Video video) {
         this.video = video;
     }
 

@@ -10,7 +10,7 @@ import java.util.HashMap;
  */
 class FlyweightApp {
 
-    private static final String colors[] = {"Red", "Green", "Blue", "White", "Black"};
+    private static final String[] colors = {"Red", "Green", "Blue", "White", "Black"};
 
     public static void main(String[] args) {
 
@@ -67,13 +67,15 @@ class Circle implements Shape {
 
     @Override
     public void draw() {
-        System.out.println("Circle: Draw() [Color : " + color + ", x : " + x + ", y :" + y + ", radius :" + radius);
+        System.out.println("Circle: Draw() [Color : " + color
+            + ", x : " + x + ", y :" + y
+            + ", radius :" + radius);
     }
 }
 
 class ShapeFactory {
 
-    private static final HashMap<String, Shape> circleMap = new HashMap();
+    private static final HashMap<String, Shape> circleMap = new HashMap<>();
 
     public static Shape getCircle(String color) {
         Circle circle = (Circle) circleMap.get(color);

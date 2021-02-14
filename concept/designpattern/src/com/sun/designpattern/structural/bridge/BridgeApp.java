@@ -1,15 +1,17 @@
 package com.sun.designpattern.structural.bridge;
 
 /**
- * Bridge is used when we need to decouple an abstraction from its implementation so that the two can vary
+ *
+ * Bridge is used when we need to decouple an abstraction
+ * from its implementation so that the two can vary
  * independently.
  *
  * Bridge is a synonym for the "handle/body" idiom
  *
- * A household switch controlling lights, ceiling fans, etc. is an example of the Bridge.
+ * A household switch controlling lights, ceiling fans, etc.
+ * is an example of the Bridge.
  *
- * @author sunsingh
- */
+ * */
 public class BridgeApp {
 
     public static void main(String[] args) {
