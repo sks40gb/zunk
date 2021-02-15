@@ -11,8 +11,7 @@ import java.util.List;
  * 
  * Air traffic controller is a great example of mediator pattern where the airport control room works as a 
  * mediator for communication between different flights. 
- * 
- * @author sunsingh
+ *
  */
 public class MediatorApp {
 
@@ -34,14 +33,14 @@ public class MediatorApp {
 
 interface ChatMediator {
 
-    public void sendMessage(String msg, User user);
+    void sendMessage(String msg, User user);
 
-    public void addUser(User user);
+    void addUser(User user);
 }
 
 class ChatMediatorImpl implements ChatMediator {
 
-    private List<User> users;
+    private final List<User> users;
 
     public ChatMediatorImpl() {
         this.users = new ArrayList<>();

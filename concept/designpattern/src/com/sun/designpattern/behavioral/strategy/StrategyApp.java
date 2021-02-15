@@ -7,7 +7,7 @@ public class StrategyApp {
         Context context = new Context(new OperationAdd());
         System.out.println("10 + 5 = " + context.executeStrategy(10, 5));
 
-        context = new Context(new OperationSubstract());
+        context = new Context(new OperationSubtract());
         System.out.println("10 - 5 = " + context.executeStrategy(10, 5));
 
         context = new Context(new OperationMultiply());
@@ -17,7 +17,7 @@ public class StrategyApp {
 
 interface Strategy {
 
-    public int doOperation(int num1, int num2);
+    int doOperation(int num1, int num2);
 }
 
 class OperationAdd implements Strategy {
@@ -27,8 +27,7 @@ class OperationAdd implements Strategy {
         return num1 + num2;
     }
 }
-
-class OperationSubstract implements Strategy {
+class OperationSubtract implements Strategy {
 
     @Override
     public int doOperation(int num1, int num2) {
@@ -46,7 +45,7 @@ class OperationMultiply implements Strategy {
 
 class Context {
 
-    private Strategy strategy;
+    private final Strategy strategy;
 
     public Context(Strategy strategy) {
         this.strategy = strategy;

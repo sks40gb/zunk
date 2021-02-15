@@ -2,7 +2,7 @@ package com.sun.designpattern.behavioral.interpreter;
 
 /**
  * Interpreter pattern provides a way to evaluate language grammar or expression
- * 
+ *
  * @author Sunil
  */
 public class InterpreterApp {
@@ -10,7 +10,8 @@ public class InterpreterApp {
     public static boolean precedence(char a, char b) {
         String high = "*/", low = "+-";
         if (a == '(') {
-            return false;     // if (a == '(' && b == ')') return false;
+            return false;
+            // if (a == '(' && b == ')') return false;
         }
         if (a == ')' && b == '(') {
             System.out.println(")-(");
@@ -46,7 +47,7 @@ public class InterpreterApp {
                 out.append(in.charAt(i));
             } else {
                 while (!(empty = opstk.isEmpty())
-                        && precedence(topsym = opstk.pop(), in.charAt(i))) {
+                    && precedence(topsym = opstk.pop(), in.charAt(i))) {
                     out.append(topsym);
                 }
                 if (!empty) {
@@ -98,57 +99,58 @@ public class InterpreterApp {
         System.out.println("Evaluate   : " + interpreter.evaluate(postfix));
     }
 
-    class StkChar {
+}
 
-        private final char[] arr = new char[9];
-        private int sp = -1;
+class StkChar {
 
-        void push(char ch) {
-            if (!isFull()) {
-                arr[++sp] = ch;
-            }
-        }
+    private final char[] arr = new char[9];
+    private int sp = -1;
 
-        char pop() {
-            if (isEmpty()) {
-                return '\0';
-            }
-            return arr[sp--];
-        }
-
-        boolean isFull() {
-            return sp == arr.length - 1;
-        }
-
-        boolean isEmpty() {
-            return sp == -1;
+    void push(char ch) {
+        if (!isFull()) {
+            arr[++sp] = ch;
         }
     }
 
-    class StkInt {
-
-        private final int[] arr = new int[9];
-        private int sp = -1;
-
-        void push(int ch) {
-            if (!isFull()) {
-                arr[++sp] = ch;
-            }
+    char pop() {
+        if (isEmpty()) {
+            return '\0';
         }
+        return arr[sp--];
+    }
 
-        int pop() {
-            if (isEmpty()) {
-                return 0;
-            }
-            return arr[sp--];
-        }
+    boolean isFull() {
+        return sp == arr.length - 1;
+    }
 
-        boolean isFull() {
-            return sp == arr.length - 1;
-        }
+    boolean isEmpty() {
+        return sp == -1;
+    }
+}
 
-        boolean isEmpty() {
-            return sp == -1;
+class StkInt {
+
+    private final int[] arr = new int[9];
+    private int sp = -1;
+
+    void push(int ch) {
+        if (!isFull()) {
+            arr[++sp] = ch;
         }
+    }
+
+    int pop() {
+        if (isEmpty()) {
+            return 0;
+        }
+        return arr[sp--];
+    }
+
+    boolean isFull() {
+        return sp == arr.length - 1;
+    }
+
+    boolean isEmpty() {
+        return sp == -1;
     }
 }

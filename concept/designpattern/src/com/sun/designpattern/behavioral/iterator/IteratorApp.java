@@ -10,7 +10,7 @@ public class IteratorApp {
 
     public static void main(String[] args) {
         String[] colors = {"Red", "Green", "Blue"};
-        BCollection<String> coll = new ColorCollection<>(colors);
+        Collection<String> coll = new ColorCollection<>(colors);
         Iterator<String> iterator = coll.iterator();
         while (iterator.hasNext()) {
             System.out.println(iterator.getNext());
@@ -20,28 +20,24 @@ public class IteratorApp {
 
 interface Iterator<T> {
 
-    public boolean hasNext();
+    boolean hasNext();
 
-    public T getNext();
+    T getNext();
 
-    public void remove();
+    void remove();
 }
 
-interface BCollection<T> {
+interface Collection<T> {
 
-    public Iterator<T> iterator();
+    Iterator<T> iterator();
 }
 
-class ColorCollection<T> implements BCollection<T> {
+class ColorCollection<T> implements Collection<T> {
 
-    private T data[];
+    private final T[] data;
 
     public ColorCollection(T[] data) {
         this.data = data;
-    }
-
-    public ColorCollection() {
-
     }
 
     @Override
@@ -62,7 +58,8 @@ class ColorCollection<T> implements BCollection<T> {
 
             @Override
             public void remove() {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                throw new UnsupportedOperationException(
+                    "Not supported yet.");
             }
         };         
     }

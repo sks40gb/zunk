@@ -3,9 +3,9 @@ package com.sun.designpattern.behavioral.visitor;
 import java.text.DecimalFormat;
 
 /**
- * Note : Its moves the functionality to external class Visitors. If any change is required concrete class will not be
+ * Note : Its moves the functionality to external class Visitors.
+ * If any change is required concrete class will not be
  * impacted instead Visitor class has to be modified.
- * @author sunsingh
  */
 public class VisitorApp {
 
@@ -31,18 +31,16 @@ public class VisitorApp {
     }
 }
 
-// The visitor pattern is used when you have to perform
-// the same action on many objects of different types
 interface Visitor {
 
-    // Created to automatically use the right 
+    // Created to automatically use the right
     // code based on the Object sent
     // Method Overloading
-    public double visit(Liquor liquorItem);
+    double visit(Liquor liquorItem);
 
-    public double visit(Tobacco tobaccoItem);
+    double visit(Tobacco tobaccoItem);
 
-    public double visit(Necessity necessityItem);
+    double visit(Necessity necessityItem);
 
 }
 
@@ -62,14 +60,16 @@ class TaxVisitor implements Visitor {
     // as a liquor item
     public double visit(Liquor liquorItem) {
         System.out.println("Liquor Item: Price with Tax");
-        return Double.parseDouble(df.format((liquorItem.getPrice() * .18) + liquorItem.getPrice()));
+        return Double.parseDouble(df.format((liquorItem.getPrice() * .18)
+            + liquorItem.getPrice()));
     }
 
     // Calculates total price based on this being taxed
     // as a tobacco item
     public double visit(Tobacco tobaccoItem) {
         System.out.println("Tobacco Item: Price with Tax");
-        return Double.parseDouble(df.format((tobaccoItem.getPrice() * .32) + tobaccoItem.getPrice()));
+        return Double.parseDouble(df.format((tobaccoItem.getPrice() * .32)
+            + tobaccoItem.getPrice()));
     }
 
     // Calculates total price based on this being taxed
@@ -83,13 +83,13 @@ class TaxVisitor implements Visitor {
 
 interface Visitable {
     
-    public double accept(Visitor visitor);
+    double accept(Visitor visitor);
 
 }
 
 class Liquor implements Visitable {
 
-    private double price;
+    private final double price;
 
     Liquor(double item) {
         price = item;
@@ -107,7 +107,7 @@ class Liquor implements Visitable {
 
 class Necessity implements Visitable {
 
-    private double price;
+    private final double price;
 
     Necessity(double item) {
         price = item;
@@ -125,7 +125,7 @@ class Necessity implements Visitable {
 
 class Tobacco implements Visitable {
 
-    private double price;
+    private final double price;
 
     Tobacco(double item) {
         price = item;
@@ -156,14 +156,16 @@ class TaxHolidayVisitor implements Visitor {
     // as a liquor item
     public double visit(Liquor liquorItem) {
         System.out.println("Liquor Item: Price with Tax");
-        return Double.parseDouble(df.format((liquorItem.getPrice() * .10) + liquorItem.getPrice()));
+        return Double.parseDouble(df.format((liquorItem.getPrice() * .10)
+            + liquorItem.getPrice()));
     }
 
     // Calculates total price based on this being taxed
     // as a tobacco item
     public double visit(Tobacco tobaccoItem) {
         System.out.println("Tobacco Item: Price with Tax");
-        return Double.parseDouble(df.format((tobaccoItem.getPrice() * .30) + tobaccoItem.getPrice()));
+        return Double.parseDouble(df.format((tobaccoItem.getPrice() * .30)
+            + tobaccoItem.getPrice()));
     }
 
     // Calculates total price based on this being taxed

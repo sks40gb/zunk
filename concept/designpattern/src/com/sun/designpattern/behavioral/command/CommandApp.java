@@ -17,13 +17,15 @@ public class CommandApp {
         Command switchDown = new FlipDownCommand(lamp);
 
         // See criticism of this model above:
-        // The switch itself should not be aware of lamp details (switchUp, switchDown)
+        // The switch itself should not be aware of lamp details
+        // (switchUp, switchDown)
         // either directly or indirectly
         Switch _switch = new Switch(switchUp, switchDown);
         System.out.println("Enter ON of OFF.");
         while (true) {
             try {
-                String input = new BufferedReader(new InputStreamReader(System.in)).readLine();
+                String input = new BufferedReader(
+                    new InputStreamReader(System.in)).readLine();
                 if (input.equalsIgnoreCase("ON")) {
                     _switch.flipUp();
                 } else if (input.equalsIgnoreCase("OFF")) {
@@ -60,7 +62,8 @@ interface Command {
     void execute();
 }
 
-/* The Command for turning the light off in North America, or turning the light on in most other places */
+/* The Command for turning the light off in North America,
+or turning the light on in most other places */
 class FlipDownCommand implements Command {
 
     private Light theLight;

@@ -15,8 +15,6 @@ package com.sun.designpattern.behavioral.state;
  * whereas the Strategy pattern deals with how an object performs a certain task -- it encapsulates an algorithm.
  * 
  * @Task : Implements the the same for Fan which has 4 states.
- *
- * @author Sunil
  */
 public class StateApp {
 
@@ -34,9 +32,9 @@ public class StateApp {
 
 interface Device {
 
-    public void doAction();
+    void doAction();
     
-    public void setState(State state);
+    void setState(State state);
 }
 
 
@@ -56,12 +54,12 @@ class TV implements Device {
 
 interface State {
 
-    public void doAction();
+    void doAction();
 }
 
 
 class TVStopState implements State {
-    private Device device;
+    private final Device device;
     
     public TVStopState(Device device){
         this.device = device;
@@ -77,7 +75,7 @@ class TVStopState implements State {
 
 class TVStartState implements State {
 
-    private Device device;
+    private final Device device;
     
     public TVStartState(Device device){
         this.device = device;

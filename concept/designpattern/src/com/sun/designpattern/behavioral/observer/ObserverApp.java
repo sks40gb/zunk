@@ -26,7 +26,7 @@ public class ObserverApp {
 
 class Subject {
 
-    private List<Observer> observers = new ArrayList<Observer>();
+    private final List<Observer> observers = new ArrayList<>();
     private int state;
 
     public int getState() {
@@ -65,7 +65,8 @@ class BinaryObserver extends Observer {
 
     @Override
     public void update() {
-        System.out.println("Binary String: " + Integer.toBinaryString(subject.getState()));
+        System.out.println("Binary String: " +
+            Integer.toBinaryString(subject.getState()));
     }
 }
 
@@ -78,7 +79,8 @@ class OctalObserver extends Observer {
 
     @Override
     public void update() {
-        System.out.println("Octal String: " + Integer.toOctalString(subject.getState()));
+        System.out.println("Octal String: " +
+            Integer.toOctalString(subject.getState()));
     }
 }
 
@@ -91,6 +93,7 @@ class HexaObserver extends Observer {
 
     @Override
     public void update() {
-        System.out.println("Hex String: " + Integer.toHexString(subject.getState()).toUpperCase());
+        System.out.println("Hex String: " +
+            Integer.toHexString(subject.getState()).toUpperCase());
     }
 }
