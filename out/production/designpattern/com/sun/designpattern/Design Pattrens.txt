@@ -1,0 +1,31 @@
+Creational
+-------------------------
+Abstract Factory
+Factory Method
+Prototype
+Singleton
+Builder
+
+Structural 
+-------------------------
+Adaptor
+Bridge
+Composite
+Decorator
+Facade
+Flyweight
+Proxy
+
+Behavioral
+-------------------------
+C - chain of responsibility 
+C - command
+I - Interpreter
+I - Iterator
+M - Mediator
+M - Momento
+O - Observer
+S - State
+S - Strategy
+T - Template
+V - Visitor
