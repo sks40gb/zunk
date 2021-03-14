@@ -1,0 +1,64 @@
+VIP
+------------------------------------------------------------------------------------------------------------------------
+InputStreamReader - It convert InputStream to Reader so it can be used as Reader
+
+BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+String line = bufferedReader.readLine();
+
+
+#CHARACTER READING
+------------------------------------------------------------------------------------------------------------------------
+FileReader
+BufferedReader
+FilterReader
+
+FileWriter
+FilterWriter
+PrintWriter
+
+
+STREAM READING
+------------------------------------------------------------------------------------------------------------------------
+FileInputStream
+BufferedInputStream
+DataInputStream
+ObjectInputStream
+FilterinputStream
+
+FileOutputStream
+BufferedOutputStream
+DataOutputStream
+ObjectOutputStream
+FilterOutputStream
+Scanner - to scan content, separated by white space. It can get the primitive data type by using scanner.hasNext() and scanner.next()
+PrintStream -
+
+------------------------------------------------------------------------------------------------------------------------
+System.out - is a PrintStream
+
+
+
+What are filter streams?
+------------------------------------------------------------------------------------------------------------------------
+Filter streams are a category of IO streams whose responsibility is to add extra functionality (advantage) to the 
+existing streams like giving line numbers in the destination file that do not exist in the source file or increasing 
+performance of copying etc.
+
+
+What is PrintStream and PrintWriter?
+------------------------------------------------------------------------------------------------------------------------
+Functionally both are same but belong to two different categories – byte streams and character streams. 
+println() method exists in both classes.
+
+
+What is RandomAccessFile?
+------------------------------------------------------------------------------------------------------------------------
+It is a special class from java.io package which is neither a input stream nor a output stream (because it can do both).
+ It is directly a subclass of Object class. Generally, a stream does only one purpose of either reading or writing; 
+but RandomAccessFile can do both reading from a file and writing to a file. All the methods of DataInputStream and 
+DataOutStream exist in RandomAccessFile.
+
+
+* In case of BufferedStream always flush or close otherwise you could lose the some of data which are cached in Buffer.
+
+

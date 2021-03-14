@@ -1,0 +1,422 @@
+hibernate.properties
+------------------------
+	hibernate.connection.url = jdbc:mysql://localhost:3306/db_name
+	hibernate.connection.username = root
+	hibernate.connection.password = root
+
+	hibernate.hbm2ddl.auto= validate | update | create | create-drop
+	hibernate.show_sql=true
+        hibernate.dialect=org.hibernate.dialect.MySQLDialect
+       
+Setup
+------------------------
+	SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+	Session session = factory.getCurrentSession();
+
+Annotations
+----------------------
+	@Entity - name - entity name and will be used while writing HQL
+	@Table  - name - table name from DB
+	@Id
+	@Column
+	@Basic - it is default one, if we use it if you want to add some additional attribute like fetch and optional.
+	@Transient or static variable will not be persisted.
+	@Temporal(TemporalType.DATE) - it will save only date not timestamp -- 1. DATE, 2.TIME, 3.TIMESTAMP
+	@Lob -(Large Object) byte stream - for bigger text - Blob (byte) or Clob (character)
+	--
+	@Embeddable - class level - it can be embed to any class which will save the record into the same table.
+
+Primary keys
+------------------------
+	1. Natural Keys - example unique keys like email, login_id which has business logic
+	    - user will take care of this key
+	2. Surrogate key - it does not have any business significant
+	    - Hibernate will take care of this
+		- @Id
+		  @GeneratedValue(strategy =
+				GeneratedType.AUTO     - hibernate will decide, this is default
+				GeneratedType.IDENTITY -  Identity sequencing uses special IDENTITY columns in the database to allow the database to 
+                                                          automatically assign an id to the object when its row is inserted. Identity columns are
+                                                          supported in many databases, such as MySQL, DB2, SQL Server, Sybase and Postgres.
+				GeneratedType.SEQUENCE - Sequence objects use special database objects to generate ids. Sequence objects are only
+                                                          supported in some databases, such as Oracle, DB2, and Postgres. Usually, a SEQUENCE object
+                                                          has a name, an INCREMENT, and other database object settings. Each time the <sequence>.NEXTVAL
+                                                          is selected the sequence is incremented by the INCREMENT.
+				GeneratedType.TABLE    - Key from the table
+	TABLE -
+		@Id
+		@GeneratedValue(strategy=GenerationType.TABLE, generator="tbl-gen")
+		@TableGenerator(name="tbl-gen",table="GENERATORS",pkColumnName="ENTITY_TBL_NAME", allocationSize=150)
+
+		Performance -good, as explained above, keys preallocation enables low database hit ratio
+		that can be configured using the low value.
+
+	SEQUENCE -
+		@Id
+		@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq-gen")
+		@SequenceGenerator(name="seq-gen", sequenceName="MY_SEQ_GEN", initialValue=25, allocationSize=12)
+
+		Performance -good, as explained above, low database hit ratio and when hitting the database a sequence is very efficient
+		Portability - Not that well, it requires a database support
+
+	IDENTITY -
+		@Id
+		@GeneratedValue(strategy=GenerationType.IDENTITY)
+
+		This generator is very simple but it has its problems -
+		Performance - moderate to poor.
+		Portability - Not that well.
+
+
+Embedding Objects and overriding property and column name
+----------------------------------
+		@Embeddable - class level - it can be embed to any class which will save the record into the same table.
+		class Address {
+		}
+
+                @Embadded - instance level
+		Addess address
+
+
+		overidding : ex
+		--------------------------------------------------------------------------------------------------------
+		@Embedded
+		@AttributeOverrides({
+			@AttributeOverride(name="street",column=@Column(name="HOME_STREET_NAME")),
+			@AttributeOverride(name="city",column=@Column(name="HOME_CITY_NAME"))
+		})
+		Addess address
+
+		--------------------------------------------------------------------------------------------------------
+		@EmbeddedId - if the instance variable is key type. In that case it should not have @Id or @Embedded
+                              or @GeneratedType. Just add @EmbeddedId
+
+
+
+Proxy, Eager and Lazy
+--------------------------------------------
+		@ElementCollection(fetch=FetchType.Eager)
+                @Fetch(FetchMode.JOIN)
+		@JoinTable(name="USER_ADDRESS", joinColumns=@JoinColumn(name="USER_ID"))  // USER_ID is FK
+		Collection<Address> addresses = new ArrayList<Address>();
+
+                FetchMode
+                -------------------------------
+                1. fetch-”join” = Disable the lazy loading, always load all the collections and entities.
+                2. fetch-”select” (default) = Lazy load all the collections and entities.
+                3. batch-size=”N” OR @BatchSize(size = 10)  = Fetching up to ‘N’ collections or entities, *Not record*.
+                4. fetch-”subselect” = Group its collection into a sub select statement.
+                http://www.mkyong.com/hibernate/hibernate-fetching-strategies-examples
+        
+
+Mapping
+------------------------------------------------------------------------------------------------------------------------
+
+        One-To-One
+        -------------------------------------------------
+        User.java --
+
+                @OneToOne
+                @JoinColumn(name="VEHICLE_ID")  // if this one is not defined, hibernate will generate the column in the user table.
+                Vehicle vehicle
+
+
+	One-To-Many
+	--------------------------------------------------
+                User.java
+		@OneToMany
+		@JoinTable(name="USER_VEHICLE",
+                            joinColumns=@joinColumn(name="USER_ID", referencedColumnName = "ID"),
+                            inverseJoinColumns=@joinColumn(name="VEHICLE_ID")
+			)// If this is not defined then hibernate will create third table automatically.
+		private List<Vehicle> vehicles;
+
+	OR
+
+		Vehicle.java
+		------------
+		@JoinColumn(name="USER_ID")
+		@ManyToOne
+		User user
+
+		User.java
+		--------------------
+		@OneToMany(mappedBy="user")
+		private List<Vehicle> vehicles;
+
+
+	Many-To-Many
+	--------------------------------------------------
+		User.java
+		--------------------
+		@ManyToMany()
+		private List<Vehicle> vehicles;
+
+		Vehicle.java
+		--------------------
+		@ManyToMany()
+		private List<User> users;
+
+		Note : if you do not mention anything except @ManyToMany annotation, it will create two extra tables and columns automatically.
+
+
+		Vehicle.java
+		--------------------
+		@ManyToMany(mappedBy="vehicles")
+		private List<User> users;
+
+                    
+                @ManyToMany()
+                @JoinTable(
+                  name = "course_like", 
+                  joinColumns = @JoinColumn(name = "student_id"), 
+                  inverseJoinColumns = @JoinColumn(name = "course_id"))
+                 Set<Course> likedCourses;
+
+		Note : this will create one third table for many-to-many
+
+
+        Map
+        ------------------
+        @OneToMany(mappedBy = "role")
+        @MapKey(name = "roleName")
+        Map<String, Role> roleMap;
+
+
+	@NotFound
+	-----------------------------------------------
+		@NotFound(action=NotFoundAction.IGNORE ) - This is very handy when we do the work on legacy DB where 
+                there are several missing links between tables,it will ignore those cases and it will not throw any exception.
+                It is not JPA standard.
+
+		@ManyToOne
+		@NotFound(action=NotFoundAction.IGNORE )
+		Private User user;
+
+
+	Hibernate Collection and Cascade
+	-----------------------------------------------
+		1. Bag 				- List / ArrayList  - unordered
+		2. Bag semantic with ID         - List / ArrayList  - unordered
+		3. List semantic 		- List / ArrayList  - ordered
+		4. Set semantic 		- Set
+		5. Map semantic 		- Map
+
+		*TransientObjectException
+
+	     Cascade = CascadeType.ALL, DETACH, MERGE, PERSIST, REFRESH, REMOVE
+		 *PERSIST - we need to call session.persist(user) instead of session.save(user)
+
+
+Implementing Inheritance
+-----------------------------------------------
+
+	A) SINGLE TABLE STRATEGY - no normalized
+	-------------------------------------------------
+
+	-Hibernate will follow *SINGLE TABLE STRATGEY* and create one single table, it will add some extra called DTYPE 
+         and other fields streeingHandle and streeingWheel.
+	-DTYPE - (Discriminator) says what is the exact class - TwoWheeler and FourWheeler
+
+	@Inheritance (stategy = InheritanceType.SINGLE_TABLE)  - is optional annotation which is applicable to the 
+         parent class being inherited.
+	*We can change discriminator name
+
+        @Entity(name="vehicle")
+        @Inheritance (stategy = InheritanceType.SINGLE_TABLE)
+        @DiscriminationColumn(name="VEHICLE_TYPE", DescriminatorType=DescriminatorType.STRING (default) or INTEGER or CHAR)
+        public class Vehicle{
+
+        }
+
+        @Entity
+	@DescriminatorValue("Bike") // it is an optional, by default it will be the class name TwoWheeler
+	public class TwoWheeler extends Vehicle{
+	  private String streeingHandle;
+	}
+
+
+	@Entity
+	public class FourWheeler extends Vehicle{
+	  private String streeingWheel;
+	}
+        
+
+	B) TABLE PER CLASS - more normalized form since it does not contains extra column with NULL value.
+	-----------------------------------------------
+	*We do not need discriminator column
+		@Entity(name="vehicle")
+		@Inheritance (stategy = InheritanceType.TABLE_PER_CLASS) 
+		public class Vehicle{
+
+		}
+         * GenerationType.IDENTITY or GenerationType.AUTO cannot be used instead use GenerationType.TABLE
+         * It will create the table for parent class as well.
+
+
+	C) JOINED STRATEGY  - best normalized >>> @PrimaryKeyJoinColumn(name="PERSON_ID")
+	----------------------------------------------
+            @Entity
+            @Table(name = "PERSON")
+            @Inheritance(strategy=InheritanceType.JOINED)
+            public class Person {
+
+            }
+
+            @Entity
+            @Table(name="EMPLOYEE")
+            @PrimaryKeyJoinColumn(name="PERSON_ID")
+            public class Employee extends Person {
+
+            }
+
+
+	State of Entity
+	---------------------------------------------------
+	* Save    - Transient >> Persistent >> Detached
+	* Delete  - Persistent >> Transient
+	* Persisting detached object-
+
+	Use hibernate Entity name - It will not fire update query for detached object if state is not changed.
+        @org.hibernate.annotations.Entity(selectBeforeUpdate=true)
+
+
+HQL
+--------------------------------------------------------------------------
+	Query query = session.createQuery("from UserDetails);
+	query.setFirstResult(5); // starts from
+	query.setMaxResult(100); // max size of result
+	List<UserDetails> list = (List<UserDetails>)query.list();
+
+	----
+
+	Query query = session.createQuery("select userName from UserDetails);
+	List<String> list = (List<String>)query.list(); <---
+
+	---
+
+	Query query = session.createQuery("select id,userName from UserDetails);
+	List<List> list = (List<List>)query.list();  <---
+
+	----
+
+	Query query = session.createQuery("select new Map(id,userName) from UserDetails);
+	List<Map> list = (List<Map>)query.list();  <---
+
+	----
+
+	Query query = session.createQuery("select max(id) from UserDetails);
+	List<Integer> list = (List<Integer>)query.list();  <---
+
+
+	Parameter Binding
+	------------------------------
+	Query query = session.createQuery("select userName from UserDetails where id > ? and userName = ?);
+	query.setInteger(0,5);
+	query.setString(1,"SUN");
+
+	Query query = session.createQuery("select userName from UserDetails where id > :userId and userName = :userName);
+	query.setInteger("userId",5);
+	query.setString("userName","SUN");
+
+
+	Named Query
+	---------------------------------
+	@Entity
+	@NamedQuery(name="userDetails.byId", query="from UserDetalls where id = ?");
+	@Table
+	public class User{
+	}
+
+	Query query = session.getNamedQuery("userDetails.byId");
+	query.setInteger(0,4);
+
+	Named Native Query
+	---------------------------------
+	@Entity
+	@NamedNativeQuery(name="userDetails.byName", query="SELECT * FROM USER_DETAILS WHERE USER_NAME= ?", resultClass=UserDetails.class);
+	@Table
+	public class User{
+	}
+
+	//resultClass is optional
+
+	Query query = session.getNamedQuery("userDetails.byName");
+	query.setString(0,"SUN");
+
+	Criteria
+	-------------------------------------------
+	* Problem with HQL - Changing the huge Query is big pain.
+	Criteria criteria = session.createCriteria(UserDetails.class);
+	criteria.add(Restrictions.eq("firstName","SUN"));
+
+	criteria.add(Restrications.or(Restrications.eq("firstName","SUN"), Restircations.between("id",1,10)));
+
+
+	Projections
+	----------------------------
+	Criteria criteria = session.createCriteria(UserDetails.class).setProjection(Projections.property("userName"));
+	It will return list of String (userName) not UserDetails
+
+	.setProjection(Projections.count("id"));
+
+	.setProjection(Projections.max("id"));
+
+	.addOrder(Order.asc("userName"))
+
+	----------
+	Example example = Example.create(exampleUser);
+
+	Example example = Example.create(exampleUser).excludeProperty("userName");
+
+	Example example = Example.create(exampleUser).enableLike();
+
+	Criteria criteria = session.createCrietria(UserDetails.class).add(example);
+
+	note : Example doesn't consider null values and Id from the class;
+
+
+        ResultTransformer & Scalar -> Scalar - resolves dialect mapping and ResultTransformer convert row to particular class
+        --------------------------------------------------------------------------------------
+        SQLQuery q = session.createSQLQuery("SELECT * FROM user");
+        q.addScalar("name",Hibernate.STRING);
+        List<User> filterList = q.setResultTransformer(Transformers.aliasToBean(User.class)).list();
+
+
+        Caching
+	--------------------------------------------------------------------------------------
+	1. First level of caching - Session - default
+	2. Second level
+		a) Across sessions in an application
+		b) Across applications
+		c) Across clusters
+
+
+	Configuring second level caching
+        -------------------------------------
+	set property
+	cache.use_second_level_cache=true
+	//cache.provider_class=org.hibernate.cache.NoCacheProvider (default)
+	cache.provider_class=org.hibernate.cache.EhCacheProvider
+	// you can look into the package org.hibernate.cache for other cache provider
+	// we need to download the EhCache jar file
+
+
+	@Entity
+	@Cacheable
+	@Cache(usage=CacheCuncurrencyStrategy.READ_ONLY) // READ_WRITE, NONSTRICT_READ_WRITE, TRANSACTIONAL
+	public class UserDetails{
+
+	}
+
+	Query Cache
+	-------------------------------------------
+
+
+        Hibernate call store procedure
+        -------------------------------------------
+        Query query = session.createSQLQuery(
+	"CALL GetStocks(:stockCode)")
+	.addEntity(Stock.class)
+	.setParameter("stockCode", "7277");
+ 

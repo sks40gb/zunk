@@ -1,0 +1,111 @@
+Ajax
+------------------------------------
+$.ajax({
+    url: "www.google.com" , data:{username:"sunil", password:"123"}, success:function(data){ alert(1)}	
+ });
+
+$(document).submit(function(){
+	$( "form" ).click(function( event ) {
+	console.log( $( this ).serializeArray() );
+	event.preventDefault();
+});
+
+Effect
+--------------------------
+.delay()
+.dequeue()
+.fadeIn()
+.fadeOut()
+.fadeTo()
+.fadeToggle()
+.finish()
+.hide()
+.show()
+.toggle()
+.slideDown()
+.slideUp()
+.slideToggle()
+.stop()
+
+$( "#go" ).click(function() {
+$( "#block" ).animate({
+	width: "70%",
+	opacity: 0.4,
+	marginLeft: "0.6in",
+	fontSize: "3em",
+	borderWidth: "10px"
+	}, 1500 );
+});
+
+
+Form
+-------------------------
+.serialize() -Encode a set of form elements as a string for submission.
+.serializeArray() - Encode a set of form elements as an array of names and values.
+.focus()
+.change()
+.submit()
+
+Category: Manipulation
+-------------------------
+.after()
+.append()
+.appendTo()
+.before()
+.attr()
+.clone()
+.css()
+.detach()
+.empty()
+.hasClass()
+.height()
+.html()
+.insertAfter()
+.insertBefore()
+.wrap() - $( "p" ).wrap( $( ".doublediv" ) );
+
+
+Selector
+------------------------
+input[name*='man']
+Attribute Contains Prefix Selector [name|="value"]
+Attribute Contains Selector [name*="value"]
+Attribute Contains Word Selector [name~="value"]
+Attribute Ends With Selector [name$="value"]
+div:contains('John')
+
+:hidden
+:input
+:checkbox
+:radio
+:last
+:first
+:lt
+:eq
+:gt
+:enabled
+:focused
+:contains
+:button
+Child Selector (“parent > child”)
+:contains
+:parent - This is the inverse of :empty. 
+
+
+Category: Traversing
+------------------------------
+.add()
+.children()
+.closest()  $( "#child" ).closest( "li"
+.each() 
+			$( "span" ).click(function() {
+				$( "li" ).each(function() {
+				$( this ).toggleClass( "example" );
+				});
+			}); )
+.eq()
+
+.filter()   -   $( "li" ).filter( ":even" ).css( "background-color", "red" );
+.parent()
+.prev()
+.siblings()

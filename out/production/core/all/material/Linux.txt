@@ -1,0 +1,97 @@
+kill Command Line Option
+-------------------------------
+$ ps aux | grep firefox
+
+$ kill -9 3553
+
+
+View growing log file in real time using tail command
+-------------------------------------------------------
+tail -f /var/log/syslog
+
+
+Display first N lines of a file using head command
+------------------------------------------------------
+Syntax: head -n N FILENAME
+
+$ head -n 15 /var/log/maillog
+
+
+
+Ignore last N lines of a file using head command
+-----------------------------------------------------
+Syntax: head -n -N FILENAME
+
+$ head -n -250 /var/log/secure
+
+
+Search for the given string in a single file
+-----------------------------------------------------
+Syntax:
+grep "literal_string" filename
+
+or
+
+grep "REGEX" filename
+
+
+Counting the number of matches using grep -c
+----------------------------------------------
+Syntax:
+grep -c "pattern" filename
+
+
+Viewing compressed log files
+=============================================
+ Display the first N lines of a compressed file.
+
+$ zcat file.gz | head -250
+
+Display the last N lines of a compressed file.
+
+$ zcat file.gz | tail -250
+
+Ignoring the last N lines of a compressed file.
+
+$ zcat file.gz | head -n -250
+
+Ignoring the first N lines of a compressed file.
+
+$ zcat file.gz | tail -n +250
+
+
+To check Mount size
+---------------------------------------------------
+ df -h
+
+
+search text in file
+---------------------------------------
+grep -i "indexingexception" info_ppe_store1_server.log
+
+or
+
+cat info_ppe_store1_server.log | grep IndexingException
+
+grep -i "Duplicates in property values:" info_ppe_bcc-server.log
+
+
+less comman - very useful if anything needs to be searched
+---------------------------------------
+
+less <File>
+
+
+/<text> - for searching text
+
+
+
+=======================================================================================================================
+VI EDITOR
+=======================================================================================================================
+:q
+:wq
+:q! - force quite
+:wq! - force write and quite
+i  - insert
+G - go to end of file
